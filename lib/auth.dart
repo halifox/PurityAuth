@@ -237,6 +237,10 @@ class AuthConfig {
     );
   }
 
+  /// 客户端的优先级
+  /// 如果 LABEL 和 PARAMETERS 都提供了 issuer，客户端会 优先使用 PARAMETERS 中的 issuer 作为官方 issuer（用于识别服务商、生成显示名称等）。
+  /// LABEL 中的 issuer 仅作为备选显示用，不会覆盖 PARAMETERS 中的 issuer。
+  /// 如果 PARAMETERS 中没有 issuer，客户端会尝试从 LABEL 中提取（通过 Issuer:AccountName 形式解析）。
   static String parseIssuer(String label, String? issuer) {
     if (label.contains(':')) {
       return issuer ?? label.split(':')[0];
