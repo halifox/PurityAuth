@@ -36,16 +36,7 @@ showOverwriteDialog(BuildContext context, AuthConfig config) {
         actions: [
           OutlinedButton(
             onPressed: () async {
-              await authStore.update(
-                db,
-                config.toJson(),
-                finder: Finder(
-                  filter: Filter.and([
-                    Filter.equals('account', config.account),
-                    Filter.equals('issuer', config.issuer),
-                  ]),
-                ),
-              );
+              await authStore.update(db, config.toJson(), finder: Finder(filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)])));
               Navigator.popUntil(context, ModalRoute.withName('/'));
             },
             child: Text('是'),

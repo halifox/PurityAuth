@@ -240,8 +240,8 @@ class _FromScreenState extends State<FromScreen> {
                     Expanded(
                       child: switch (config.type.toLowerCase()) {
                         'totp' => buildDigitsOnlyTextField(
-                          config.interval,
-                          (it) => config.interval = it,
+                          config.period,
+                          (it) => config.period = it,
                           '时间间隔(秒)',
                         ),
                         'hotp' => buildDigitsOnlyTextField(
@@ -250,8 +250,8 @@ class _FromScreenState extends State<FromScreen> {
                           '计数器',
                         ),
                         'motp' => buildDigitsOnlyTextField(
-                          config.interval,
-                          (it) => config.interval = it,
+                          config.period,
+                          (it) => config.period = it,
                           '时间间隔(秒)',
                         ),
                         String() => throw UnimplementedError(),
