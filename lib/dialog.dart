@@ -26,7 +26,7 @@ Future<int?> showAlertDialog(context, title, message, {actions, barrierDismissib
 }
 
 showOverwriteDialog(BuildContext context, AuthConfig config) {
- return showGeneralDialog(
+  return showGeneralDialog(
     context: context,
     barrierDismissible: false,
     pageBuilder: (context, animation, secondaryAnimation) {

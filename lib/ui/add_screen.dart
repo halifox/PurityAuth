@@ -47,7 +47,7 @@ class AddScreen extends StatelessWidget {
       return;
     }
 
-    var selectedFile = await openFile(
+    final XFile? selectedFile = await openFile(
       acceptedTypeGroups: [
         XTypeGroup(extensions: ['jpg', 'jpeg', 'png']),
       ],
@@ -75,8 +75,8 @@ class AddScreen extends StatelessWidget {
       if (selectedFile == null) {
         return;
       }
-      String data = await selectedFile.readAsString();
-      List<String> optUrls = data.split("\n");
+      final String data = await selectedFile.readAsString();
+      final List<String> optUrls = data.split("\n");
 
       for (String optUrl in optUrls) {
         final AuthConfig config = AuthConfig.parse(optUrl);
@@ -98,11 +98,10 @@ class AddScreen extends StatelessWidget {
     }
   }
 
-  backup(context) async {
+  void backup(context) async {
     try {
-      var records = await authStore.find(db);
-      final optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join("\n");
-      print(optUrls);
+      final List<RecordSnapshot<String, Map<String, Object?>>> records = await authStore.find(db);
+      final String optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join("\n");
 
       if (await Permission.storage.request().isGranted) {
         Directory? dir;
@@ -135,12 +134,12 @@ class AddScreen extends StatelessWidget {
   }
 
   String generateFileNameWithTime(String prefix, String extension) {
-    var now = DateTime.now();
-    var formatted = '${now.year}${_twoDigits(now.month)}${_twoDigits(now.day)}_${_twoDigits(now.hour)}${_twoDigits(now.minute)}${_twoDigits(now.second)}';
+    final DateTime now = DateTime.now();
+    final String formatted = '${now.year}${twoDigits(now.month)}${twoDigits(now.day)}_${twoDigits(now.hour)}${twoDigits(now.minute)}${twoDigits(now.second)}';
     return '$prefix\_$formatted.$extension';
   }
 
-  String _twoDigits(int n) => n.toString().padLeft(2, '0');
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
 
   void handleScannedBarcodes(BuildContext context, List<Barcode>? barcodes) async {
     if (barcodes == null || barcodes.isEmpty) {
