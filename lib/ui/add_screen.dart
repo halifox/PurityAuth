@@ -1,15 +1,15 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:auth/auth.dart';
 import 'package:auth/dialog.dart';
-import 'package:auth/library/io.dart' if (dart.library.html) 'package:auth/library/web.dart';
 import 'package:auth/repository.dart';
 import 'package:auth/top_bar.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sembast/sembast.dart';
 
 class AddScreenOption {
@@ -37,8 +37,7 @@ class AddScreen extends StatelessWidget {
       return;
     }
 
-    final BarcodeCapture? barcodeCapture =
-        await Navigator.pushNamed(context, '/scan') as BarcodeCapture?;
+    final BarcodeCapture? barcodeCapture = await Navigator.pushNamed(context, '/scan') as BarcodeCapture?;
     handleScannedBarcodes(context, barcodeCapture?.barcodes);
   }
 
@@ -67,20 +66,33 @@ class AddScreen extends StatelessWidget {
 
   void restore(BuildContext context) async {
     try {
-      var selectedFile = await openFile(
+      XFile? selectedFile = await openFile(
         acceptedTypeGroups: [
-          XTypeGroup(extensions: <String>['pa']),
+          XTypeGroup(extensions: <String>['txt']),
         ],
+        initialDirectory: "/sdcard/Documents",
       );
       if (selectedFile == null) {
         return;
       }
-      var json = await selectedFile.readAsString();
-      var list = jsonDecode(json) as List;
-      for (var item in list) {
-        authStore.record(item['key']).put(db, item);
+      String data = await selectedFile.readAsString();
+      List<String> optUrls = data.split("\n");
+
+      for (String optUrl in optUrls) {
+        final AuthConfig config = AuthConfig.parse(optUrl);
+        final bool verify = config.verify();
+        if (!verify) {
+          continue;
+        }
+        final int count = await authStore.count(db, filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]));
+        if (count > 0) {
+          await showOverwriteDialog(context, config);
+          continue;
+        }
+        await authStore.add(db, config.toJson());
       }
-      showAlertDialog(context, "导入成功", "导入完成");
+
+      showAlertDialog(context, "提示", "导入完成");
     } catch (e) {
       showAlertDialog(context, '错误', e.toString());
     }
@@ -88,15 +100,35 @@ class AddScreen extends StatelessWidget {
 
   backup(context) async {
     try {
-      var filename = generateFileNameWithTime('backup', 'pa');
       var records = await authStore.find(db);
-      var data = records.map((e) {
-        var map = Map.from(e.value);
-        map['key'] = e.key;
-        return map;
-      }).toList();
-      var json = jsonEncode(data);
-      await createBackupImpl(context, json, filename);
+      final optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join("\n");
+      print(optUrls);
+
+      if (await Permission.storage.request().isGranted) {
+        Directory? dir;
+        if (Platform.isAndroid) {
+          if (await Permission.manageExternalStorage.isGranted) {
+            // Android 11+ 可用 MANAGE_EXTERNAL_STORAGE，大权限
+            dir = Directory("/sdcard/Documents");
+          } else {
+            // Android 10- 或未授予大权限
+            dir = Directory("/sdcard/Documents");
+          }
+        } else {
+          dir = await getApplicationDocumentsDirectory();
+        }
+
+        if (!dir.existsSync()) {
+          dir.createSync(recursive: true);
+        }
+
+        final String fn = generateFileNameWithTime("auth", "txt");
+        final File file = File("${dir.path}/${fn}");
+        await file.writeAsString(optUrls);
+        showAlertDialog(context, "提示", "备份成功,文件位置:${file.path}");
+      } else {
+        throw Exception("Storage permission denied");
+      }
     } catch (e) {
       showAlertDialog(context, '错误', e.toString());
     }
@@ -104,8 +136,7 @@ class AddScreen extends StatelessWidget {
 
   String generateFileNameWithTime(String prefix, String extension) {
     var now = DateTime.now();
-    var formatted =
-        '${now.year}${_twoDigits(now.month)}${_twoDigits(now.day)}_${_twoDigits(now.hour)}${_twoDigits(now.minute)}${_twoDigits(now.second)}';
+    var formatted = '${now.year}${_twoDigits(now.month)}${_twoDigits(now.day)}_${_twoDigits(now.hour)}${_twoDigits(now.minute)}${_twoDigits(now.second)}';
     return '$prefix\_$formatted.$extension';
   }
 
@@ -127,13 +158,7 @@ class AddScreen extends StatelessWidget {
       showAlertDialog(context, '提示', '暂不支持此类型的二维码链接，请确认来源是否正确。');
       return;
     }
-    final int count = await authStore.count(
-      db,
-      filter: Filter.and([
-        Filter.equals('account', config.account),
-        Filter.equals('issuer', config.issuer),
-      ]),
-    );
+    final int count = await authStore.count(db, filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]));
     if (count > 0) {
       showOverwriteDialog(context, config);
       return;
@@ -149,12 +174,7 @@ class AddScreen extends StatelessWidget {
       body: GridView.builder(
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         padding: EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 700,
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          mainAxisExtent: 90,
-        ),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 700, mainAxisSpacing: 16, crossAxisSpacing: 16, mainAxisExtent: 90),
         itemCount: options.length,
         itemBuilder: (context, index) {
           final AddScreenOption option = options[index];
@@ -179,10 +199,7 @@ class HorizontalBarButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.all(Radius.circular(24)),
-        ),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.all(Radius.circular(24))),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -190,22 +207,14 @@ class HorizontalBarButton extends StatelessWidget {
               height: 48,
               width: 48,
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
+              decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.all(Radius.circular(12))),
               child: Icon(icon, size: 24, color: Theme.of(context).colorScheme.onPrimary),
             ),
             SizedBox(width: 16),
             Text(
               label,
               maxLines: 1,
-              style: TextStyle(
-                height: 0,
-                fontSize: 18,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(height: 0, fontSize: 18, color: Theme.of(context).colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold),
             ),
             SizedBox(width: 16),
           ],

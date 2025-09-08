@@ -26,7 +26,7 @@ Future<int?> showAlertDialog(context, title, message, {actions, barrierDismissib
 }
 
 showOverwriteDialog(BuildContext context, AuthConfig config) {
-  showGeneralDialog(
+ return showGeneralDialog(
     context: context,
     barrierDismissible: false,
     pageBuilder: (context, animation, secondaryAnimation) {
@@ -37,7 +37,7 @@ showOverwriteDialog(BuildContext context, AuthConfig config) {
           OutlinedButton(
             onPressed: () async {
               await authStore.update(db, config.toJson(), finder: Finder(filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)])));
-              Navigator.popUntil(context, ModalRoute.withName('/'));
+              Navigator.pop(context);
             },
             child: Text('是'),
           ),
