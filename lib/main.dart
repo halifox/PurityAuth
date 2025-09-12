@@ -2,7 +2,6 @@ import 'package:auth/repository.dart';
 import 'package:auth/ui/add_screen.dart';
 import 'package:auth/ui/from_screen.dart';
 import 'package:auth/ui/home_screen.dart';
-import 'package:auth/ui/result_screen.dart';
 import 'package:auth/ui/scan_screen.dart';
 import 'package:auth/ui/settings_screen.dart';
 import 'package:dynamic_color/dynamic_color.dart';
@@ -48,7 +47,6 @@ class AuthApp extends StatelessWidget {
             '/from': (BuildContext context) => FromScreen(),
             '/settings': (BuildContext context) => SettingsScreen(),
             '/icons': (BuildContext context) => IconsChooseScreen(),
-            // '/result': (BuildContext context) => ResultScreen(),
           },
           navigatorObservers: [SwipeActionNavigatorObserver()],
         );
