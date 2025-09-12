@@ -122,19 +122,7 @@ class AuthConfig {
   }
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'scheme': scheme,
-      'type': type,
-      'issuer': issuer,
-      'account': account,
-      'secret': secret,
-      'algorithm': algorithm,
-      'digits': digits,
-      'interval': period,
-      'counter': counter,
-      'pin': pin,
-      'icon': icon,
-    };
+    return <String, dynamic>{'scheme': scheme, 'type': type, 'issuer': issuer, 'account': account, 'secret': secret, 'algorithm': algorithm, 'digits': digits, 'interval': period, 'counter': counter, 'pin': pin, 'icon': icon};
   }
 
   factory AuthConfig.fromJson(RecordSnapshot<String, dynamic> map) {
@@ -208,7 +196,12 @@ class AuthConfig {
   ///     - `counter`: 可选参数，适用于 `hotp`，指定当前计数器值。
   ///
   String toOtpUri() {
-    return '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&period=${period}&counter=${counter}';
+    return switch (type.toLowerCase()) {
+      'totp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&period=${period}',
+      'hotp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&counter=${counter}',
+      'motp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&digits=${digits}&period=${period}&pin=${pin}',
+      String() => throw UnimplementedError(),
+    };
   }
 
   static AuthConfig parse(String uriString) {
