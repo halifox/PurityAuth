@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:auth/auth.dart';
-import 'package:auth/dialog.dart';
 import 'package:auth/repository.dart';
 import 'package:auth/top_bar.dart';
 import 'package:auth/ui/result_screen.dart';
@@ -74,7 +73,7 @@ class AddScreen extends StatelessWidget {
     if (clipboardData == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 1, title: "导入失败", message: "无法获取剪贴板数据"),
+        builder: (ctx) => ResultScreen(state: 0, title: "导入失败", message: "无法获取剪贴板数据"),
       );
       return;
     }
@@ -82,7 +81,7 @@ class AddScreen extends StatelessWidget {
     if (text == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 1, title: "导入失败", message: "无法获取剪贴板数据"),
+        builder: (ctx) => ResultScreen(state: 0, title: "导入失败", message: "无法获取剪贴板数据"),
       );
       return;
     }
@@ -112,7 +111,7 @@ class AddScreen extends StatelessWidget {
     }
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 0, title: "导入成功", message: "共导入${optUrls.length}条数据"),
+      builder: (ctx) => ResultScreen(state: 1, title: "导入成功", message: "共导入${optUrls.length}条数据"),
     );
   }
 
@@ -122,7 +121,7 @@ class AddScreen extends StatelessWidget {
     Clipboard.setData(ClipboardData(text: optUrls));
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 0, title: "导出成功", message: "共导出${records.length}条数据到剪贴板"),
+      builder: (ctx) => ResultScreen(state: 1, title: "导出成功", message: "共导出${records.length}条数据到剪贴板"),
     );
   }
 
@@ -150,13 +149,33 @@ class AddScreen extends StatelessWidget {
       filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
     );
     if (count > 0) {
-      showOverwriteDialog(context, config);
+      final bool? result = await showCupertinoModalPopup<bool?>(
+        context: context,
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: '警告',
+          message: '令牌${config.issuer}:${config.account}已经存在,是否覆盖它',
+          falseButtonVisible: true,
+        ),
+      );
+      if (result == null) {
+        return;
+      }
+      if (result) {
+        await authStore.update(
+          db,
+          config.toJson(),
+          finder: Finder(
+            filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
+          ),
+        );
+      }
       return;
     }
     await authStore.add(db, config.toJson());
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '添加成功'),
+      builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '添加成功'),
     );
   }
 

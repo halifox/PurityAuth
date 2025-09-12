@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:auth/auth.dart';
-import 'package:auth/dialog.dart';
 import 'package:auth/repository.dart';
 import 'package:auth/top_bar.dart';
 import 'package:auth/ui/result_screen.dart';
@@ -39,7 +38,7 @@ class _FromScreenState extends State<FromScreen> {
     if (!verify) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '参数异常，请确认来源是否正确。'),
+        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '参数异常，请确认来源是否正确。'),
       );
       return;
     }
@@ -49,21 +48,41 @@ class _FromScreenState extends State<FromScreen> {
         filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
       );
       if (count > 0) {
-        showOverwriteDialog(context, config);
+        final bool? result = await showCupertinoModalPopup<bool?>(
+          context: context,
+          builder: (ctx) => ResultScreen(
+            state: 0,
+            title: '警告',
+            message: '令牌${config.issuer}:${config.account}已经存在,是否覆盖它',
+            falseButtonVisible: true,
+          ),
+        );
+        if (result == null) {
+          return;
+        }
+        if (result) {
+          await authStore.update(
+            db,
+            config.toJson(),
+            finder: Finder(
+              filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
+            ),
+          );
+        }
         return;
       }
       await authStore.add(db, config.toJson());
       Navigator.popUntil(context, ModalRoute.withName('/'));
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '添加成功'),
+        builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '添加成功'),
       );
     } else {
       authStore.record(config.key).update(db, config.toJson());
       Navigator.popUntil(context, ModalRoute.withName('/'));
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '更新成功'),
+        builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '更新成功'),
       );
     }
   }
