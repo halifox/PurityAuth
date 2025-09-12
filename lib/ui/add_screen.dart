@@ -4,7 +4,9 @@ import 'package:auth/auth.dart';
 import 'package:auth/dialog.dart';
 import 'package:auth/repository.dart';
 import 'package:auth/top_bar.dart';
+import 'package:auth/ui/result_screen.dart';
 import 'package:file_selector/file_selector.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,10 +68,18 @@ class AddScreen extends StatelessWidget {
   void restore(BuildContext context) async {
     final ClipboardData? clipboardData = await Clipboard.getData('text/plain');
     if (clipboardData == null) {
+      showCupertinoModalPopup(
+        context: context,
+        builder: (ctx) => ResultScreen(state: 1, title: "导入失败", message: "无法获取剪贴板数据"),
+      );
       return;
     }
     final String? text = clipboardData.text;
     if (text == null) {
+      showCupertinoModalPopup(
+        context: context,
+        builder: (ctx) => ResultScreen(state: 1, title: "导入失败", message: "无法获取剪贴板数据"),
+      );
       return;
     }
 
@@ -80,28 +90,37 @@ class AddScreen extends StatelessWidget {
       if (!verify) {
         continue;
       }
-      final int count = await authStore.count(db, filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]));
+      final int count = await authStore.count(
+        db,
+        filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
+      );
       if (count > 0) {
-        await authStore.update(db, config.toJson(), finder: Finder(filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)])));
+        await authStore.update(
+          db,
+          config.toJson(),
+          finder: Finder(
+            filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
+          ),
+        );
       } else {
         await authStore.add(db, config.toJson());
       }
     }
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) => ResultScreen(state: 0, title: "导入成功", message: "共导入${optUrls.length}条数据"),
+    );
   }
 
   void backup(context) async {
     final List<RecordSnapshot<String, Map<String, Object?>>> records = await authStore.find(db);
     final String optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join("\n");
     Clipboard.setData(ClipboardData(text: optUrls));
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) => ResultScreen(state: 0, title: "导出成功", message: "共导出${records.length}条数据到剪贴板"),
+    );
   }
-
-  String generateFileNameWithTime(String prefix, String extension) {
-    final DateTime now = DateTime.now();
-    final String formatted = '${now.year}${twoDigits(now.month)}${twoDigits(now.day)}_${twoDigits(now.hour)}${twoDigits(now.minute)}${twoDigits(now.second)}';
-    return '$prefix\_$formatted.$extension';
-  }
-
-  String twoDigits(int n) => n.toString().padLeft(2, '0');
 
   void handleScannedBarcodes(BuildContext context, List<Barcode>? barcodes) async {
     if (barcodes == null || barcodes.isEmpty) {
@@ -119,7 +138,10 @@ class AddScreen extends StatelessWidget {
       showAlertDialog(context, '提示', '暂不支持此类型的二维码链接，请确认来源是否正确。');
       return;
     }
-    final int count = await authStore.count(db, filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]));
+    final int count = await authStore.count(
+      db,
+      filter: Filter.and([Filter.equals('account', config.account), Filter.equals('issuer', config.issuer)]),
+    );
     if (count > 0) {
       showOverwriteDialog(context, config);
       return;
@@ -135,7 +157,12 @@ class AddScreen extends StatelessWidget {
       body: GridView.builder(
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         padding: EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 700, mainAxisSpacing: 16, crossAxisSpacing: 16, mainAxisExtent: 90),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 700,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          mainAxisExtent: 90,
+        ),
         itemCount: options.length,
         itemBuilder: (context, index) {
           final AddScreenOption option = options[index];
@@ -160,7 +187,10 @@ class HorizontalBarButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.all(Radius.circular(24))),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.all(Radius.circular(24)),
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -168,14 +198,22 @@ class HorizontalBarButton extends StatelessWidget {
               height: 48,
               width: 48,
               alignment: Alignment.center,
-              decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.all(Radius.circular(12))),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
               child: Icon(icon, size: 24, color: Theme.of(context).colorScheme.onPrimary),
             ),
             SizedBox(width: 16),
             Text(
               label,
               maxLines: 1,
-              style: TextStyle(height: 0, fontSize: 18, color: Theme.of(context).colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                height: 0,
+                fontSize: 18,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(width: 16),
           ],
