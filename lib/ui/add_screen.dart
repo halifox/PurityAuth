@@ -34,20 +34,24 @@ class AddScreen extends StatelessWidget {
 
   void scan(BuildContext context) async {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
-      showAlertDialog(context, '提示', '该功能当前仅支持 Android 和 iOS 平台。');
+      showCupertinoModalPopup(
+        context: context,
+        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+      );
       return;
     }
-
     final BarcodeCapture? barcodeCapture = await Navigator.pushNamed(context, '/scan') as BarcodeCapture?;
     handleScannedBarcodes(context, barcodeCapture?.barcodes);
   }
 
   void upload(BuildContext context) async {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
-      showAlertDialog(context, '提示', '该功能当前仅支持 Android 和 iOS 平台。');
+      showCupertinoModalPopup(
+        context: context,
+        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+      );
       return;
     }
-
     final XFile? selectedFile = await openFile(
       acceptedTypeGroups: [
         XTypeGroup(extensions: ['jpg', 'jpeg', 'png']),
@@ -135,7 +139,10 @@ class AddScreen extends StatelessWidget {
     final AuthConfig config = AuthConfig.parse(uriString);
     final bool verify = config.verify();
     if (!verify) {
-      showAlertDialog(context, '提示', '暂不支持此类型的二维码链接，请确认来源是否正确。');
+      showCupertinoModalPopup(
+        context: context,
+        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '暂不支持此类型的二维码链接，请确认来源是否正确。'),
+      );
       return;
     }
     final int count = await authStore.count(
@@ -147,7 +154,10 @@ class AddScreen extends StatelessWidget {
       return;
     }
     await authStore.add(db, config.toJson());
-    await showAlertDialog(context, '提示', '添加成功');
+    showCupertinoModalPopup(
+      context: context,
+      builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '添加成功'),
+    );
   }
 
   @override
