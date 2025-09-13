@@ -57,14 +57,14 @@ const Duration _kModalPopupTransitionDuration = Duration(milliseconds: 335);
 
 // Offset from offscreen to the right to fully on screen.
 final Animatable<Offset> _kRightMiddleTween = Tween<Offset>(
-  begin: const Offset(1.0, 0.0),
+  begin: const Offset(-1.0, 0.0),
   end: Offset.zero,
 );
 
 // Offset from fully on screen to 1/3 offscreen to the left.
 final Animatable<Offset> _kMiddleLeftTween = Tween<Offset>(
   begin: Offset.zero,
-  end: const Offset(-1.0 / 3.0, 0.0),
+  end: const Offset(1.0 / 3.0, 0.0),
 );
 
 // Offset from offscreen below to fully on screen.
