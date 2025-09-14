@@ -56,6 +56,18 @@ class AuthApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
+        localeResolutionCallback: (locale, supportedLocales) {
+          // 如果当前系统语言在支持的语言列表中，直接返回
+          if (locale != null) {
+            for (final supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode) {
+                return supportedLocale;
+              }
+            }
+          }
+          // 如果不支持当前语言，回退到英文
+          return const Locale('en');
+        },
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) => const HomeScreen(),
