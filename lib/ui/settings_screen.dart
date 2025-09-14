@@ -1,7 +1,8 @@
-import '../repository.dart';
-import '../top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:sembast/sembast.dart';
+
+import '../repository/repository.dart';
+import 'top_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -19,18 +20,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: TopBar(context, '设置'),
-      body: GridView.builder(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 700, mainAxisSpacing: 16, crossAxisSpacing: 16, mainAxisExtent: 90),
-        itemCount: options.length,
-        itemBuilder: (context, index) {
-          final item = options[index];
-          return HorizontalBarSelectionButton(item[0], item[1]);
-        },
+    appBar: TopBar(context, '设置'),
+    body: GridView.builder(
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 700,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        mainAxisExtent: 90,
       ),
-    );
+      itemCount: options.length,
+      itemBuilder: (context, index) {
+        final item = options[index];
+        return HorizontalBarSelectionButton(item[0], item[1]);
+      },
+    ),
+  );
 }
 
 class HorizontalBarSelectionButton extends StatefulWidget {
@@ -65,31 +71,48 @@ class _HorizontalBarSelectionButtonState extends State<HorizontalBarSelectionBut
 
   @override
   Widget build(BuildContext context) => Container(
-      padding: const EdgeInsets.all(16),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primaryContainer, borderRadius: const BorderRadius.all(Radius.circular(24))),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(width: 12),
-          Expanded(child: Text(widget.label, maxLines: 1, style: TextStyle(height: 0, fontSize: 18, color: Theme.of(context).colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold))),
-          const SizedBox(width: 16),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                enable = !enable;
-              });
-              settingsStore.record('settings').update(db, {widget.dbKey: enable});
-            },
-            child: Container(
-              height: 48,
-              width: 48,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(color: enable ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.inversePrimary, borderRadius: const BorderRadius.all(Radius.circular(12))),
-              child: Icon(enable ? Icons.done : Icons.close, size: 36, color: Theme.of(context).colorScheme.onPrimary),
+    padding: const EdgeInsets.all(16),
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.primaryContainer,
+      borderRadius: const BorderRadius.all(Radius.circular(24)),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            widget.label,
+            maxLines: 1,
+            style: TextStyle(
+              height: 0,
+              fontSize: 18,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
-      ),
-    );
+        ),
+        const SizedBox(width: 16),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              enable = !enable;
+            });
+            settingsStore.record('settings').update(db, {widget.dbKey: enable});
+          },
+          child: Container(
+            height: 48,
+            width: 48,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: enable ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.inversePrimary,
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+            ),
+            child: Icon(enable ? Icons.done : Icons.close, size: 36, color: Theme.of(context).colorScheme.onPrimary),
+          ),
+        ),
+      ],
+    ),
+  );
 }

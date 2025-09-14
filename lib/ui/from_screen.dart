@@ -1,14 +1,15 @@
 import 'dart:convert';
 
-import '../auth.dart';
-import '../repository.dart';
-import '../top_bar.dart';
-import 'result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sembast/sembast.dart';
+
+import '../repository/auth.dart';
+import '../repository/repository.dart';
+import 'result_screen.dart';
+import 'top_bar.dart';
 
 class FromScreen extends StatefulWidget {
   const FromScreen({super.key});
@@ -79,12 +80,12 @@ class _FromScreenState extends State<FromScreen> {
   }
 
   Widget buildDigitsOnlyTextField(int initValue, Function(int) onChanged, String label) => buildTextField(
-      initValue.toString(),
-      (value) => onChanged(int.parse(value)),
-      label,
-      inputType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-    );
+    initValue.toString(),
+    (value) => onChanged(int.parse(value)),
+    label,
+    inputType: TextInputType.number,
+    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+  );
 
   Widget buildTextField(
     String initValue,
@@ -94,101 +95,102 @@ class _FromScreenState extends State<FromScreen> {
     List<TextInputFormatter>? inputFormatters,
     suffixIcon,
   }) => TextField(
-      key: ValueKey(label),
-      controller: TextEditingController(text: initValue),
-      onChanged: (value) {
-        onChanged(value);
-      },
-      decoration: InputDecoration(
-        labelText: label,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(),
-          borderRadius: BorderRadius.all(Radius.circular(14.0)),
-          gapPadding: 8.0,
-        ),
-        suffixIcon: suffixIcon,
+    key: ValueKey(label),
+    controller: TextEditingController(text: initValue),
+    onChanged: (value) {
+      onChanged(value);
+    },
+    decoration: InputDecoration(
+      labelText: label,
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      border: const OutlineInputBorder(
+        borderSide: BorderSide(),
+        borderRadius: BorderRadius.all(Radius.circular(14.0)),
+        gapPadding: 8.0,
       ),
-      keyboardType: inputType,
-      inputFormatters: inputFormatters,
-    );
+      suffixIcon: suffixIcon,
+    ),
+    keyboardType: inputType,
+    inputFormatters: inputFormatters,
+  );
 
   bool _obscureText = true; // 是否隐藏密码
   Widget buildPasswordTextField(String initValue, Function(String) onChanged, String label) => TextField(
-      key: ValueKey(label),
-      controller: TextEditingController(text: initValue),
-      onChanged: (value) {
-        onChanged(value);
-      },
-      obscureText: _obscureText,
-      decoration: InputDecoration(
-        labelText: label,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(),
-          borderRadius: BorderRadius.all(Radius.circular(14.0)),
-          gapPadding: 8.0,
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
-          onPressed: () {
-            setState(() {
-              _obscureText = !_obscureText; // 切换显示/隐藏
-            });
-          },
-        ),
+    key: ValueKey(label),
+    controller: TextEditingController(text: initValue),
+    onChanged: (value) {
+      onChanged(value);
+    },
+    obscureText: _obscureText,
+    decoration: InputDecoration(
+      labelText: label,
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      border: const OutlineInputBorder(
+        borderSide: BorderSide(),
+        borderRadius: BorderRadius.all(Radius.circular(14.0)),
+        gapPadding: 8.0,
       ),
-    );
+      suffixIcon: IconButton(
+        icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
+        onPressed: () {
+          setState(() {
+            _obscureText = !_obscureText; // 切换显示/隐藏
+          });
+        },
+      ),
+    ),
+  );
 
-  Widget buildDropdown<T>(String label, T initialValue, Map<T, String> options, void Function(T) onChanged) => DropdownMenuFormField<T>(
-      width: double.infinity,
-      label: Text(label),
-      initialSelection: initialValue,
-      dropdownMenuEntries: options.entries
-          .map((MapEntry<T, String> entry) => DropdownMenuEntry(value: entry.key, label: entry.value))
-          .toList(),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderSide: BorderSide(),
-          borderRadius: BorderRadius.all(Radius.circular(14.0)),
-          gapPadding: 8.0,
+  Widget buildDropdown<T>(String label, T initialValue, Map<T, String> options, void Function(T) onChanged) =>
+      DropdownMenuFormField<T>(
+        width: double.infinity,
+        label: Text(label),
+        initialSelection: initialValue,
+        dropdownMenuEntries: options.entries
+            .map((MapEntry<T, String> entry) => DropdownMenuEntry(value: entry.key, label: entry.value))
+            .toList(),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(),
+            borderRadius: BorderRadius.all(Radius.circular(14.0)),
+            gapPadding: 8.0,
+          ),
         ),
-      ),
-      onSelected: (value) {
-        setState(() {
-          if (value != null) {
-            onChanged(value);
-          }
-        });
-      },
-    );
+        onSelected: (value) {
+          setState(() {
+            if (value != null) {
+              onChanged(value);
+            }
+          });
+        },
+      );
 
   Widget buildIcon(String icon, void Function(String) onChange) => Padding(
-      padding: const EdgeInsets.all(6.0),
-      child: GestureDetector(
-        onTap: () async {
-          final icon = await Navigator.pushNamed(context, '/icons');
-          if (icon != null) {
-            onChange(icon as String);
-          }
-        },
-        child: Container(
-          height: 44,
-          width: 44,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: SvgPicture.asset(
-            icon,
-            width: 28,
-            height: 28,
-            colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
-          ),
+    padding: const EdgeInsets.all(6.0),
+    child: GestureDetector(
+      onTap: () async {
+        final icon = await Navigator.pushNamed(context, '/icons');
+        if (icon != null) {
+          onChange(icon as String);
+        }
+      },
+      child: Container(
+        height: 44,
+        width: 44,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: SvgPicture.asset(
+          icon,
+          width: 28,
+          height: 28,
+          colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
         ),
       ),
-    );
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -268,69 +270,69 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: TopBar(context, '选择图标'),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-            child: TextField(
-              controller: textEditingController,
-              onChanged: (value) async {
-                setState(() {
-                  iconList = iconList.where((element) => element.contains(value)).toList();
-                });
-              },
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(),
-                  borderRadius: BorderRadius.all(Radius.circular(14.0)),
-                  gapPadding: 8.0,
-                ),
-                prefixIcon: Icon(Icons.search),
+    appBar: TopBar(context, '选择图标'),
+    body: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+          child: TextField(
+            controller: textEditingController,
+            onChanged: (value) async {
+              setState(() {
+                iconList = iconList.where((element) => element.contains(value)).toList();
+              });
+            },
+            decoration: const InputDecoration(
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(),
+                borderRadius: BorderRadius.all(Radius.circular(14.0)),
+                gapPadding: 8.0,
               ),
+              prefixIcon: Icon(Icons.search),
             ),
           ),
-          Expanded(
-            child: Scrollbar(
-              interactive: true,
-              thumbVisibility: true,
-              thickness: 12,
-              radius: const Radius.circular(12),
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 60,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                ),
-                itemCount: iconList.length,
-                itemBuilder: (context, index) {
-                  final icon = iconList[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context, 'assets/icons/$icon');
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/$icon',
-                        width: 28,
-                        height: 28,
-                        colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
-                      ),
+        ),
+        Expanded(
+          child: Scrollbar(
+            interactive: true,
+            thumbVisibility: true,
+            thickness: 12,
+            radius: const Radius.circular(12),
+            child: GridView.builder(
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 60,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              itemCount: iconList.length,
+              itemBuilder: (context, index) {
+                final icon = iconList[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, 'assets/icons/$icon');
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(14),
                     ),
-                  );
-                },
-              ),
+                    child: SvgPicture.asset(
+                      'assets/icons/$icon',
+                      width: 28,
+                      height: 28,
+                      colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
 }

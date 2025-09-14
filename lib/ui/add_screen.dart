@@ -8,10 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:sembast/sembast.dart';
 
-import '../auth.dart';
-import '../repository.dart';
-import '../top_bar.dart';
+import '../repository/auth.dart';
+import '../repository/repository.dart';
 import 'result_screen.dart';
+import 'top_bar.dart';
 
 class AddScreenOption {
   AddScreenOption(this.icon, this.label, this.onTap);

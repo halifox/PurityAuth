@@ -1,20 +1,21 @@
 import 'dart:async';
 
-import '../auth.dart';
-import '../otp.dart';
-import '../repository.dart';
-import 'result_screen.dart';
-import 'route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:sembast/sembast.dart';
 
+import '../repository/auth.dart';
+import '../repository/otp.dart';
+import '../repository/repository.dart';
+import 'result_screen.dart';
+import 'route.dart';
+
 /// 认证项小部件
 class HomeItemWidget extends StatefulWidget {
-
   const HomeItemWidget({super.key, required this.config});
+
   final AuthConfig config;
 
   @override
@@ -124,120 +125,120 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
 
   @override
   Widget build(BuildContext context) => SwipeActionCell(
-      key: ObjectKey(config), // 唯一标识
-      trailingActions: <SwipeAction>[buildSwipeAction('删除', onDelete), buildSwipeAction('编辑', onEdit)],
-      child: buildAuthCard(), // 构建认证卡片
-    );
+    key: ObjectKey(config), // 唯一标识
+    trailingActions: <SwipeAction>[buildSwipeAction('删除', onDelete), buildSwipeAction('编辑', onEdit)],
+    child: buildAuthCard(), // 构建认证卡片
+  );
 
   /// 构建滑动操作按钮
   SwipeAction buildSwipeAction(String label, VoidCallback onTap) => SwipeAction(
-      widthSpace: 140 + 12,
-      onTap: (handler) async => onTap(), // 执行操作
-      color: Colors.transparent,
-      content: Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Text(label), // 按钮标签
-        ),
-      ),
-    );
-
-  /// 构建认证卡片
-  Widget buildAuthCard() => GestureDetector(
-      onTap: onTap,
+    widthSpace: 140 + 12,
+    onTap: (handler) async => onTap(), // 执行操作
+    color: Colors.transparent,
+    content: Padding(
+      padding: const EdgeInsets.only(left: 12),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        width: double.infinity,
+        height: double.infinity,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(24),
         ),
-        child: Column(
-          children: <Widget>[
-            buildTopRow(), // 顶部行
-            const Spacer(),
-            buildCodeRow(), // 代码行
-          ],
-        ),
+        child: Text(label), // 按钮标签
       ),
-    );
+    ),
+  );
+
+  /// 构建认证卡片
+  Widget buildAuthCard() => GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Column(
+        children: <Widget>[
+          buildTopRow(), // 顶部行
+          const Spacer(),
+          buildCodeRow(), // 代码行
+        ],
+      ),
+    ),
+  );
 
   /// 构建顶部行，包括图标和认证信息
   Widget buildTopRow() => Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        buildIconContainer(), // 图标容器
-        const SizedBox(width: 16),
-        buildAuthDetails(), // 认证信息
-        const SizedBox(width: 16),
-        buildActionButton(), // 动作按钮
-      ],
-    );
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      buildIconContainer(), // 图标容器
+      const SizedBox(width: 16),
+      buildAuthDetails(), // 认证信息
+      const SizedBox(width: 16),
+      buildActionButton(), // 动作按钮
+    ],
+  );
 
   /// 构建图标容器
   Widget buildIconContainer() => Container(
-      height: 48,
-      width: 48,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(12)),
-      child: SvgPicture.asset(
-        config.icon,
-        width: 28,
-        height: 28,
-        colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
-      ),
-    );
+    height: 48,
+    width: 48,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(12)),
+    child: SvgPicture.asset(
+      config.icon,
+      width: 28,
+      height: 28,
+      colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
+    ),
+  );
 
   /// 构建认证详细信息
   Widget buildAuthDetails() => Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            config.issuer,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              height: 0,
-              fontSize: 18,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-              fontWeight: FontWeight.bold,
-            ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          config.issuer,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            height: 0,
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+            fontWeight: FontWeight.bold,
           ),
-          const SizedBox(height: 4),
-          Text(
-            config.account,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              height: 0,
-              fontSize: 13,
-              color: Theme.of(context).colorScheme.onPrimaryContainer.withAlpha(200),
-            ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          config.account,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            height: 0,
+            fontSize: 13,
+            color: Theme.of(context).colorScheme.onPrimaryContainer.withAlpha(200),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
 
   /// 构建动作按钮
   Widget buildActionButton() => Container(
-      height: 48,
-      width: 48,
-      alignment: Alignment.center,
-      child: switch (config.type) {
-        'totp' => CoreCircularProgressIndicator(config.period * 1000),
-        'hotp' => buildHotpNextButton(),
-        'motp' => CoreCircularProgressIndicator(config.period * 1000),
-        String() => throw UnimplementedError(),
-      },
-    );
+    height: 48,
+    width: 48,
+    alignment: Alignment.center,
+    child: switch (config.type) {
+      'totp' => CoreCircularProgressIndicator(config.period * 1000),
+      'hotp' => buildHotpNextButton(),
+      'motp' => CoreCircularProgressIndicator(config.period * 1000),
+      String() => throw UnimplementedError(),
+    },
+  );
 
   static Map<String, bool> hotpPressedCache = <String, bool>{};
 
@@ -257,27 +258,27 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
 
   /// 构建代码行
   Widget buildCodeRow() => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: code.characters.map(buildCodeItem).toList(), // 显示每个代码项
-    );
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: code.characters.map(buildCodeItem).toList(), // 显示每个代码项
+  );
 
   /// 构建单个代码项
   Widget buildCodeItem(String char) => Container(
-      height: 42,
-      width: 40,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: Theme.of(context).colorScheme.tertiary, borderRadius: BorderRadius.circular(14)),
-      child: Text(
-        isShow ? char : '-',
-        style: TextStyle(
-          height: 0,
-          fontSize: 32,
-          color: Theme.of(context).colorScheme.onTertiary,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'GothamRnd',
-        ),
-      ), // 代码字符
-    );
+    height: 42,
+    width: 40,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(color: Theme.of(context).colorScheme.tertiary, borderRadius: BorderRadius.circular(14)),
+    child: Text(
+      isShow ? char : '-',
+      style: TextStyle(
+        height: 0,
+        fontSize: 32,
+        color: Theme.of(context).colorScheme.onTertiary,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'GothamRnd',
+      ),
+    ), // 代码字符
+  );
 }
 
 class CoreCircularProgressIndicator extends StatefulWidget {
@@ -314,7 +315,8 @@ class _CoreCircularProgressIndicatorState extends State<CoreCircularProgressIndi
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-      animation: animation,
-      builder: (BuildContext context, Widget? child) => CircularProgressIndicator(value: animation.value, strokeCap: StrokeCap.round, strokeWidth: 5.5),
-    );
+    animation: animation,
+    builder: (BuildContext context, Widget? child) =>
+        CircularProgressIndicator(value: animation.value, strokeCap: StrokeCap.round, strokeWidth: 5.5),
+  );
 }

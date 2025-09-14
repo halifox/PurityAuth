@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/swipe_action_navigator_observer.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
-import 'repository.dart';
+import 'repository/repository.dart';
 import 'ui/add_screen.dart';
 import 'ui/from_screen.dart';
 import 'ui/home_screen.dart';

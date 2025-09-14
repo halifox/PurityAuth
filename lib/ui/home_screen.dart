@@ -1,16 +1,17 @@
 import 'dart:async';
 import 'dart:io';
 
-import '../auth.dart';
-import '../repository.dart';
-import '../top_bar.dart';
-import 'home_item_widget.dart';
-import 'route.dart' as route;
-import 'settings_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sembast/sembast.dart';
+
+import '../repository/auth.dart';
+import '../repository/repository.dart';
+import 'home_item_widget.dart';
+import 'route.dart' as route;
+import 'settings_screen.dart';
+import 'top_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

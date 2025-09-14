@@ -1,6 +1,7 @@
-import 'otp.dart';
 import 'package:base32/base32.dart';
 import 'package:sembast/sembast.dart';
+
+import 'otp.dart';
 
 /// 认证类型枚举，用于定义不同的认证方式。
 ///
@@ -25,7 +26,6 @@ import 'package:sembast/sembast.dart';
 /// [isBase32] 指示是否使用 Base32 编码，适用于 Google 实现，默认为 true。
 
 class AuthConfig {
-
   AuthConfig({
     this.scheme = 'otpauth',
     this.type = 'totp',
@@ -42,19 +42,19 @@ class AuthConfig {
   });
 
   factory AuthConfig.fromJson(RecordSnapshot<String, dynamic> map) => AuthConfig(
-      key: map.key,
-      scheme: map['scheme'] as String,
-      type: map['type'] as String,
-      issuer: map['issuer'] as String,
-      account: map['account'] as String,
-      secret: map['secret'] as String,
-      algorithm: map['algorithm'] as String,
-      digits: map['digits'] as int,
-      period: map['interval'] as int,
-      counter: map['counter'] as int,
-      pin: map['pin'] as String,
-      icon: map['icon'] as String,
-    );
+    key: map.key,
+    scheme: map['scheme'] as String,
+    type: map['type'] as String,
+    issuer: map['issuer'] as String,
+    account: map['account'] as String,
+    secret: map['secret'] as String,
+    algorithm: map['algorithm'] as String,
+    digits: map['digits'] as int,
+    period: map['interval'] as int,
+    counter: map['counter'] as int,
+    pin: map['pin'] as String,
+    icon: map['icon'] as String,
+  );
   String scheme;
   String type;
   String issuer;
@@ -71,19 +71,19 @@ class AuthConfig {
   String key;
 
   AuthConfig clone() => AuthConfig(
-      scheme: scheme,
-      type: type,
-      issuer: issuer,
-      account: account,
-      secret: secret,
-      algorithm: algorithm,
-      digits: digits,
-      period: period,
-      counter: counter,
-      pin: pin,
-      icon: icon,
-      key: key,
-    );
+    scheme: scheme,
+    type: type,
+    issuer: issuer,
+    account: account,
+    secret: secret,
+    algorithm: algorithm,
+    digits: digits,
+    period: period,
+    counter: counter,
+    pin: pin,
+    icon: icon,
+    key: key,
+  );
 
   bool verify() {
     try {
@@ -152,40 +152,40 @@ class AuthConfig {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-      'scheme': scheme,
-      'type': type,
-      'issuer': issuer,
-      'account': account,
-      'secret': secret,
-      'algorithm': algorithm,
-      'digits': digits,
-      'interval': period,
-      'counter': counter,
-      'pin': pin,
-      'icon': icon,
-    };
+    'scheme': scheme,
+    'type': type,
+    'issuer': issuer,
+    'account': account,
+    'secret': secret,
+    'algorithm': algorithm,
+    'digits': digits,
+    'interval': period,
+    'counter': counter,
+    'pin': pin,
+    'icon': icon,
+  };
 
   /// 计算并生成当前的 OTP 密码
   ///
   /// 返回生成的 OTP 密码字符串。
   String generateCodeString() => switch (type) {
-      'totp' => OTP.generateTOTPCodeString(
-        secret: secret,
-        digits: digits,
-        algorithm: parseAlgorithm(algorithm),
-        intervalSeconds: period,
-        isBase32: true,
-      ),
-      'hotp' => OTP.generateHOTPCodeString(
-        secret: secret,
-        digits: digits,
-        algorithm: parseAlgorithm(algorithm),
-        counter: counter,
-        isBase32: true,
-      ),
-      'motp' => OTP.generateMOTPCodeString(secret: secret, digits: digits, intervalSeconds: period, pin: pin),
-      String() => throw UnimplementedError(),
-    };
+    'totp' => OTP.generateTOTPCodeString(
+      secret: secret,
+      digits: digits,
+      algorithm: parseAlgorithm(algorithm),
+      intervalSeconds: period,
+      isBase32: true,
+    ),
+    'hotp' => OTP.generateHOTPCodeString(
+      secret: secret,
+      digits: digits,
+      algorithm: parseAlgorithm(algorithm),
+      counter: counter,
+      isBase32: true,
+    ),
+    'motp' => OTP.generateMOTPCodeString(secret: secret, digits: digits, intervalSeconds: period, pin: pin),
+    String() => throw UnimplementedError(),
+  };
 
   /// 验证输入字符串是否为有效的 Base32 编码。
   ///
@@ -229,14 +229,14 @@ class AuthConfig {
   ///     - `counter`: 可选参数，适用于 `hotp`，指定当前计数器值。
   ///
   String toOtpUri() => switch (type.toLowerCase()) {
-      'totp' =>
-        '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&algorithm=${algorithm.toLowerCase()}&digits=$digits&period=$period',
-      'hotp' =>
-        '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&algorithm=${algorithm.toLowerCase()}&digits=$digits&counter=$counter',
-      'motp' =>
-        '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&digits=$digits&period=$period&pin=$pin',
-      String() => throw UnimplementedError(),
-    };
+    'totp' =>
+      '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&algorithm=${algorithm.toLowerCase()}&digits=$digits&period=$period',
+    'hotp' =>
+      '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&algorithm=${algorithm.toLowerCase()}&digits=$digits&counter=$counter',
+    'motp' =>
+      '${scheme.toLowerCase()}://${type.toLowerCase()}/$issuer:$account?secret=${secret.toUpperCase()}&issuer=$issuer&digits=$digits&period=$period&pin=$pin',
+    String() => throw UnimplementedError(),
+  };
 
   static AuthConfig parse(String uriString) {
     final uri = Uri.parse(uriString);
@@ -285,11 +285,11 @@ class AuthConfig {
   }
 
   static Algorithm parseAlgorithm(String algorithm) => switch (algorithm.toLowerCase()) {
-      'sha1' => Algorithm.SHA1,
-      'sha256' => Algorithm.SHA256,
-      'sha512' => Algorithm.SHA512,
-      String() => throw UnimplementedError(),
-    };
+    'sha1' => Algorithm.SHA1,
+    'sha256' => Algorithm.SHA256,
+    'sha512' => Algorithm.SHA512,
+    String() => throw UnimplementedError(),
+  };
 
   static String checkSecret(String? secret) {
     if (secret == null || !verifyBase32(secret)) {
