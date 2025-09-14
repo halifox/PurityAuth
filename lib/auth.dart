@@ -55,6 +55,23 @@ class AuthConfig {
     this.key = '',
   });
 
+  AuthConfig clone() {
+    return AuthConfig(
+      scheme: scheme,
+      type: type,
+      issuer: issuer,
+      account: account,
+      secret: secret,
+      algorithm: algorithm,
+      digits: digits,
+      period: period,
+      counter: counter,
+      pin: pin,
+      icon: icon,
+      key: key,
+    );
+  }
+
   bool verify() {
     try {
       verifyThrow();
@@ -67,62 +84,74 @@ class AuthConfig {
   verifyThrow() {
     scheme = switch (scheme.toLowerCase()) {
       'otpauth' => scheme,
-      String() => throw ArgumentError(),
+      String() => throw ArgumentError('非法的scheme'),
     };
 
     type = switch (type.toLowerCase()) {
       'totp' => type,
       'hotp' => type,
       'motp' => type,
-      String() => throw ArgumentError(),
+      String() => throw ArgumentError('非法的类型'),
     };
 
     if (issuer.isEmpty) {
-      throw ArgumentError();
+      throw ArgumentError('发行方不能为空');
     }
 
     if (account.isEmpty) {
-      throw ArgumentError();
+      throw ArgumentError('用户名不能为空');
     }
 
     algorithm = switch (algorithm.toLowerCase()) {
       'sha1' => algorithm,
       'sha256' => algorithm,
       'sha512' => algorithm,
-      String() => throw ArgumentError(),
+      String() => throw ArgumentError('非法的算法'),
     };
 
     switch (type.toLowerCase()) {
       case 'totp':
         if (digits < 6 || digits > 8) {
-          throw ArgumentError();
+          throw ArgumentError('非法的位数');
         }
         if (period <= 0) {
-          throw ArgumentError();
+          throw ArgumentError('非法的时间间隔');
         }
       case 'hotp':
         if (digits < 6 || digits > 8) {
-          throw ArgumentError();
+          throw ArgumentError('非法的位数');
         }
         if (counter < 0) {
-          throw ArgumentError();
+          throw ArgumentError('非法的计数器');
         }
 
       case 'motp':
         if (digits == 6) {
-          throw ArgumentError();
+          throw ArgumentError('非法的位数');
         }
         if (pin.isEmpty) {
-          throw ArgumentError();
+          throw ArgumentError('非法的PIN码');
         }
     }
     if (!verifyBase32(secret)) {
-      throw ArgumentError();
+      throw ArgumentError('非法的秘钥');
     }
   }
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{'scheme': scheme, 'type': type, 'issuer': issuer, 'account': account, 'secret': secret, 'algorithm': algorithm, 'digits': digits, 'interval': period, 'counter': counter, 'pin': pin, 'icon': icon};
+    return <String, dynamic>{
+      'scheme': scheme,
+      'type': type,
+      'issuer': issuer,
+      'account': account,
+      'secret': secret,
+      'algorithm': algorithm,
+      'digits': digits,
+      'interval': period,
+      'counter': counter,
+      'pin': pin,
+      'icon': icon,
+    };
   }
 
   factory AuthConfig.fromJson(RecordSnapshot<String, dynamic> map) {
@@ -147,8 +176,20 @@ class AuthConfig {
   /// 返回生成的 OTP 密码字符串。
   String generateCodeString() {
     return switch (type) {
-      'totp' => OTP.generateTOTPCodeString(secret: secret, digits: digits, algorithm: parseAlgorithm(algorithm), intervalSeconds: period, isBase32: true),
-      'hotp' => OTP.generateHOTPCodeString(secret: secret, digits: digits, algorithm: parseAlgorithm(algorithm), counter: counter, isBase32: true),
+      'totp' => OTP.generateTOTPCodeString(
+        secret: secret,
+        digits: digits,
+        algorithm: parseAlgorithm(algorithm),
+        intervalSeconds: period,
+        isBase32: true,
+      ),
+      'hotp' => OTP.generateHOTPCodeString(
+        secret: secret,
+        digits: digits,
+        algorithm: parseAlgorithm(algorithm),
+        counter: counter,
+        isBase32: true,
+      ),
       'motp' => OTP.generateMOTPCodeString(secret: secret, digits: digits, intervalSeconds: period, pin: pin),
       String() => throw UnimplementedError(),
     };
@@ -197,9 +238,12 @@ class AuthConfig {
   ///
   String toOtpUri() {
     return switch (type.toLowerCase()) {
-      'totp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&period=${period}',
-      'hotp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&counter=${counter}',
-      'motp' => '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&digits=${digits}&period=${period}&pin=${pin}',
+      'totp' =>
+        '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&period=${period}',
+      'hotp' =>
+        '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&algorithm=${algorithm.toLowerCase()}&digits=${digits}&counter=${counter}',
+      'motp' =>
+        '${scheme.toLowerCase()}://${type.toLowerCase()}/${issuer}:${account}?secret=${secret.toUpperCase()}&issuer=${issuer}&digits=${digits}&period=${period}&pin=${pin}',
       String() => throw UnimplementedError(),
     };
   }

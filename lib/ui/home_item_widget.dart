@@ -79,7 +79,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   }
 
   onEdit() {
-    Navigator.pushNamed(context, '/from', arguments: config);
+    Navigator.pushNamed(context, '/from', arguments: config.clone());
   }
 
   onDelete() {

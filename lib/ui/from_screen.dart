@@ -23,22 +23,13 @@ class _FromScreenState extends State<FromScreen> {
   final typeLabels = {'totp': '基于时间 (TOTP)', 'hotp': '基于计数器 (HOTP)', 'motp': 'Mobile-OTP (mOTP)'};
   final algorithmLabels = {'sha1': 'SHA1', 'sha256': 'SHA256', 'sha512': 'SHA512'};
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   void onSave(BuildContext context) async {
-    final bool verify = config.verify();
-    if (!verify) {
+    try {
+      config.verifyThrow();
+    } on ArgumentError catch (e) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '参数异常，请确认来源是否正确。'),
+        builder: (ctx) => ResultScreen(state: 0, title: '保存失败', message: '${e.message}'),
       );
       return;
     }
