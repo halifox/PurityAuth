@@ -102,10 +102,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'You are about to delete the current two-factor authenticator.\nThis action will prevent you from using this authenticator for authentication.\nPlease make sure you have other authentication methods ready to ensure account security.';
 
   @override
-  String get uploadQRCode => 'Upload QR Code';
+  String get uploadQRCode => 'Import QR Code';
 
   @override
-  String get enterKey => 'Enter Secret Key';
+  String get enterKey => 'Enter Secret Code';
 
   @override
   String get importFromClipboard => 'Import from Clipboard';
