@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:sembast/sembast.dart';
 
+import '../l10n/app_localizations.dart';
 import '../repository/auth.dart';
 import '../repository/repository.dart';
 import 'result_screen.dart';
@@ -31,19 +32,25 @@ class AddScreen extends StatefulWidget {
 class _AddScreenState extends State<AddScreen> {
   late final MobileScannerController controller = MobileScannerController();
 
-  late final List<AddScreenOption> options = [
-    AddScreenOption(Icons.camera_enhance, '扫描二维码', scan),
-    AddScreenOption(Icons.photo_library, '上传二维码', upload),
-    AddScreenOption(Icons.keyboard, '输入密钥', enter),
-    AddScreenOption(Icons.file_upload_outlined, '从剪贴板导入', restore),
-    AddScreenOption(Icons.file_download_outlined, '导出到剪贴板', backup),
-  ];
+  List<AddScreenOption> get options {
+    return [
+      AddScreenOption(Icons.camera_enhance, AppLocalizations.of(context)!.scanQRCode, scan),
+      AddScreenOption(Icons.photo_library, AppLocalizations.of(context)!.uploadQRCode, upload),
+      AddScreenOption(Icons.keyboard, AppLocalizations.of(context)!.enterKey, enter),
+      AddScreenOption(Icons.file_upload_outlined, AppLocalizations.of(context)!.importFromClipboard, restore),
+      AddScreenOption(Icons.file_download_outlined, AppLocalizations.of(context)!.exportToClipboard, backup),
+    ];
+  }
 
   Future<void> scan(BuildContext context) async {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: AppLocalizations.of(context)!.tip,
+          message: AppLocalizations.of(context)!.platformNotSupported,
+        ),
       );
       return;
     }
@@ -55,7 +62,11 @@ class _AddScreenState extends State<AddScreen> {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: AppLocalizations.of(context)!.tip,
+          message: AppLocalizations.of(context)!.platformNotSupported,
+        ),
       );
       return;
     }
@@ -81,7 +92,11 @@ class _AddScreenState extends State<AddScreen> {
     if (clipboardData == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 0, title: '导入失败', message: '无法获取剪贴板数据'),
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: AppLocalizations.of(context)!.importFailed,
+          message: AppLocalizations.of(context)!.cannotGetClipboardData,
+        ),
       );
       return;
     }
@@ -89,7 +104,11 @@ class _AddScreenState extends State<AddScreen> {
     if (text == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 0, title: '导入失败', message: '无法获取剪贴板数据'),
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: AppLocalizations.of(context)!.importFailed,
+          message: AppLocalizations.of(context)!.cannotGetClipboardData,
+        ),
       );
       return;
     }
@@ -119,7 +138,11 @@ class _AddScreenState extends State<AddScreen> {
     }
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 1, title: '导入成功', message: '共导入${optUrls.length}条数据'),
+      builder: (ctx) => ResultScreen(
+        state: 1,
+        title: AppLocalizations.of(context)!.importSuccess,
+        message: AppLocalizations.of(context)!.importedCount(optUrls.length),
+      ),
     );
   }
 
@@ -129,7 +152,11 @@ class _AddScreenState extends State<AddScreen> {
     Clipboard.setData(ClipboardData(text: optUrls));
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 1, title: '导出成功', message: '共导出${records.length}条数据到剪贴板'),
+      builder: (ctx) => ResultScreen(
+        state: 1,
+        title: AppLocalizations.of(context)!.exportSuccess,
+        message: AppLocalizations.of(context)!.exportedCount(records.length),
+      ),
     );
   }
 
@@ -148,7 +175,11 @@ class _AddScreenState extends State<AddScreen> {
     if (!verify) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '暂不支持此类型的二维码链接，请确认来源是否正确。'),
+        builder: (ctx) => ResultScreen(
+          state: 0,
+          title: AppLocalizations.of(context)!.tip,
+          message: AppLocalizations.of(context)!.unsupportedQRCode,
+        ),
       );
       return;
     }
@@ -161,8 +192,8 @@ class _AddScreenState extends State<AddScreen> {
         context: context,
         builder: (ctx) => ResultScreen(
           state: 0,
-          title: '警告',
-          message: '令牌${config.issuer}:${config.account}已经存在,是否覆盖它',
+          title: AppLocalizations.of(context)!.warning,
+          message: AppLocalizations.of(context)!.tokenExists(config.issuer, config.account),
           falseButtonVisible: true,
         ),
       );
@@ -181,31 +212,38 @@ class _AddScreenState extends State<AddScreen> {
       return;
     }
     await authStore.add(db, config.toJson());
+
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '添加成功'),
+      builder: (ctx) => ResultScreen(
+        state: 1,
+        title: AppLocalizations.of(context)!.tip,
+        message: AppLocalizations.of(context)!.addSuccess,
+      ),
     );
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: TopBar(context, '添加'),
-    body: GridView.builder(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 700,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        mainAxisExtent: 90,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: TopBar(context, AppLocalizations.of(context)!.add),
+      body: GridView.builder(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 700,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          mainAxisExtent: 90,
+        ),
+        itemCount: options.length,
+        itemBuilder: (context, index) {
+          final AddScreenOption option = options[index];
+          return HorizontalBarButton(option.icon, option.label, option.onTap);
+        },
       ),
-      itemCount: options.length,
-      itemBuilder: (context, index) {
-        final AddScreenOption option = options[index];
-        return HorizontalBarButton(option.icon, option.label, option.onTap);
-      },
-    ),
-  );
+    );
+  }
 }
 
 class HorizontalBarButton extends StatelessWidget {

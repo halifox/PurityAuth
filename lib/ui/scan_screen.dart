@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../l10n/app_localizations.dart';
 import 'top_bar.dart';
 
 class ScanScreen extends StatefulWidget {
@@ -29,18 +30,20 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: TopBar(
-      context,
-      '扫描',
-      rightIcon: controller.torchEnabled ? Icons.flash_off : Icons.flash_on,
-      rightOnPressed: (context) async => controller.toggleTorch(),
-    ),
-    body: MobileScanner(
-      controller: controller,
-      onDetect: (BarcodeCapture? barcodeCapture) async {
-        Navigator.pop(context, barcodeCapture);
-      },
-    ),
-  );
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: TopBar(
+        context,
+        AppLocalizations.of(context)!.scan,
+        rightIcon: controller.torchEnabled ? Icons.flash_off : Icons.flash_on,
+        rightOnPressed: (context) async => controller.toggleTorch(),
+      ),
+      body: MobileScanner(
+        controller: controller,
+        onDetect: (BarcodeCapture? barcodeCapture) async {
+          Navigator.pop(context, barcodeCapture);
+        },
+      ),
+    );
+  }
 }

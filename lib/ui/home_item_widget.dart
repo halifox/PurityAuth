@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:sembast/sembast.dart';
 
+import '../l10n/app_localizations.dart';
 import '../repository/auth.dart';
 import '../repository/otp.dart';
 import '../repository/repository.dart';
@@ -86,10 +87,10 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   Future<void> onDelete() async {
     final bool? result = await showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => const ResultScreen(
+      builder: (ctx) => ResultScreen(
         state: 0,
-        title: '警告',
-        message: '您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。',
+        title: AppLocalizations.of(context)!.warning,
+        message: AppLocalizations.of(context)!.deleteWarning,
         falseButtonVisible: true,
       ),
     );
@@ -117,18 +118,23 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
     if (isCopyCaptchaOnTap) {
       Clipboard.setData(ClipboardData(text: code));
       ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('代码已复制'), duration: Duration(milliseconds: 1200)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.codeCopied), duration: const Duration(milliseconds: 1200)),
+      );
     }
   }
 
   @override
-  Widget build(BuildContext context) => SwipeActionCell(
-    key: ObjectKey(config), // 唯一标识
-    trailingActions: <SwipeAction>[buildSwipeAction('删除', onDelete), buildSwipeAction('编辑', onEdit)],
-    child: buildAuthCard(), // 构建认证卡片
-  );
+  Widget build(BuildContext context) {
+    return SwipeActionCell(
+      key: ObjectKey(config), // 唯一标识
+      trailingActions: <SwipeAction>[
+        buildSwipeAction(AppLocalizations.of(context)!.delete, onDelete),
+        buildSwipeAction(AppLocalizations.of(context)!.edit, onEdit),
+      ],
+      child: buildAuthCard(), // 构建认证卡片
+    );
+  }
 
   /// 构建滑动操作按钮
   SwipeAction buildSwipeAction(String label, VoidCallback onTap) => SwipeAction(

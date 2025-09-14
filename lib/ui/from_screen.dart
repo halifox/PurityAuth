@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sembast/sembast.dart';
 
+import '../l10n/app_localizations.dart';
 import '../repository/auth.dart';
 import '../repository/repository.dart';
 import 'result_screen.dart';
@@ -21,7 +22,14 @@ class FromScreen extends StatefulWidget {
 class _FromScreenState extends State<FromScreen> {
   late AuthConfig config = ModalRoute.of(context)?.settings.arguments as AuthConfig? ?? AuthConfig();
 
-  final typeLabels = {'totp': '基于时间 (TOTP)', 'hotp': '基于计数器 (HOTP)', 'motp': 'Mobile-OTP (mOTP)'};
+  Map<String, String> get typeLabels {
+    return {
+      'totp': AppLocalizations.of(context)!.totpType,
+      'hotp': AppLocalizations.of(context)!.hotpType,
+      'motp': AppLocalizations.of(context)!.motpType,
+    };
+  }
+
   final algorithmLabels = {'sha1': 'SHA1', 'sha256': 'SHA256', 'sha512': 'SHA512'};
 
   Future<void> onSave(BuildContext context) async {
@@ -30,7 +38,8 @@ class _FromScreenState extends State<FromScreen> {
     } on ArgumentError catch (e) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '保存失败', message: '${e.message}'),
+        builder: (ctx) =>
+            ResultScreen(state: 0, title: AppLocalizations.of(context)!.saveFailed, message: '${e.message}'),
       );
       return;
     }
@@ -44,8 +53,8 @@ class _FromScreenState extends State<FromScreen> {
           context: context,
           builder: (ctx) => ResultScreen(
             state: 0,
-            title: '警告',
-            message: '令牌${config.issuer}:${config.account}已经存在,是否覆盖它',
+            title: AppLocalizations.of(context)!.warning,
+            message: AppLocalizations.of(context)!.tokenExists(config.issuer, config.account),
             falseButtonVisible: true,
           ),
         );
@@ -65,16 +74,26 @@ class _FromScreenState extends State<FromScreen> {
       }
       await authStore.add(db, config.toJson());
       Navigator.popUntil(context, ModalRoute.withName('/'));
+
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '添加成功'),
+        builder: (ctx) => ResultScreen(
+          state: 1,
+          title: AppLocalizations.of(context)!.tip,
+          message: AppLocalizations.of(context)!.addSuccess,
+        ),
       );
     } else {
       authStore.record(config.key).update(db, config.toJson());
       Navigator.popUntil(context, ModalRoute.withName('/'));
+
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '更新成功'),
+        builder: (ctx) => ResultScreen(
+          state: 1,
+          title: AppLocalizations.of(context)!.tip,
+          message: AppLocalizations.of(context)!.updateSuccess,
+        ),
       );
     }
   }
@@ -195,8 +214,14 @@ class _FromScreenState extends State<FromScreen> {
   @override
   Widget build(BuildContext context) {
     print(config.toJson());
+
     return Scaffold(
-      appBar: TopBar(context, '输入提供的密钥', rightIcon: Icons.save, rightOnPressed: onSave),
+      appBar: TopBar(
+        context,
+        AppLocalizations.of(context)!.enterProvidedKey,
+        rightIcon: Icons.save,
+        rightOnPressed: onSave,
+      ),
       body: SizedBox.expand(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -205,30 +230,67 @@ class _FromScreenState extends State<FromScreen> {
             child: Column(
               spacing: 16,
               children: [
-                buildDropdown('类型', config.type, typeLabels, (value) => config.type = value),
+                buildDropdown(
+                  AppLocalizations.of(context)!.type,
+                  config.type,
+                  typeLabels,
+                  (value) => config.type = value,
+                ),
                 buildTextField(
                   config.issuer,
                   (it) => config.issuer = it,
-                  '发行方',
+                  AppLocalizations.of(context)!.issuer,
                   suffixIcon: buildIcon(config.icon, (icon) => config.icon = icon),
                 ),
-                buildTextField(config.account, (it) => config.account = it, '用户名'),
-                buildPasswordTextField(config.secret, (it) => config.secret = it, '密钥'),
+                buildTextField(config.account, (it) => config.account = it, AppLocalizations.of(context)!.username),
+                buildPasswordTextField(
+                  config.secret,
+                  (it) => config.secret = it,
+                  AppLocalizations.of(context)!.secretKey,
+                ),
                 switch (config.type.toLowerCase()) {
-                  'totp' => buildDropdown('算法', config.algorithm, algorithmLabels, (value) => config.algorithm = value),
-                  'hotp' => buildDropdown('算法', config.algorithm, algorithmLabels, (value) => config.algorithm = value),
-                  'motp' => buildTextField(config.pin, (it) => config.pin = it, 'PIN码'),
+                  'totp' => buildDropdown(
+                    AppLocalizations.of(context)!.algorithm,
+                    config.algorithm,
+                    algorithmLabels,
+                    (value) => config.algorithm = value,
+                  ),
+                  'hotp' => buildDropdown(
+                    AppLocalizations.of(context)!.algorithm,
+                    config.algorithm,
+                    algorithmLabels,
+                    (value) => config.algorithm = value,
+                  ),
+                  'motp' => buildTextField(config.pin, (it) => config.pin = it, AppLocalizations.of(context)!.pinCode),
                   String() => throw UnimplementedError(),
                 },
                 Row(
                   spacing: 16,
                   children: <Widget>[
-                    Expanded(child: buildDigitsOnlyTextField(config.digits, (it) => config.digits = it, '位数')),
+                    Expanded(
+                      child: buildDigitsOnlyTextField(
+                        config.digits,
+                        (it) => config.digits = it,
+                        AppLocalizations.of(context)!.digits,
+                      ),
+                    ),
                     Expanded(
                       child: switch (config.type.toLowerCase()) {
-                        'totp' => buildDigitsOnlyTextField(config.period, (it) => config.period = it, '时间间隔(秒)'),
-                        'hotp' => buildDigitsOnlyTextField(config.counter, (it) => config.counter = it, '计数器'),
-                        'motp' => buildDigitsOnlyTextField(config.period, (it) => config.period = it, '时间间隔(秒)'),
+                        'totp' => buildDigitsOnlyTextField(
+                          config.period,
+                          (it) => config.period = it,
+                          AppLocalizations.of(context)!.timeInterval,
+                        ),
+                        'hotp' => buildDigitsOnlyTextField(
+                          config.counter,
+                          (it) => config.counter = it,
+                          AppLocalizations.of(context)!.counter,
+                        ),
+                        'motp' => buildDigitsOnlyTextField(
+                          config.period,
+                          (it) => config.period = it,
+                          AppLocalizations.of(context)!.timeInterval,
+                        ),
                         String() => throw UnimplementedError(),
                       },
                     ),

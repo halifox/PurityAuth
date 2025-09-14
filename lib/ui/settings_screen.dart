@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sembast/sembast.dart';
 
+import '../l10n/app_localizations.dart';
 import '../repository/repository.dart';
 import 'top_bar.dart';
 
@@ -12,31 +13,35 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  List<List<String>> options = [
-    // ['biometricUnlock', '生物识别解锁'],
-    ['isShowCaptchaOnTap', '轻触显示验证码'],
-    ['isCopyCaptchaOnTap', '轻触复制验证码'],
-  ];
+  List<List<String>> get options {
+    return [
+      // ['biometricUnlock', AppLocalizations.of(context)!.biometricUnlock],
+      ['isShowCaptchaOnTap', AppLocalizations.of(context)!.showCaptchaOnTap],
+      ['isCopyCaptchaOnTap', AppLocalizations.of(context)!.copyCaptchaOnTap],
+    ];
+  }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: TopBar(context, '设置'),
-    body: GridView.builder(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 700,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        mainAxisExtent: 90,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: TopBar(context, AppLocalizations.of(context)!.settings),
+      body: GridView.builder(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 700,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          mainAxisExtent: 90,
+        ),
+        itemCount: options.length,
+        itemBuilder: (context, index) {
+          final item = options[index];
+          return HorizontalBarSelectionButton(item[0], item[1]);
+        },
       ),
-      itemCount: options.length,
-      itemBuilder: (context, index) {
-        final item = options[index];
-        return HorizontalBarSelectionButton(item[0], item[1]);
-      },
-    ),
-  );
+    );
+  }
 }
 
 class HorizontalBarSelectionButton extends StatefulWidget {

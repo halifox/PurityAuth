@@ -128,7 +128,7 @@ abstract class AppLocalizations {
   /// **'设置'**
   String get settings;
 
-  /// 扫描二维码提示
+  /// 扫描二维码选项
   ///
   /// In zh, this message translates to:
   /// **'扫描二维码'**
@@ -259,6 +259,216 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'否'**
   String get no;
+
+  /// 确定按钮
+  ///
+  /// In zh, this message translates to:
+  /// **'确定'**
+  String get ok;
+
+  /// 代码复制成功提示
+  ///
+  /// In zh, this message translates to:
+  /// **'代码已复制'**
+  String get codeCopied;
+
+  /// 提示标题
+  ///
+  /// In zh, this message translates to:
+  /// **'提示'**
+  String get tip;
+
+  /// 警告标题
+  ///
+  /// In zh, this message translates to:
+  /// **'警告'**
+  String get warning;
+
+  /// 导入失败标题
+  ///
+  /// In zh, this message translates to:
+  /// **'导入失败'**
+  String get importFailed;
+
+  /// 导入成功标题
+  ///
+  /// In zh, this message translates to:
+  /// **'导入成功'**
+  String get importSuccess;
+
+  /// 导出成功标题
+  ///
+  /// In zh, this message translates to:
+  /// **'导出成功'**
+  String get exportSuccess;
+
+  /// 添加成功提示
+  ///
+  /// In zh, this message translates to:
+  /// **'添加成功'**
+  String get addSuccess;
+
+  /// 更新成功提示
+  ///
+  /// In zh, this message translates to:
+  /// **'更新成功'**
+  String get updateSuccess;
+
+  /// 保存失败标题
+  ///
+  /// In zh, this message translates to:
+  /// **'保存失败'**
+  String get saveFailed;
+
+  /// 平台不支持提示
+  ///
+  /// In zh, this message translates to:
+  /// **'该功能当前仅支持 Android 和 iOS 平台。'**
+  String get platformNotSupported;
+
+  /// 无法获取剪贴板数据提示
+  ///
+  /// In zh, this message translates to:
+  /// **'无法获取剪贴板数据'**
+  String get cannotGetClipboardData;
+
+  /// 导入数据数量提示
+  ///
+  /// In zh, this message translates to:
+  /// **'共导入{count}条数据'**
+  String importedCount(int count);
+
+  /// 导出数据数量提示
+  ///
+  /// In zh, this message translates to:
+  /// **'共导出{count}条数据到剪贴板'**
+  String exportedCount(int count);
+
+  /// 不支持的二维码提示
+  ///
+  /// In zh, this message translates to:
+  /// **'暂不支持此类型的二维码链接，请确认来源是否正确。'**
+  String get unsupportedQRCode;
+
+  /// 令牌已存在提示
+  ///
+  /// In zh, this message translates to:
+  /// **'令牌{issuer}:{account}已经存在,是否覆盖它'**
+  String tokenExists(String issuer, String account);
+
+  /// 删除警告信息
+  ///
+  /// In zh, this message translates to:
+  /// **'您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。'**
+  String get deleteWarning;
+
+  /// 上传二维码选项
+  ///
+  /// In zh, this message translates to:
+  /// **'上传二维码'**
+  String get uploadQRCode;
+
+  /// 输入密钥选项
+  ///
+  /// In zh, this message translates to:
+  /// **'输入密钥'**
+  String get enterKey;
+
+  /// 从剪贴板导入选项
+  ///
+  /// In zh, this message translates to:
+  /// **'从剪贴板导入'**
+  String get importFromClipboard;
+
+  /// 导出到剪贴板选项
+  ///
+  /// In zh, this message translates to:
+  /// **'导出到剪贴板'**
+  String get exportToClipboard;
+
+  /// 输入提供的密钥标题
+  ///
+  /// In zh, this message translates to:
+  /// **'输入提供的密钥'**
+  String get enterProvidedKey;
+
+  /// 选择图标标题
+  ///
+  /// In zh, this message translates to:
+  /// **'选择图标'**
+  String get selectIcon;
+
+  /// 类型标签
+  ///
+  /// In zh, this message translates to:
+  /// **'类型'**
+  String get type;
+
+  /// 发行方标签
+  ///
+  /// In zh, this message translates to:
+  /// **'发行方'**
+  String get issuer;
+
+  /// 用户名标签
+  ///
+  /// In zh, this message translates to:
+  /// **'用户名'**
+  String get username;
+
+  /// PIN码标签
+  ///
+  /// In zh, this message translates to:
+  /// **'PIN码'**
+  String get pinCode;
+
+  /// 时间间隔标签
+  ///
+  /// In zh, this message translates to:
+  /// **'时间间隔(秒)'**
+  String get timeInterval;
+
+  /// 计数器标签
+  ///
+  /// In zh, this message translates to:
+  /// **'计数器'**
+  String get counter;
+
+  /// TOTP类型描述
+  ///
+  /// In zh, this message translates to:
+  /// **'基于时间 (TOTP)'**
+  String get totpType;
+
+  /// HOTP类型描述
+  ///
+  /// In zh, this message translates to:
+  /// **'基于计数器 (HOTP)'**
+  String get hotpType;
+
+  /// mOTP类型描述
+  ///
+  /// In zh, this message translates to:
+  /// **'Mobile-OTP (mOTP)'**
+  String get motpType;
+
+  /// 生物识别解锁选项
+  ///
+  /// In zh, this message translates to:
+  /// **'生物识别解锁'**
+  String get biometricUnlock;
+
+  /// 轻触显示验证码选项
+  ///
+  /// In zh, this message translates to:
+  /// **'轻触显示验证码'**
+  String get showCaptchaOnTap;
+
+  /// 轻触复制验证码选项
+  ///
+  /// In zh, this message translates to:
+  /// **'轻触复制验证码'**
+  String get copyCaptchaOnTap;
 }
 
 class _AppLocalizationsDelegate

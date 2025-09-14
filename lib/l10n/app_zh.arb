@@ -107,5 +107,167 @@
   "no": "否",
   "@no": {
     "description": "取消按钮"
+  },
+  "ok": "确定",
+  "@ok": {
+    "description": "确定按钮"
+  },
+  "codeCopied": "代码已复制",
+  "@codeCopied": {
+    "description": "代码复制成功提示"
+  },
+  "tip": "提示",
+  "@tip": {
+    "description": "提示标题"
+  },
+  "warning": "警告",
+  "@warning": {
+    "description": "警告标题"
+  },
+  "importFailed": "导入失败",
+  "@importFailed": {
+    "description": "导入失败标题"
+  },
+  "importSuccess": "导入成功",
+  "@importSuccess": {
+    "description": "导入成功标题"
+  },
+  "exportSuccess": "导出成功",
+  "@exportSuccess": {
+    "description": "导出成功标题"
+  },
+  "addSuccess": "添加成功",
+  "@addSuccess": {
+    "description": "添加成功提示"
+  },
+  "updateSuccess": "更新成功",
+  "@updateSuccess": {
+    "description": "更新成功提示"
+  },
+  "saveFailed": "保存失败",
+  "@saveFailed": {
+    "description": "保存失败标题"
+  },
+  "platformNotSupported": "该功能当前仅支持 Android 和 iOS 平台。",
+  "@platformNotSupported": {
+    "description": "平台不支持提示"
+  },
+  "cannotGetClipboardData": "无法获取剪贴板数据",
+  "@cannotGetClipboardData": {
+    "description": "无法获取剪贴板数据提示"
+  },
+  "importedCount": "共导入{count}条数据",
+  "@importedCount": {
+    "description": "导入数据数量提示",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportedCount": "共导出{count}条数据到剪贴板",
+  "@exportedCount": {
+    "description": "导出数据数量提示",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unsupportedQRCode": "暂不支持此类型的二维码链接，请确认来源是否正确。",
+  "@unsupportedQRCode": {
+    "description": "不支持的二维码提示"
+  },
+  "tokenExists": "令牌{issuer}:{account}已经存在,是否覆盖它",
+  "@tokenExists": {
+    "description": "令牌已存在提示",
+    "placeholders": {
+      "issuer": {
+        "type": "String"
+      },
+      "account": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteWarning": "您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。",
+  "@deleteWarning": {
+    "description": "删除警告信息"
+  },
+  "scanQRCode": "扫描二维码",
+  "@scanQRCode": {
+    "description": "扫描二维码选项"
+  },
+  "uploadQRCode": "上传二维码",
+  "@uploadQRCode": {
+    "description": "上传二维码选项"
+  },
+  "enterKey": "输入密钥",
+  "@enterKey": {
+    "description": "输入密钥选项"
+  },
+  "importFromClipboard": "从剪贴板导入",
+  "@importFromClipboard": {
+    "description": "从剪贴板导入选项"
+  },
+  "exportToClipboard": "导出到剪贴板",
+  "@exportToClipboard": {
+    "description": "导出到剪贴板选项"
+  },
+  "enterProvidedKey": "输入提供的密钥",
+  "@enterProvidedKey": {
+    "description": "输入提供的密钥标题"
+  },
+  "selectIcon": "选择图标",
+  "@selectIcon": {
+    "description": "选择图标标题"
+  },
+  "type": "类型",
+  "@type": {
+    "description": "类型标签"
+  },
+  "issuer": "发行方",
+  "@issuer": {
+    "description": "发行方标签"
+  },
+  "username": "用户名",
+  "@username": {
+    "description": "用户名标签"
+  },
+  "pinCode": "PIN码",
+  "@pinCode": {
+    "description": "PIN码标签"
+  },
+  "timeInterval": "时间间隔(秒)",
+  "@timeInterval": {
+    "description": "时间间隔标签"
+  },
+  "counter": "计数器",
+  "@counter": {
+    "description": "计数器标签"
+  },
+  "totpType": "基于时间 (TOTP)",
+  "@totpType": {
+    "description": "TOTP类型描述"
+  },
+  "hotpType": "基于计数器 (HOTP)",
+  "@hotpType": {
+    "description": "HOTP类型描述"
+  },
+  "motpType": "Mobile-OTP (mOTP)",
+  "@motpType": {
+    "description": "mOTP类型描述"
+  },
+  "biometricUnlock": "生物识别解锁",
+  "@biometricUnlock": {
+    "description": "生物识别解锁选项"
+  },
+  "showCaptchaOnTap": "轻触显示验证码",
+  "@showCaptchaOnTap": {
+    "description": "轻触显示验证码选项"
+  },
+  "copyCaptchaOnTap": "轻触复制验证码",
+  "@copyCaptchaOnTap": {
+    "description": "轻触复制验证码选项"
   }
 }

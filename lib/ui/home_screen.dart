@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sembast/sembast.dart';
 
+import '../l10n/app_localizations.dart';
 import '../repository/auth.dart';
 import '../repository/repository.dart';
 import 'home_item_widget.dart';
@@ -43,10 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     setSystemUIOverlayStyle(context);
+
     return Scaffold(
       appBar: TopBar(
         context,
-        'Purity Auth',
+        AppLocalizations.of(context)!.appTitle,
         leftIcon: Icons.settings,
         leftOnPressed: toSettingsPage,
         rightIcon: Icons.add,
