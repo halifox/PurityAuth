@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:auth/auth.dart';
-import 'package:auth/repository.dart';
-import 'package:auth/top_bar.dart';
-import 'package:auth/ui/result_screen.dart';
+import '../auth.dart';
+import '../repository.dart';
+import '../top_bar.dart';
+import 'result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,12 +18,12 @@ class FromScreen extends StatefulWidget {
 }
 
 class _FromScreenState extends State<FromScreen> {
-  late var config = ModalRoute.of(context)?.settings.arguments as AuthConfig? ?? AuthConfig();
+  late AuthConfig config = ModalRoute.of(context)?.settings.arguments as AuthConfig? ?? AuthConfig();
 
   final typeLabels = {'totp': '基于时间 (TOTP)', 'hotp': '基于计数器 (HOTP)', 'motp': 'Mobile-OTP (mOTP)'};
   final algorithmLabels = {'sha1': 'SHA1', 'sha256': 'SHA256', 'sha512': 'SHA512'};
 
-  void onSave(BuildContext context) async {
+  Future<void> onSave(BuildContext context) async {
     try {
       config.verifyThrow();
     } on ArgumentError catch (e) {
@@ -66,27 +66,25 @@ class _FromScreenState extends State<FromScreen> {
       Navigator.popUntil(context, ModalRoute.withName('/'));
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '添加成功'),
+        builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '添加成功'),
       );
     } else {
       authStore.record(config.key).update(db, config.toJson());
       Navigator.popUntil(context, ModalRoute.withName('/'));
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '更新成功'),
+        builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '更新成功'),
       );
     }
   }
 
-  Widget buildDigitsOnlyTextField(int initValue, Function(int) onChanged, String label) {
-    return buildTextField(
+  Widget buildDigitsOnlyTextField(int initValue, Function(int) onChanged, String label) => buildTextField(
       initValue.toString(),
       (value) => onChanged(int.parse(value)),
       label,
       inputType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
     );
-  }
 
   Widget buildTextField(
     String initValue,
@@ -95,8 +93,7 @@ class _FromScreenState extends State<FromScreen> {
     TextInputType? inputType,
     List<TextInputFormatter>? inputFormatters,
     suffixIcon,
-  }) {
-    return TextField(
+  }) => TextField(
       key: ValueKey(label),
       controller: TextEditingController(text: initValue),
       onChanged: (value) {
@@ -105,7 +102,7 @@ class _FromScreenState extends State<FromScreen> {
       decoration: InputDecoration(
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(),
           borderRadius: BorderRadius.all(Radius.circular(14.0)),
           gapPadding: 8.0,
@@ -115,11 +112,9 @@ class _FromScreenState extends State<FromScreen> {
       keyboardType: inputType,
       inputFormatters: inputFormatters,
     );
-  }
 
   bool _obscureText = true; // 是否隐藏密码
-  Widget buildPasswordTextField(String initValue, Function(String) onChanged, String label) {
-    return TextField(
+  Widget buildPasswordTextField(String initValue, Function(String) onChanged, String label) => TextField(
       key: ValueKey(label),
       controller: TextEditingController(text: initValue),
       onChanged: (value) {
@@ -129,7 +124,7 @@ class _FromScreenState extends State<FromScreen> {
       decoration: InputDecoration(
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(),
           borderRadius: BorderRadius.all(Radius.circular(14.0)),
           gapPadding: 8.0,
@@ -144,10 +139,8 @@ class _FromScreenState extends State<FromScreen> {
         ),
       ),
     );
-  }
 
-  Widget buildDropdown<T>(String label, T initialValue, Map<T, String> options, void Function(T) onChanged) {
-    return DropdownMenuFormField<T>(
+  Widget buildDropdown<T>(String label, T initialValue, Map<T, String> options, void Function(T) onChanged) => DropdownMenuFormField<T>(
       width: double.infinity,
       label: Text(label),
       initialSelection: initialValue,
@@ -169,10 +162,8 @@ class _FromScreenState extends State<FromScreen> {
         });
       },
     );
-  }
 
-  Widget buildIcon(String icon, void Function(String) onChange) {
-    return Padding(
+  Widget buildIcon(String icon, void Function(String) onChange) => Padding(
       padding: const EdgeInsets.all(6.0),
       child: GestureDetector(
         onTap: () async {
@@ -198,7 +189,6 @@ class _FromScreenState extends State<FromScreen> {
         ),
       ),
     );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +197,7 @@ class _FromScreenState extends State<FromScreen> {
       appBar: TopBar(context, '输入提供的密钥', rightIcon: Icons.save, rightOnPressed: onSave),
       body: SizedBox.expand(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
@@ -259,7 +249,7 @@ class IconsChooseScreen extends StatefulWidget {
 }
 
 class _IconsChooseScreenState extends State<IconsChooseScreen> {
-  var iconList = <String>[];
+  List<String> iconList = <String>[];
   final textEditingController = TextEditingController();
 
   loadIcons() async {
@@ -277,13 +267,12 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: TopBar(context, '选择图标'),
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
               controller: textEditingController,
               onChanged: (value) async {
@@ -291,7 +280,7 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
                   iconList = iconList.where((element) => element.contains(value)).toList();
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(),
@@ -307,21 +296,21 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
               interactive: true,
               thumbVisibility: true,
               thickness: 12,
-              radius: Radius.circular(12),
+              radius: const Radius.circular(12),
               child: GridView.builder(
-                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 60,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                 ),
                 itemCount: iconList.length,
                 itemBuilder: (context, index) {
-                  var icon = iconList[index];
+                  final icon = iconList[index];
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pop(context, "assets/icons/${icon}");
+                      Navigator.pop(context, 'assets/icons/$icon');
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -330,7 +319,7 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: SvgPicture.asset(
-                        "assets/icons/${icon}",
+                        'assets/icons/$icon',
                         width: 28,
                         height: 28,
                         colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
@@ -344,5 +333,4 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
         ],
       ),
     );
-  }
 }

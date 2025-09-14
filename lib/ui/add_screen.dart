@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:auth/auth.dart';
-import 'package:auth/repository.dart';
-import 'package:auth/top_bar.dart';
-import 'package:auth/ui/result_screen.dart';
+import '../auth.dart';
+import '../repository.dart';
+import '../top_bar.dart';
+import 'result_screen.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -21,6 +21,8 @@ class AddScreenOption {
 }
 
 class AddScreen extends StatelessWidget {
+  AddScreen({super.key});
+
   final MobileScannerController controller = MobileScannerController();
 
   late final List<AddScreenOption> options = [
@@ -31,11 +33,11 @@ class AddScreen extends StatelessWidget {
     AddScreenOption(Icons.file_download_outlined, '导出到剪贴板', backup),
   ];
 
-  void scan(BuildContext context) async {
+  Future<void> scan(BuildContext context) async {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
       );
       return;
     }
@@ -43,17 +45,17 @@ class AddScreen extends StatelessWidget {
     handleScannedBarcodes(context, barcodeCapture?.barcodes);
   }
 
-  void upload(BuildContext context) async {
+  Future<void> upload(BuildContext context) async {
     if (kIsWeb || (!Platform.isAndroid && !Platform.isIOS)) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
+        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '该功能当前仅支持 Android 和 iOS 平台。'),
       );
       return;
     }
     final XFile? selectedFile = await openFile(
       acceptedTypeGroups: [
-        XTypeGroup(extensions: ['jpg', 'jpeg', 'png']),
+        const XTypeGroup(extensions: ['jpg', 'jpeg', 'png']),
       ],
     );
     if (selectedFile == null) {
@@ -64,16 +66,16 @@ class AddScreen extends StatelessWidget {
     handleScannedBarcodes(context, barcodeCapture?.barcodes);
   }
 
-  void enter(BuildContext context) async {
+  Future<void> enter(BuildContext context) async {
     Navigator.pushNamed(context, '/from');
   }
 
-  void restore(BuildContext context) async {
+  Future<void> restore(BuildContext context) async {
     final ClipboardData? clipboardData = await Clipboard.getData('text/plain');
     if (clipboardData == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: "导入失败", message: "无法获取剪贴板数据"),
+        builder: (ctx) => const ResultScreen(state: 0, title: '导入失败', message: '无法获取剪贴板数据'),
       );
       return;
     }
@@ -81,13 +83,13 @@ class AddScreen extends StatelessWidget {
     if (text == null) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: "导入失败", message: "无法获取剪贴板数据"),
+        builder: (ctx) => const ResultScreen(state: 0, title: '导入失败', message: '无法获取剪贴板数据'),
       );
       return;
     }
 
-    List<String> optUrls = text.split("\n");
-    for (String optUrl in optUrls) {
+    final List<String> optUrls = text.split('\n');
+    for (final String optUrl in optUrls) {
       final AuthConfig config = AuthConfig.parse(optUrl);
       final bool verify = config.verify();
       if (!verify) {
@@ -111,21 +113,21 @@ class AddScreen extends StatelessWidget {
     }
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 1, title: "导入成功", message: "共导入${optUrls.length}条数据"),
+      builder: (ctx) => ResultScreen(state: 1, title: '导入成功', message: '共导入${optUrls.length}条数据'),
     );
   }
 
-  void backup(context) async {
+  Future<void> backup(context) async {
     final List<RecordSnapshot<String, Map<String, Object?>>> records = await authStore.find(db);
-    final String optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join("\n");
+    final String optUrls = records.map((e) => AuthConfig.fromJson(e).toOtpUri()).join('\n');
     Clipboard.setData(ClipboardData(text: optUrls));
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 1, title: "导出成功", message: "共导出${records.length}条数据到剪贴板"),
+      builder: (ctx) => ResultScreen(state: 1, title: '导出成功', message: '共导出${records.length}条数据到剪贴板'),
     );
   }
 
-  void handleScannedBarcodes(BuildContext context, List<Barcode>? barcodes) async {
+  Future<void> handleScannedBarcodes(BuildContext context, List<Barcode>? barcodes) async {
     if (barcodes == null || barcodes.isEmpty) {
       return;
     }
@@ -140,7 +142,7 @@ class AddScreen extends StatelessWidget {
     if (!verify) {
       showCupertinoModalPopup(
         context: context,
-        builder: (ctx) => ResultScreen(state: 0, title: '提示', message: '暂不支持此类型的二维码链接，请确认来源是否正确。'),
+        builder: (ctx) => const ResultScreen(state: 0, title: '提示', message: '暂不支持此类型的二维码链接，请确认来源是否正确。'),
       );
       return;
     }
@@ -175,18 +177,17 @@ class AddScreen extends StatelessWidget {
     await authStore.add(db, config.toJson());
     showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(state: 1, title: '提示', message: '添加成功'),
+      builder: (ctx) => const ResultScreen(state: 1, title: '提示', message: '添加成功'),
     );
   }
 
   @override
-  Widget build(context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: TopBar(context, '添加'),
       body: GridView.builder(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 700,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
@@ -199,7 +200,6 @@ class AddScreen extends StatelessWidget {
         },
       ),
     );
-  }
 }
 
 class HorizontalBarButton extends StatelessWidget {
@@ -210,15 +210,14 @@ class HorizontalBarButton extends StatelessWidget {
   final void Function(BuildContext context) onTap;
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
       onTap: () => onTap.call(context),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.all(Radius.circular(24)),
+          borderRadius: const BorderRadius.all(Radius.circular(24)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -229,11 +228,11 @@ class HorizontalBarButton extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.all(Radius.circular(12)),
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
               ),
               child: Icon(icon, size: 24, color: Theme.of(context).colorScheme.onPrimary),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Text(
               label,
               maxLines: 1,
@@ -244,10 +243,9 @@ class HorizontalBarButton extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
           ],
         ),
       ),
     );
-  }
 }

@@ -1,4 +1,4 @@
-import 'package:auth/top_bar.dart';
+import '../top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -28,8 +28,7 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: TopBar(
         context,
         '扫描',
@@ -43,5 +42,4 @@ class _ScanScreenState extends State<ScanScreen> {
         },
       ),
     );
-  }
 }

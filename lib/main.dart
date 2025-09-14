@@ -1,9 +1,9 @@
-import 'package:auth/repository.dart';
-import 'package:auth/ui/add_screen.dart';
-import 'package:auth/ui/from_screen.dart';
-import 'package:auth/ui/home_screen.dart';
-import 'package:auth/ui/scan_screen.dart';
-import 'package:auth/ui/settings_screen.dart';
+import 'repository.dart';
+import 'ui/add_screen.dart';
+import 'ui/from_screen.dart';
+import 'ui/home_screen.dart';
+import 'ui/scan_screen.dart';
+import 'ui/settings_screen.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/swipe_action_navigator_observer.dart';
@@ -13,15 +13,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   await initDatabase();
-  runApp(AuthApp());
+  runApp(const AuthApp());
 }
 
 class AuthApp extends StatelessWidget {
   const AuthApp({super.key});
 
   @override
-  Widget build(context) {
-    final pageTransitionsTheme = PageTransitionsTheme(
+  Widget build(BuildContext context) {
+    const pageTransitionsTheme = PageTransitionsTheme(
       builders: {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         TargetPlatform.fuchsia: CupertinoPageTransitionsBuilder(),
@@ -32,8 +32,7 @@ class AuthApp extends StatelessWidget {
       },
     );
     return DynamicColorBuilder(
-      builder: (lightDynamic, darkDynamic) {
-        return MaterialApp(
+      builder: (lightDynamic, darkDynamic) => MaterialApp(
           title: 'Purity Auth',
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.system,
@@ -41,16 +40,15 @@ class AuthApp extends StatelessWidget {
           darkTheme: ThemeData(brightness: Brightness.dark, colorScheme: darkDynamic, pageTransitionsTheme: pageTransitionsTheme),
           initialRoute: '/',
           routes: {
-            '/': (BuildContext context) => HomeScreen(),
+            '/': (BuildContext context) => const HomeScreen(),
             '/add': (BuildContext context) => AddScreen(),
-            '/scan': (BuildContext context) => ScanScreen(),
-            '/from': (BuildContext context) => FromScreen(),
-            '/settings': (BuildContext context) => SettingsScreen(),
-            '/icons': (BuildContext context) => IconsChooseScreen(),
+            '/scan': (BuildContext context) => const ScanScreen(),
+            '/from': (BuildContext context) => const FromScreen(),
+            '/settings': (BuildContext context) => const SettingsScreen(),
+            '/icons': (BuildContext context) => const IconsChooseScreen(),
           },
           navigatorObservers: [SwipeActionNavigatorObserver()],
-        );
-      },
+        ),
     );
   }
 }

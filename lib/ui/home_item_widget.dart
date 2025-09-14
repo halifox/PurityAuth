@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:auth/auth.dart';
-import 'package:auth/otp.dart';
-import 'package:auth/repository.dart';
-import 'package:auth/ui/result_screen.dart';
-import 'package:auth/ui/route.dart';
+import '../auth.dart';
+import '../otp.dart';
+import '../repository.dart';
+import 'result_screen.dart';
+import 'route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,9 +13,9 @@ import 'package:sembast/sembast.dart';
 
 /// 认证项小部件
 class HomeItemWidget extends StatefulWidget {
-  final AuthConfig config;
 
   const HomeItemWidget({super.key, required this.config});
+  final AuthConfig config;
 
   @override
   State<HomeItemWidget> createState() => _HomeItemWidgetState();
@@ -23,12 +23,12 @@ class HomeItemWidget extends StatefulWidget {
 
 /// 认证项的状态类
 class _HomeItemWidgetState extends State<HomeItemWidget> {
-  late var config = widget.config;
-  var code = '--------';
-  var biometricUnlock = false;
-  var isShowCaptchaOnTap = false;
-  var isCopyCaptchaOnTap = false;
-  var isShow = false;
+  late AuthConfig config = widget.config;
+  String code = '--------';
+  bool biometricUnlock = false;
+  bool isShowCaptchaOnTap = false;
+  bool isCopyCaptchaOnTap = false;
+  bool isShow = false;
   var optTimer;
   var tapTimer;
   var settingsSubscription;
@@ -37,7 +37,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   @override
   void initState() {
     settingsSubscription = settingsStore.query().onSnapshots(db).listen((data) async {
-      var settings = await settingsStore.record('settings').getSnapshot(db);
+      final settings = await settingsStore.record('settings').getSnapshot(db);
       if (settings == null) {
         return;
       }
@@ -73,7 +73,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   }
 
   startOtpTimer() {
-    var remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: config.period * 1000);
+    final remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: config.period * 1000);
     optTimer = Timer(Duration(milliseconds: remainingMilliseconds), startOtpTimer);
     setState(() => code = config.generateCodeString());
   }
@@ -85,10 +85,10 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   onDelete() async {
     final bool? result = await showCupertinoModalPopup(
       context: context,
-      builder: (ctx) => ResultScreen(
+      builder: (ctx) => const ResultScreen(
         state: 0,
-        title: "警告",
-        message: "您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。",
+        title: '警告',
+        message: '您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。',
         falseButtonVisible: true,
       ),
     );
@@ -107,7 +107,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         isShow = !isShow;
       });
       tapTimer?.cancel();
-      tapTimer = Timer(Duration(seconds: 10), () {
+      tapTimer = Timer(const Duration(seconds: 10), () {
         setState(() {
           isShow = false;
         });
@@ -118,27 +118,24 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('代码已复制'), duration: Duration(milliseconds: 1200)));
+      ).showSnackBar(const SnackBar(content: Text('代码已复制'), duration: Duration(milliseconds: 1200)));
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SwipeActionCell(
+  Widget build(BuildContext context) => SwipeActionCell(
       key: ObjectKey(config), // 唯一标识
       trailingActions: <SwipeAction>[buildSwipeAction('删除', onDelete), buildSwipeAction('编辑', onEdit)],
       child: buildAuthCard(), // 构建认证卡片
     );
-  }
 
   /// 构建滑动操作按钮
-  SwipeAction buildSwipeAction(String label, VoidCallback onTap) {
-    return SwipeAction(
+  SwipeAction buildSwipeAction(String label, VoidCallback onTap) => SwipeAction(
       widthSpace: 140 + 12,
       onTap: (handler) async => onTap(), // 执行操作
       color: Colors.transparent,
       content: Padding(
-        padding: EdgeInsets.only(left: 12),
+        padding: const EdgeInsets.only(left: 12),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -151,14 +148,12 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         ),
       ),
     );
-  }
 
   /// 构建认证卡片
-  Widget buildAuthCard() {
-    return GestureDetector(
+  Widget buildAuthCard() => GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
@@ -167,31 +162,27 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         child: Column(
           children: <Widget>[
             buildTopRow(), // 顶部行
-            Spacer(),
+            const Spacer(),
             buildCodeRow(), // 代码行
           ],
         ),
       ),
     );
-  }
 
   /// 构建顶部行，包括图标和认证信息
-  Widget buildTopRow() {
-    return Row(
+  Widget buildTopRow() => Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         buildIconContainer(), // 图标容器
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         buildAuthDetails(), // 认证信息
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         buildActionButton(), // 动作按钮
       ],
     );
-  }
 
   /// 构建图标容器
-  Widget buildIconContainer() {
-    return Container(
+  Widget buildIconContainer() => Container(
       height: 48,
       width: 48,
       alignment: Alignment.center,
@@ -203,11 +194,9 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
       ),
     );
-  }
 
   /// 构建认证详细信息
-  Widget buildAuthDetails() {
-    return Expanded(
+  Widget buildAuthDetails() => Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -222,7 +211,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             config.account,
             maxLines: 1,
@@ -236,11 +225,9 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         ],
       ),
     );
-  }
 
   /// 构建动作按钮
-  Widget buildActionButton() {
-    return Container(
+  Widget buildActionButton() => Container(
       height: 48,
       width: 48,
       alignment: Alignment.center,
@@ -251,12 +238,11 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         String() => throw UnimplementedError(),
       },
     );
-  }
 
   static Map<String, bool> hotpPressedCache = <String, bool>{};
 
   Widget buildHotpNextButton() {
-    bool pressed = hotpPressedCache[config.key] ?? false;
+    final bool pressed = hotpPressedCache[config.key] ?? false;
     return IconButton(
       onPressed: pressed
           ? null
@@ -265,21 +251,18 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
               config.counter++;
               authStore.record(config.key).update(db, config.toJson());
             },
-      icon: Icon(Icons.refresh),
+      icon: const Icon(Icons.refresh),
     );
   }
 
   /// 构建代码行
-  Widget buildCodeRow() {
-    return Row(
+  Widget buildCodeRow() => Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: code.characters.map((String char) => buildCodeItem(char)).toList(), // 显示每个代码项
+      children: code.characters.map(buildCodeItem).toList(), // 显示每个代码项
     );
-  }
 
   /// 构建单个代码项
-  Widget buildCodeItem(String char) {
-    return Container(
+  Widget buildCodeItem(String char) => Container(
       height: 42,
       width: 40,
       alignment: Alignment.center,
@@ -295,7 +278,6 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
         ),
       ), // 代码字符
     );
-  }
 }
 
 class CoreCircularProgressIndicator extends StatefulWidget {
@@ -309,15 +291,15 @@ class CoreCircularProgressIndicator extends StatefulWidget {
 
 class _CoreCircularProgressIndicatorState extends State<CoreCircularProgressIndicator>
     with SingleTickerProviderStateMixin {
-  late var remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: widget.intervalMilliseconds);
-  late var controller =
+  late int remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: widget.intervalMilliseconds);
+  late AnimationController controller =
       AnimationController(
           duration: Duration(milliseconds: widget.intervalMilliseconds),
           vsync: this,
         )
         ..value = 1 - remainingMilliseconds / widget.intervalMilliseconds
         ..repeat();
-  late var animation = Tween<double>(begin: 1.0, end: 0.0).animate(controller);
+  late Animation<double> animation = Tween<double>(begin: 1.0, end: 0.0).animate(controller);
 
   @override
   void initState() {
@@ -331,12 +313,8 @@ class _CoreCircularProgressIndicatorState extends State<CoreCircularProgressIndi
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
+  Widget build(BuildContext context) => AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget? child) {
-        return CircularProgressIndicator(value: animation.value, strokeCap: StrokeCap.round, strokeWidth: 5.5);
-      },
+      builder: (BuildContext context, Widget? child) => CircularProgressIndicator(value: animation.value, strokeCap: StrokeCap.round, strokeWidth: 5.5),
     );
-  }
 }
