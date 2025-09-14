@@ -45,7 +45,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ok => 'OK';
 
   @override
-  String get codeCopied => 'Code copied';
+  String get codeCopied => 'Code Copied';
 
   @override
   String get tip => 'Tip';
@@ -57,10 +57,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get importFailed => 'Import Failed';
 
   @override
-  String get importSuccess => 'Import Success';
+  String get importSuccess => 'Import Successful';
 
   @override
-  String get exportSuccess => 'Export Success';
+  String get exportSuccess => 'Export Successful';
 
   @override
   String get addSuccess => 'Added Successfully';
@@ -76,7 +76,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'This feature is currently only supported on Android and iOS platforms.';
 
   @override
-  String get cannotGetClipboardData => 'Cannot get clipboard data';
+  String get cannotGetClipboardData => 'Unable to get clipboard data';
 
   @override
   String importedCount(int count) {
@@ -90,11 +90,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unsupportedQRCode =>
-      'This type of QR code link is not supported, please confirm the source is correct.';
+      'This type of QR code is not supported. Please verify the source is correct.';
 
   @override
   String tokenExists(String issuer, String account) {
-    return 'Token $issuer:$account already exists, do you want to overwrite it?';
+    return 'Token $issuer:$account already exists. Do you want to overwrite it?';
   }
 
   @override
@@ -105,7 +105,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get uploadQRCode => 'Upload QR Code';
 
   @override
-  String get enterKey => 'Enter Key';
+  String get enterKey => 'Enter Secret Key';
 
   @override
   String get importFromClipboard => 'Import from Clipboard';
@@ -114,7 +114,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportToClipboard => 'Export to Clipboard';
 
   @override
-  String get enterProvidedKey => 'Enter Provided Key';
+  String get enterProvidedKey => 'Enter the Provided Key';
 
   @override
   String get type => 'Type';
@@ -144,8 +144,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get motpType => 'Mobile-OTP (mOTP)';
 
   @override
-  String get showCaptchaOnTap => 'Show Captcha on Tap';
+  String get showCaptchaOnTap => 'Show Code on Tap';
 
   @override
-  String get copyCaptchaOnTap => 'Copy Captcha on Tap';
+  String get copyCaptchaOnTap => 'Copy Code on Tap';
 }
