@@ -46,7 +46,7 @@ class HorizontalBarSelectionButton extends StatefulWidget {
 class _HorizontalBarSelectionButtonState extends State<HorizontalBarSelectionButton> {
   bool enable = false;
 
-  initData() async {
+  Future<void> initData() async {
     final settings = await settingsStore.record('settings').getSnapshot(db);
     if (settings == null) {
       return;

@@ -72,17 +72,17 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
     super.dispose();
   }
 
-  startOtpTimer() {
+  void startOtpTimer() {
     final remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: config.period * 1000);
     optTimer = Timer(Duration(milliseconds: remainingMilliseconds), startOtpTimer);
     setState(() => code = config.generateCodeString());
   }
 
-  onEdit() {
+  void onEdit() {
     Navigator.pushNamed(context, '/from', arguments: config.clone());
   }
 
-  onDelete() async {
+  Future<void> onDelete() async {
     final bool? result = await showCupertinoModalPopup(
       context: context,
       builder: (ctx) => const ResultScreen(
@@ -101,7 +101,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
     }
   }
 
-  onTap() {
+  void onTap() {
     if (isShowCaptchaOnTap) {
       setState(() {
         isShow = !isShow;

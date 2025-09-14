@@ -94,7 +94,7 @@ class AuthConfig {
     }
   }
 
-  verifyThrow() {
+  void verifyThrow() {
     scheme = switch (scheme.toLowerCase()) {
       'otpauth' => scheme,
       String() => throw ArgumentError('非法的scheme'),

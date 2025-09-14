@@ -32,7 +32,7 @@ linter:
     prefer_final_in_for_each: true                # 在forEach循环中优先使用final变量
     prefer_typing_uninitialized_variables: true   # 为未初始化的变量添加类型注解
     prefer_collection_literals: true              # 优先使用集合字面量语法
-    prefer_expression_function_bodies: true       # 优先使用表达式函数体而不是块函数体
+    prefer_expression_function_bodies: false      # 优先使用表达式函数体而不是块函数体 (已禁用)
     prefer_relative_imports: true                 # 优先使用相对导入
     sort_constructors_first: true                 # 构造函数声明应该放在非构造函数声明之前
     sort_unnamed_constructors_first: true         # 未命名构造函数应该放在命名构造函数之前

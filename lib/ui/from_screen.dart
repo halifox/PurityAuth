@@ -252,7 +252,7 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
   List<String> iconList = <String>[];
   final textEditingController = TextEditingController();
 
-  loadIcons() async {
+  Future<void> loadIcons() async {
     final jsonString = await rootBundle.loadString('assets/icons.json');
     final List<dynamic> jsonList = jsonDecode(jsonString);
     setState(() {
