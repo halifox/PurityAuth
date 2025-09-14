@@ -20,8 +20,8 @@
   "@scanQRCode": {
     "description": "扫描二维码提示"
   },
-  "secretKey": "密钥",
-  "@secretKey": {
+  "secret": "密钥",
+  "@secret": {
     "description": "密钥输入框标签"
   },
   "algorithm": "算法",
@@ -162,28 +162,28 @@
   "@username": {
     "description": "用户名标签"
   },
-  "pinCode": "PIN码",
-  "@pinCode": {
+  "pin": "PIN码",
+  "@pin": {
     "description": "PIN码标签"
   },
-  "timeInterval": "时间间隔(秒)",
-  "@timeInterval": {
+  "period": "时间间隔(秒)",
+  "@period": {
     "description": "时间间隔标签"
   },
   "counter": "计数器",
   "@counter": {
     "description": "计数器标签"
   },
-  "totpType": "基于时间 (TOTP)",
-  "@totpType": {
+  "totp": "(TOTP) 基于时间",
+  "@totp": {
     "description": "TOTP类型描述"
   },
-  "hotpType": "基于计数器 (HOTP)",
-  "@hotpType": {
+  "hotp": "(HOTP) 基于计数器",
+  "@hotp": {
     "description": "HOTP类型描述"
   },
-  "motpType": "Mobile-OTP (mOTP)",
-  "@motpType": {
+  "motp": "(mOTP) Mobile-OTP",
+  "@motp": {
     "description": "mOTP类型描述"
   },
   "showCaptchaOnTap": "轻触显示验证码",

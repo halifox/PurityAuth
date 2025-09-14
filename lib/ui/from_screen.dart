@@ -24,9 +24,9 @@ class _FromScreenState extends State<FromScreen> {
 
   Map<String, String> get typeLabels {
     return {
-      'totp': AppLocalizations.of(context)!.totpType,
-      'hotp': AppLocalizations.of(context)!.hotpType,
-      'motp': AppLocalizations.of(context)!.motpType,
+      'totp': AppLocalizations.of(context)!.totp,
+      'hotp': AppLocalizations.of(context)!.hotp,
+      'motp': AppLocalizations.of(context)!.motp,
     };
   }
 
@@ -246,7 +246,7 @@ class _FromScreenState extends State<FromScreen> {
                 buildPasswordTextField(
                   config.secret,
                   (it) => config.secret = it,
-                  AppLocalizations.of(context)!.secretKey,
+                  AppLocalizations.of(context)!.secret,
                 ),
                 switch (config.type.toLowerCase()) {
                   'totp' => buildDropdown(
@@ -261,7 +261,7 @@ class _FromScreenState extends State<FromScreen> {
                     algorithmLabels,
                     (value) => config.algorithm = value,
                   ),
-                  'motp' => buildTextField(config.pin, (it) => config.pin = it, AppLocalizations.of(context)!.pinCode),
+                  'motp' => buildTextField(config.pin, (it) => config.pin = it, AppLocalizations.of(context)!.pin),
                   String() => throw UnimplementedError(),
                 },
                 Row(
@@ -279,7 +279,7 @@ class _FromScreenState extends State<FromScreen> {
                         'totp' => buildDigitsOnlyTextField(
                           config.period,
                           (it) => config.period = it,
-                          AppLocalizations.of(context)!.timeInterval,
+                          AppLocalizations.of(context)!.period,
                         ),
                         'hotp' => buildDigitsOnlyTextField(
                           config.counter,
@@ -289,7 +289,7 @@ class _FromScreenState extends State<FromScreen> {
                         'motp' => buildDigitsOnlyTextField(
                           config.period,
                           (it) => config.period = it,
-                          AppLocalizations.of(context)!.timeInterval,
+                          AppLocalizations.of(context)!.period,
                         ),
                         String() => throw UnimplementedError(),
                       },

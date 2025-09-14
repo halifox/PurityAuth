@@ -24,7 +24,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanQRCode => 'Scan QR Code';
 
   @override
-  String get secretKey => 'Secret';
+  String get secret => 'Secret';
 
   @override
   String get algorithm => 'Algorithm';
@@ -123,25 +123,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get issuer => 'Issuer';
 
   @override
-  String get username => 'Account';
+  String get username => '用户名';
 
   @override
-  String get pinCode => 'PIN Code';
+  String get pin => 'PIN Code';
 
   @override
-  String get timeInterval => 'Period (seconds)';
+  String get period => 'Period (seconds)';
 
   @override
   String get counter => 'Counter';
 
   @override
-  String get totpType => 'Time-based (TOTP)';
+  String get totp => 'TOTP (Time-based)';
 
   @override
-  String get hotpType => 'Counter-based (HOTP)';
+  String get hotp => 'HOTP (Counter-based)';
 
   @override
-  String get motpType => 'Mobile-OTP (mOTP)';
+  String get motp => 'mOTP (Mobile-OTP)';
 
   @override
   String get showCaptchaOnTap => 'Show Code on Tap';

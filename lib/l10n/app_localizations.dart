@@ -132,7 +132,7 @@ abstract class AppLocalizations {
   ///
   /// In zh, this message translates to:
   /// **'密钥'**
-  String get secretKey;
+  String get secret;
 
   /// 算法选择标签
   ///
@@ -318,13 +318,13 @@ abstract class AppLocalizations {
   ///
   /// In zh, this message translates to:
   /// **'PIN码'**
-  String get pinCode;
+  String get pin;
 
   /// 时间间隔标签
   ///
   /// In zh, this message translates to:
   /// **'时间间隔(秒)'**
-  String get timeInterval;
+  String get period;
 
   /// 计数器标签
   ///
@@ -335,20 +335,20 @@ abstract class AppLocalizations {
   /// TOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'基于时间 (TOTP)'**
-  String get totpType;
+  /// **'(TOTP) 基于时间'**
+  String get totp;
 
   /// HOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'基于计数器 (HOTP)'**
-  String get hotpType;
+  /// **'(HOTP) 基于计数器'**
+  String get hotp;
 
   /// mOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'Mobile-OTP (mOTP)'**
-  String get motpType;
+  /// **'(mOTP) Mobile-OTP'**
+  String get motp;
 
   /// 轻触显示验证码选项
   ///

@@ -24,7 +24,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scanQRCode => '扫描二维码';
 
   @override
-  String get secretKey => '密钥';
+  String get secret => '密钥';
 
   @override
   String get algorithm => '算法';
@@ -124,22 +124,22 @@ class AppLocalizationsZh extends AppLocalizations {
   String get username => '用户名';
 
   @override
-  String get pinCode => 'PIN码';
+  String get pin => 'PIN码';
 
   @override
-  String get timeInterval => '时间间隔(秒)';
+  String get period => '时间间隔(秒)';
 
   @override
   String get counter => '计数器';
 
   @override
-  String get totpType => '基于时间 (TOTP)';
+  String get totp => '(TOTP) 基于时间';
 
   @override
-  String get hotpType => '基于计数器 (HOTP)';
+  String get hotp => '(HOTP) 基于计数器';
 
   @override
-  String get motpType => 'Mobile-OTP (mOTP)';
+  String get motp => '(mOTP) Mobile-OTP';
 
   @override
   String get showCaptchaOnTap => '轻触显示验证码';
