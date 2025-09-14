@@ -114,7 +114,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportToClipboard => 'Export to Clipboard';
 
   @override
-  String get enterProvidedKey => 'Enter Your 2FA Key';
+  String get enterProvidedKey => 'Enter Secret Key';
 
   @override
   String get type => 'Type';

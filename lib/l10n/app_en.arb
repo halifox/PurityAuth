@@ -32,7 +32,7 @@
   "enterKey": "Enter Secret Key",
   "importFromClipboard": "Import from Clipboard",
   "exportToClipboard": "Export to Clipboard",
-  "enterProvidedKey": "Enter Your 2FA Key",
+  "enterProvidedKey": "Enter Secret Key",
   "type": "Type",
   "issuer": "Issuer",
   "account": "Account",
