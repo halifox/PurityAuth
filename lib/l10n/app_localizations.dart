@@ -239,25 +239,25 @@ abstract class AppLocalizations {
   /// 导入数据数量提示
   ///
   /// In zh, this message translates to:
-  /// **'共导入{count}条数据'**
+  /// **'{count}条数据已从剪贴板导入'**
   String importedCount(int count);
 
   /// 导出数据数量提示
   ///
   /// In zh, this message translates to:
-  /// **'共导出{count}条数据到剪贴板'**
+  /// **'{count}条数据已导出到剪贴板'**
   String exportedCount(int count);
 
   /// 不支持的二维码提示
   ///
   /// In zh, this message translates to:
-  /// **'暂不支持此类型的二维码链接，请确认来源是否正确。'**
+  /// **'不支持此类型的二维码'**
   String get unsupportedQRCode;
 
   /// 令牌已存在提示
   ///
   /// In zh, this message translates to:
-  /// **'令牌{issuer}:{account}已经存在,是否覆盖它'**
+  /// **'令牌{issuer}:{account}已存在，是否覆盖？'**
   String tokenExists(String issuer, String account);
 
   /// 删除警告信息
@@ -269,7 +269,7 @@ abstract class AppLocalizations {
   /// 上传二维码选项
   ///
   /// In zh, this message translates to:
-  /// **'上传二维码'**
+  /// **'导入二维码'**
   String get uploadQRCode;
 
   /// 输入密钥选项
@@ -293,7 +293,7 @@ abstract class AppLocalizations {
   /// 输入提供的密钥标题
   ///
   /// In zh, this message translates to:
-  /// **'输入提供的密钥'**
+  /// **'输入密钥'**
   String get enterProvidedKey;
 
   /// 类型标签
@@ -335,31 +335,31 @@ abstract class AppLocalizations {
   /// TOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'(TOTP) 基于时间'**
+  /// **'TOTP（基于时间）'**
   String get totp;
 
   /// HOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'(HOTP) 基于计数器'**
+  /// **'HOTP（基于计数器）'**
   String get hotp;
 
   /// mOTP类型描述
   ///
   /// In zh, this message translates to:
-  /// **'(mOTP) Mobile-OTP'**
+  /// **'mOTP（Mobile-OTP）'**
   String get motp;
 
   /// 轻触显示验证码选项
   ///
   /// In zh, this message translates to:
-  /// **'轻触显示验证码'**
+  /// **'轻触显示代码'**
   String get showCaptchaOnTap;
 
   /// 轻触复制验证码选项
   ///
   /// In zh, this message translates to:
-  /// **'轻触复制验证码'**
+  /// **'轻触复制代码'**
   String get copyCaptchaOnTap;
 }
 

@@ -79,20 +79,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String importedCount(int count) {
-    return '共导入$count条数据';
+    return '$count条数据已从剪贴板导入';
   }
 
   @override
   String exportedCount(int count) {
-    return '共导出$count条数据到剪贴板';
+    return '$count条数据已导出到剪贴板';
   }
 
   @override
-  String get unsupportedQRCode => '暂不支持此类型的二维码链接，请确认来源是否正确。';
+  String get unsupportedQRCode => '不支持此类型的二维码';
 
   @override
   String tokenExists(String issuer, String account) {
-    return '令牌$issuer:$account已经存在,是否覆盖它';
+    return '令牌$issuer:$account已存在，是否覆盖？';
   }
 
   @override
@@ -100,7 +100,7 @@ class AppLocalizationsZh extends AppLocalizations {
       '您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。';
 
   @override
-  String get uploadQRCode => '上传二维码';
+  String get uploadQRCode => '导入二维码';
 
   @override
   String get enterKey => '输入密钥';
@@ -112,7 +112,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get exportToClipboard => '导出到剪贴板';
 
   @override
-  String get enterProvidedKey => '输入提供的密钥';
+  String get enterProvidedKey => '输入密钥';
 
   @override
   String get type => '类型';
@@ -133,17 +133,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get counter => '计数器';
 
   @override
-  String get totp => '(TOTP) 基于时间';
+  String get totp => 'TOTP（基于时间）';
 
   @override
-  String get hotp => '(HOTP) 基于计数器';
+  String get hotp => 'HOTP（基于计数器）';
 
   @override
-  String get motp => '(mOTP) Mobile-OTP';
+  String get motp => 'mOTP（Mobile-OTP）';
 
   @override
-  String get showCaptchaOnTap => '轻触显示验证码';
+  String get showCaptchaOnTap => '轻触显示代码';
 
   @override
-  String get copyCaptchaOnTap => '轻触复制验证码';
+  String get copyCaptchaOnTap => '轻触复制代码';
 }

@@ -92,7 +92,7 @@
   "@cannotGetClipboardData": {
     "description": "无法获取剪贴板数据提示"
   },
-  "importedCount": "共导入{count}条数据",
+  "importedCount": "{count}条数据已从剪贴板导入",
   "@importedCount": {
     "description": "导入数据数量提示",
     "placeholders": {
@@ -101,7 +101,7 @@
       }
     }
   },
-  "exportedCount": "共导出{count}条数据到剪贴板",
+  "exportedCount": "{count}条数据已导出到剪贴板",
   "@exportedCount": {
     "description": "导出数据数量提示",
     "placeholders": {
@@ -110,11 +110,11 @@
       }
     }
   },
-  "unsupportedQRCode": "暂不支持此类型的二维码链接，请确认来源是否正确。",
+  "unsupportedQRCode": "不支持此类型的二维码",
   "@unsupportedQRCode": {
     "description": "不支持的二维码提示"
   },
-  "tokenExists": "令牌{issuer}:{account}已经存在,是否覆盖它",
+  "tokenExists": "令牌{issuer}:{account}已存在，是否覆盖？",
   "@tokenExists": {
     "description": "令牌已存在提示",
     "placeholders": {
@@ -130,7 +130,7 @@
   "@deleteWarning": {
     "description": "删除警告信息"
   },
-  "uploadQRCode": "上传二维码",
+  "uploadQRCode": "导入二维码",
   "@uploadQRCode": {
     "description": "上传二维码选项"
   },
@@ -146,7 +146,7 @@
   "@exportToClipboard": {
     "description": "导出到剪贴板选项"
   },
-  "enterProvidedKey": "输入提供的密钥",
+  "enterProvidedKey": "输入密钥",
   "@enterProvidedKey": {
     "description": "输入提供的密钥标题"
   },
@@ -174,23 +174,23 @@
   "@counter": {
     "description": "计数器标签"
   },
-  "totp": "(TOTP) 基于时间",
+  "totp": "TOTP（基于时间）",
   "@totp": {
     "description": "TOTP类型描述"
   },
-  "hotp": "(HOTP) 基于计数器",
+  "hotp": "HOTP（基于计数器）",
   "@hotp": {
     "description": "HOTP类型描述"
   },
-  "motp": "(mOTP) Mobile-OTP",
+  "motp": "mOTP（Mobile-OTP）",
   "@motp": {
     "description": "mOTP类型描述"
   },
-  "showCaptchaOnTap": "轻触显示验证码",
+  "showCaptchaOnTap": "轻触显示代码",
   "@showCaptchaOnTap": {
     "description": "轻触显示验证码选项"
   },
-  "copyCaptchaOnTap": "轻触复制验证码",
+  "copyCaptchaOnTap": "轻触复制代码",
   "@copyCaptchaOnTap": {
     "description": "轻触复制验证码选项"
   }
