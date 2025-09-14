@@ -22,10 +22,10 @@
   "updateSuccess": "Updated Successfully",
   "saveFailed": "Save Failed",
   "platformNotSupported": "This feature is currently only supported on Android and iOS platforms.",
-  "cannotGetClipboardData": "Unable to get clipboard data",
-  "importedCount": "Imported {count} items",
+  "cannotGetClipboardData": "Failed to get clipboard data",
+  "importedCount": "{count} items imported from clipboard",
   "exportedCount": "Exported {count} items to clipboard",
-  "unsupportedQRCode": "This type of QR code is not supported. Please verify the source is correct.",
+  "unsupportedQRCode": "This type of QR code is not supported.",
   "tokenExists": "Token {issuer}:{account} already exists. Do you want to overwrite it?",
   "deleteWarning": "You are about to delete the current two-factor authenticator.\nThis action will prevent you from using this authenticator for authentication.\nPlease make sure you have other authentication methods ready to ensure account security.",
   "uploadQRCode": "Import QR Code",
@@ -42,6 +42,6 @@
   "totp": "TOTP (Time-based)",
   "hotp": "HOTP (Counter-based)",
   "motp": "mOTP (Mobile-OTP)",
-  "showCaptchaOnTap": "Show Code on Tap",
-  "copyCaptchaOnTap": "Copy Code on Tap"
+  "showCaptchaOnTap": "Tap to Reveal Code",
+  "copyCaptchaOnTap": "Tap to Copy Code"
 }

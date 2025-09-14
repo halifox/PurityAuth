@@ -242,7 +242,7 @@ class _FromScreenState extends State<FromScreen> {
                   AppLocalizations.of(context)!.issuer,
                   suffixIcon: buildIcon(config.icon, (icon) => config.icon = icon),
                 ),
-                buildTextField(config.account, (it) => config.account = it, AppLocalizations.of(context)!.username),
+                buildTextField(config.account, (it) => config.account = it, AppLocalizations.of(context)!.account),
                 buildPasswordTextField(
                   config.secret,
                   (it) => config.secret = it,

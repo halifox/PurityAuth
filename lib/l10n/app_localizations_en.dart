@@ -76,11 +76,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'This feature is currently only supported on Android and iOS platforms.';
 
   @override
-  String get cannotGetClipboardData => 'Unable to get clipboard data';
+  String get cannotGetClipboardData => 'Failed to get clipboard data';
 
   @override
   String importedCount(int count) {
-    return 'Imported $count items';
+    return '$count items imported from clipboard';
   }
 
   @override
@@ -89,8 +89,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get unsupportedQRCode =>
-      'This type of QR code is not supported. Please verify the source is correct.';
+  String get unsupportedQRCode => 'This type of QR code is not supported.';
 
   @override
   String tokenExists(String issuer, String account) {
@@ -123,7 +122,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get issuer => 'Issuer';
 
   @override
-  String get username => '用户名';
+  String get account => 'Account';
 
   @override
   String get pin => 'PIN Code';
@@ -144,8 +143,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get motp => 'mOTP (Mobile-OTP)';
 
   @override
-  String get showCaptchaOnTap => 'Show Code on Tap';
+  String get showCaptchaOnTap => 'Tap to Reveal Code';
 
   @override
-  String get copyCaptchaOnTap => 'Copy Code on Tap';
+  String get copyCaptchaOnTap => 'Tap to Copy Code';
 }

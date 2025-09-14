@@ -158,8 +158,8 @@
   "@issuer": {
     "description": "发行方标签"
   },
-  "username": "用户名",
-  "@username": {
+  "account": "用户名",
+  "@account": {
     "description": "用户名标签"
   },
   "pin": "PIN码",

@@ -121,7 +121,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get issuer => '发行方';
 
   @override
-  String get username => '用户名';
+  String get account => '用户名';
 
   @override
   String get pin => 'PIN码';

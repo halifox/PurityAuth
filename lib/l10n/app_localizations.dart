@@ -312,7 +312,7 @@ abstract class AppLocalizations {
   ///
   /// In zh, this message translates to:
   /// **'用户名'**
-  String get username;
+  String get account;
 
   /// PIN码标签
   ///
