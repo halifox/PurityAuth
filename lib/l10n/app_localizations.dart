@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// 应用程序标题
   ///
   /// In zh, this message translates to:
-  /// **'PurityAuth'**
+  /// **'Purity Auth'**
   String get appTitle;
 
   /// 添加按钮
