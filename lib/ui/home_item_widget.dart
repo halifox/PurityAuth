@@ -253,12 +253,18 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
     );
   }
 
+  static Map<String, bool> hotpPressedCache = <String, bool>{};
+
   Widget buildHotpNextButton() {
+    bool pressed = hotpPressedCache[config.key] ?? false;
     return IconButton(
-      onPressed: () {
-        config.counter++;
-        authStore.record(config.key).update(db, config.toJson());
-      },
+      onPressed: pressed
+          ? null
+          : () {
+              hotpPressedCache[config.key] = true;
+              config.counter++;
+              authStore.record(config.key).update(db, config.toJson());
+            },
       icon: Icon(Icons.refresh),
     );
   }
