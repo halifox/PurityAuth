@@ -1,261 +1,63 @@
 {
   "@@locale": "fr",
   "appTitle": "Purity Auth",
-  "@appTitle": {
-    "description": "Titre principal de l'application, affiché dans la barre d'applications et le nom de l'app"
-  },
   "add": "Ajouter",
-  "@add": {
-    "description": "Texte du bouton d'action flottant pour ajouter un nouvel authentificateur sur l'écran principal"
-  },
   "scan": "Scanner",
-  "@scan": {
-    "description": "Texte du bouton d'action pour scanner un QR code sur la page d'ajout"
-  },
   "settings": "Paramètres",
-  "@settings": {
-    "description": "Libellé de l'onglet paramètres dans la barre de navigation inférieure de l'écran principal"
-  },
   "scanQRCode": "Scanner le QR code",
-  "@scanQRCode": {
-    "description": "Titre de la page de scan, guide l'utilisateur pour scanner un QR code"
-  },
   "secret": "Secret",
-  "@secret": {
-    "description": "Libellé du champ secret sur la page de saisie manuelle, pour entrer la clé de l'authentificateur"
-  },
   "algorithm": "Algorithme",
-  "@algorithm": {
-    "description": "Libellé du champ de sélection d'algorithme sur la page de configuration de l'authentificateur"
-  },
   "digits": "Chiffres",
-  "@digits": {
-    "description": "Libellé du champ de sélection du nombre de chiffres du code sur la page de configuration de l'authentificateur"
-  },
   "cancel": "Annuler",
-  "@cancel": {
-    "description": "Texte du bouton d'annulation dans les dialogues et formulaires"
-  },
   "delete": "Supprimer",
-  "@delete": {
-    "description": "Texte du bouton de suppression dans les actions de balayage des éléments d'authentificateur"
-  },
   "edit": "Modifier",
-  "@edit": {
-    "description": "Texte du bouton de modification dans les actions de balayage des éléments d'authentificateur"
-  },
   "ok": "OK",
-  "@ok": {
-    "description": "Texte du bouton de confirmation dans les dialogues et popups de confirmation"
-  },
   "codeCopied": "Code copié",
-  "@codeCopied": {
-    "description": "Message de succès affiché après la copie du code d'authentification"
-  },
   "tip": "Astuce",
-  "@tip": {
-    "description": "Titre des popups de résultat d'opération réussie"
-  },
   "warning": "Avertissement",
-  "@warning": {
-    "description": "Titre des popups de résultat de type avertissement"
-  },
   "importFailed": "Échec de l'importation",
-  "@importFailed": {
-    "description": "Titre du popup de résultat lors de l'échec d'importation de données"
-  },
   "importSuccess": "Importation réussie",
-  "@importSuccess": {
-    "description": "Titre du popup de résultat lors du succès d'importation de données"
-  },
   "exportSuccess": "Exportation réussie",
-  "@exportSuccess": {
-    "description": "Titre du popup de résultat lors du succès d'exportation de données"
-  },
   "addSuccess": "Ajout réussi",
-  "@addSuccess": {
-    "description": "Message de succès après l'ajout réussi d'un nouvel authentificateur"
-  },
   "updateSuccess": "Mise à jour réussie",
-  "@updateSuccess": {
-    "description": "Message de succès après la mise à jour réussie de la configuration de l'authentificateur"
-  },
   "saveFailed": "Échec de la sauvegarde",
-  "@saveFailed": {
-    "description": "Titre du popup d'erreur lors de l'échec de sauvegarde de la configuration de l'authentificateur"
-  },
   "platformNotSupported": "Cette fonctionnalité n'est actuellement prise en charge que sur les plateformes Android et iOS.",
-  "@platformNotSupported": {
-    "description": "Message d'erreur lorsque la plateforme actuelle ne prend pas en charge une fonctionnalité"
-  },
   "cannotGetClipboardData": "Impossible de récupérer les données du presse-papiers",
-  "@cannotGetClipboardData": {
-    "description": "Message d'erreur lors de l'échec de lecture du contenu du presse-papiers"
-  },
   "importedCount": "{count} éléments importés depuis le presse-papiers",
-  "@importedCount": {
-    "description": "Message de comptage affiché après l'importation réussie de données depuis le presse-papiers",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "exportedCount": "{count} éléments exportés vers le presse-papiers",
-  "@exportedCount": {
-    "description": "Message de comptage affiché après l'exportation réussie de données vers le presse-papiers",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "unsupportedQRCode": "Ce type de QR code n'est pas pris en charge",
-  "@unsupportedQRCode": {
-    "description": "Message d'erreur lors du scan d'un format de QR code non pris en charge"
-  },
   "tokenExists": "Le jeton {issuer}:{account} existe déjà. Voulez-vous l'écraser ?",
-  "@tokenExists": {
-    "description": "Message de dialogue de confirmation demandant s'il faut écraser lors de l'ajout d'un authentificateur existant",
-    "placeholders": {
-      "issuer": {
-        "type": "String"
-      },
-      "account": {
-        "type": "String"
-      }
-    }
-  },
   "deleteWarning": "Vous êtes sur le point de supprimer l'authentificateur à deux facteurs actuel.\nCette action vous empêchera d'utiliser cet authentificateur pour l'authentification.\nVeuillez vous assurer que vous avez d'autres méthodes d'authentification prêtes pour assurer la sécurité de votre compte.",
-  "@deleteWarning": {
-    "description": "Message d'avertissement de sécurité affiché avant la suppression de l'authentificateur, alertant l'utilisateur des risques"
-  },
   "uploadQRCode": "Importer QR code",
-  "@uploadQRCode": {
-    "description": "Texte du bouton d'option pour importer un QR code via téléchargement d'image sur la page d'ajout"
-  },
   "enterKey": "Entrer la clé",
-  "@enterKey": {
-    "description": "Texte du bouton d'option pour saisir manuellement une clé sur la page d'ajout"
-  },
   "importFromClipboard": "Importer depuis le presse-papiers",
-  "@importFromClipboard": {
-    "description": "Texte de l'option de fonctionnalité pour importer des données depuis le presse-papiers sur la page des paramètres"
-  },
   "exportToClipboard": "Exporter vers le presse-papiers",
-  "@exportToClipboard": {
-    "description": "Texte de l'option de fonctionnalité pour exporter des données vers le presse-papiers sur la page des paramètres"
-  },
   "enterProvidedKey": "Entrer la clé",
-  "@enterProvidedKey": {
-    "description": "Titre de la page de configuration manuelle de l'authentificateur"
-  },
   "type": "Type",
-  "@type": {
-    "description": "Libellé du champ pour sélectionner le type d'authentificateur sur la page de configuration"
-  },
   "issuer": "Émetteur",
-  "@issuer": {
-    "description": "Libellé du champ pour saisir le nom de l'émetteur sur la page de configuration de l'authentificateur"
-  },
   "account": "Compte",
-  "@account": {
-    "description": "Libellé du champ pour saisir le nom du compte sur la page de configuration de l'authentificateur"
-  },
   "pin": "Code PIN",
-  "@pin": {
-    "description": "Libellé du champ de saisie du code PIN sur la page de configuration de l'authentificateur de type mOTP"
-  },
   "period": "Période (secondes)",
-  "@period": {
-    "description": "Libellé du champ de saisie de l'intervalle de temps sur la page de configuration de l'authentificateur de type TOTP"
-  },
   "counter": "Compteur",
-  "@counter": {
-    "description": "Libellé du champ de saisie du compteur sur la page de configuration de l'authentificateur de type HOTP"
-  },
   "totp": "TOTP (Basé sur le temps)",
-  "@totp": {
-    "description": "Texte d'affichage de l'option TOTP dans le sélecteur de type d'authentificateur"
-  },
   "hotp": "HOTP (Basé sur un compteur)",
-  "@hotp": {
-    "description": "Texte d'affichage de l'option HOTP dans le sélecteur de type d'authentificateur"
-  },
   "motp": "mOTP (OTP Mobile)",
-  "@motp": {
-    "description": "Texte d'affichage de l'option mOTP dans le sélecteur de type d'authentificateur"
-  },
   "showCaptchaOnTap": "Appuyer pour afficher",
-  "@showCaptchaOnTap": {
-    "description": "Texte de l'option pour contrôler l'affichage/masquage lors du tap sur le code d'authentification dans les paramètres"
-  },
   "copyCaptchaOnTap": "Appuyer pour copier",
-  "@copyCaptchaOnTap": {
-    "description": "Texte de l'option pour contrôler la copie automatique lors du tap sur le code d'authentification dans les paramètres"
-  },
   "sha1": "SHA1",
-  "@sha1": {
-    "description": "Texte d'affichage de l'option d'algorithme de cryptage SHA1 dans le sélecteur d'algorithme"
-  },
   "sha256": "SHA256",
-  "@sha256": {
-    "description": "Texte d'affichage de l'option d'algorithme de cryptage SHA256 dans le sélecteur d'algorithme"
-  },
   "sha512": "SHA512",
-  "@sha512": {
-    "description": "Texte d'affichage de l'option d'algorithme de cryptage SHA512 dans le sélecteur d'algorithme"
-  },
   "selectIcon": "Sélectionner une icône",
-  "@selectIcon": {
-    "description": "Titre de la page du sélecteur d'icône"
-  },
   "invalidSecret": "Secret invalide",
-  "@invalidSecret": {
-    "description": "Message d'erreur de validation du formulaire lorsque le format du secret est incorrect"
-  },
   "dismiss": "Fermer",
-  "@dismiss": {
-    "description": "Texte du bouton de fermeture dans les dialogues modaux et popups"
-  },
   "invalidScheme": "Schéma invalide",
-  "@invalidScheme": {
-    "description": "Message d'erreur de validation lorsque le format de l'URL du QR code est incorrect"
-  },
   "invalidType": "Type invalide",
-  "@invalidType": {
-    "description": "Message d'erreur de validation lorsque le paramètre de type d'authentificateur est invalide"
-  },
   "issuerCannotBeEmpty": "L'émetteur ne peut pas être vide",
-  "@issuerCannotBeEmpty": {
-    "description": "Message d'erreur de validation du formulaire lorsque le champ émetteur est vide"
-  },
   "accountCannotBeEmpty": "Le compte ne peut pas être vide",
-  "@accountCannotBeEmpty": {
-    "description": "Message d'erreur de validation du formulaire lorsque le champ compte est vide"
-  },
   "invalidAlgorithm": "Algorithme invalide",
-  "@invalidAlgorithm": {
-    "description": "Message d'erreur de validation lorsque le paramètre d'algorithme de cryptage est invalide"
-  },
   "invalidDigits": "Nombre de chiffres invalide",
-  "@invalidDigits": {
-    "description": "Message d'erreur de validation lorsque le paramètre du nombre de chiffres du code d'authentification est invalide"
-  },
   "invalidPeriod": "Période invalide",
-  "@invalidPeriod": {
-    "description": "Message d'erreur de validation lorsque le paramètre d'intervalle de temps TOTP est invalide"
-  },
   "invalidCounter": "Compteur invalide",
-  "@invalidCounter": {
-    "description": "Message d'erreur de validation lorsque le paramètre de compteur HOTP est invalide"
-  },
   "invalidPin": "Code PIN invalide",
-  "@invalidPin": {
-    "description": "Message d'erreur de validation lorsque le paramètre de code PIN mOTP est invalide"
-  },
-  "invalidSecretKey": "Clé secrète invalide",
-  "@invalidSecretKey": {
-    "description": "Message d'erreur de validation lorsque le paramètre de clé secrète est invalide ou a une erreur de format"
-  }
+  "invalidSecretKey": "Clé secrète invalide"
 }

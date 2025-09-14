@@ -1,261 +1,63 @@
 {
   "@@locale": "ko",
   "appTitle": "Purity Auth",
-  "@appTitle": {
-    "description": "앱의 메인 타이틀, 앱바와 앱 이름에 표시"
-  },
   "add": "추가",
-  "@add": {
-    "description": "메인 화면에서 새로운 인증기를 추가하는 플로팅 액션 버튼 텍스트"
-  },
   "scan": "스캔",
-  "@scan": {
-    "description": "추가 페이지의 QR코드 스캔 액션 버튼 텍스트"
-  },
   "settings": "설정",
-  "@settings": {
-    "description": "메인 화면 하단 네비게이션 바의 설정 탭 라벨"
-  },
   "scanQRCode": "QR코드 스캔",
-  "@scanQRCode": {
-    "description": "스캔 페이지의 페이지 제목, QR코드를 스캔하도록 안내"
-  },
   "secret": "시크릿",
-  "@secret": {
-    "description": "수동 입력 페이지의 시크릿 필드 라벨, 인증기의 키를 입력"
-  },
   "algorithm": "알고리즘",
-  "@algorithm": {
-    "description": "인증기 설정 페이지의 알고리즘 선택 필드 라벨"
-  },
   "digits": "자릿수",
-  "@digits": {
-    "description": "인증기 설정 페이지의 코드 자릿수 선택 필드 라벨"
-  },
   "cancel": "취소",
-  "@cancel": {
-    "description": "대화상자와 폼의 취소 작업 버튼 텍스트"
-  },
   "delete": "삭제",
-  "@delete": {
-    "description": "인증기 항목의 스와이프 작업 중 삭제 버튼 텍스트"
-  },
   "edit": "편집",
-  "@edit": {
-    "description": "인증기 항목의 스와이프 작업 중 편집 버튼 텍스트"
-  },
   "ok": "확인",
-  "@ok": {
-    "description": "대화상자와 확인 팝업의 확인 작업 버튼 텍스트"
-  },
   "codeCopied": "코드가 복사되었습니다",
-  "@codeCopied": {
-    "description": "인증 코드 복사 후 표시되는 성공 메시지"
-  },
   "tip": "알림",
-  "@tip": {
-    "description": "성공 작업 결과 팝업의 제목"
-  },
   "warning": "경고",
-  "@warning": {
-    "description": "경고 타입 결과 팝업의 제목"
-  },
   "importFailed": "가져오기 실패",
-  "@importFailed": {
-    "description": "데이터 가져오기 작업 실패 시 결과 팝업의 제목"
-  },
   "importSuccess": "가져오기 성공",
-  "@importSuccess": {
-    "description": "데이터 가져오기 작업 성공 시 결과 팝업의 제목"
-  },
   "exportSuccess": "내보내기 성공",
-  "@exportSuccess": {
-    "description": "데이터 내보내기 작업 성공 시 결과 팝업의 제목"
-  },
   "addSuccess": "추가 성공",
-  "@addSuccess": {
-    "description": "새 인증기 추가 성공 후의 성공 메시지"
-  },
   "updateSuccess": "업데이트 성공",
-  "@updateSuccess": {
-    "description": "인증기 설정 업데이트 성공 후의 성공 메시지"
-  },
   "saveFailed": "저장 실패",
-  "@saveFailed": {
-    "description": "인증기 설정 저장 실패 시 오류 팝업의 제목"
-  },
   "platformNotSupported": "이 기능은 현재 Android와 iOS 플랫폼에서만 지원됩니다.",
-  "@platformNotSupported": {
-    "description": "현재 플랫폼에서 기능을 지원하지 않을 때의 오류 메시지"
-  },
   "cannotGetClipboardData": "클립보드 데이터를 가져올 수 없습니다",
-  "@cannotGetClipboardData": {
-    "description": "클립보드 내용 읽기 실패 시 오류 메시지"
-  },
   "importedCount": "{count}개의 데이터가 클립보드에서 가져왔습니다",
-  "@importedCount": {
-    "description": "클립보드에서 데이터 가져오기 성공 후 표시되는 개수 메시지",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "exportedCount": "{count}개의 데이터가 클립보드로 내보냈습니다",
-  "@exportedCount": {
-    "description": "클립보드로 데이터 내보내기 성공 후 표시되는 개수 메시지",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "unsupportedQRCode": "이 타입의 QR코드는 지원되지 않습니다",
-  "@unsupportedQRCode": {
-    "description": "지원되지 않는 QR코드 형식을 스캔했을 때의 오류 메시지"
-  },
   "tokenExists": "토큰{issuer}:{account}이 이미 존재합니다. 덮어쓰시겠습니까?",
-  "@tokenExists": {
-    "description": "기존 인증기를 추가할 때 덮어쓸지 확인하는 대화상자 메시지",
-    "placeholders": {
-      "issuer": {
-        "type": "String"
-      },
-      "account": {
-        "type": "String"
-      }
-    }
-  },
   "deleteWarning": "현재의 이단계 인증기를 삭제하려고 합니다.\n이 작업으로 이 인증기를 사용한 인증을 할 수 없게 됩니다.\n계정의 보안을 위해 다른 인증 방법이 준비되어 있는지 확인하세요.",
-  "@deleteWarning": {
-    "description": "인증기 삭제 전에 표시되는 보안 경고 메시지, 위험을 주의"
-  },
   "uploadQRCode": "QR코드 가져오기",
-  "@uploadQRCode": {
-    "description": "추가 페이지에서 이미지 업로드로 QR코드를 가져오는 옵션 버튼 텍스트"
-  },
   "enterKey": "키 입력",
-  "@enterKey": {
-    "description": "추가 페이지에서 수동으로 키를 입력하는 옵션 버튼 텍스트"
-  },
   "importFromClipboard": "클립보드에서 가져오기",
-  "@importFromClipboard": {
-    "description": "설정 페이지에서 클립보드에서 데이터를 가져오는 기능 옵션 텍스트"
-  },
   "exportToClipboard": "클립보드로 내보내기",
-  "@exportToClipboard": {
-    "description": "설정 페이지에서 클립보드로 데이터를 내보내는 기능 옵션 텍스트"
-  },
   "enterProvidedKey": "키 입력",
-  "@enterProvidedKey": {
-    "description": "인증기 수동 설정 페이지의 페이지 제목"
-  },
   "type": "타입",
-  "@type": {
-    "description": "인증기 설정 페이지에서 인증기 타입을 선택하는 필드 라벨"
-  },
   "issuer": "발급자",
-  "@issuer": {
-    "description": "인증기 설정 페이지에서 발급자명을 입력하는 필드 라벨"
-  },
   "account": "계정",
-  "@account": {
-    "description": "인증기 설정 페이지에서 계정명을 입력하는 필드 라벨"
-  },
   "pin": "PIN 코드",
-  "@pin": {
-    "description": "mOTP 타입 인증기 설정 페이지의 PIN 코드 입력 필드 라벨"
-  },
   "period": "기간(초)",
-  "@period": {
-    "description": "TOTP 타입 인증기 설정 페이지의 시간 간격 입력 필드 라벨"
-  },
   "counter": "카운터",
-  "@counter": {
-    "description": "HOTP 타입 인증기 설정 페이지의 카운터 입력 필드 라벨"
-  },
   "totp": "TOTP(시간 기반)",
-  "@totp": {
-    "description": "인증기 타입 셀렉터의 TOTP 옵션 표시 텍스트"
-  },
   "hotp": "HOTP(카운터 기반)",
-  "@hotp": {
-    "description": "인증기 타입 셀렉터의 HOTP 옵션 표시 텍스트"
-  },
   "motp": "mOTP(모바일 OTP)",
-  "@motp": {
-    "description": "인증기 타입 셀렉터의 mOTP 옵션 표시 텍스트"
-  },
   "showCaptchaOnTap": "탭하여 표시",
-  "@showCaptchaOnTap": {
-    "description": "설정 페이지에서 인증 코드를 탭했을 때 표시/숨기기를 제어하는 옵션 텍스트"
-  },
   "copyCaptchaOnTap": "탭하여 복사",
-  "@copyCaptchaOnTap": {
-    "description": "설정 페이지에서 인증 코드를 탭했을 때 자동 복사를 제어하는 옵션 텍스트"
-  },
   "sha1": "SHA1",
-  "@sha1": {
-    "description": "알고리즘 셀렉터의 SHA1 암호화 알고리즘 옵션 표시 텍스트"
-  },
   "sha256": "SHA256",
-  "@sha256": {
-    "description": "알고리즘 셀렉터의 SHA256 암호화 알고리즘 옵션 표시 텍스트"
-  },
   "sha512": "SHA512",
-  "@sha512": {
-    "description": "알고리즘 셀렉터의 SHA512 암호화 알고리즘 옵션 표시 텍스트"
-  },
   "selectIcon": "아이콘 선택",
-  "@selectIcon": {
-    "description": "아이콘 셀렉터 페이지의 페이지 제목"
-  },
   "invalidSecret": "유효하지 않은 시크릿",
-  "@invalidSecret": {
-    "description": "시크릿 형식이 올바르지 않을 때의 폼 검증 오류 메시지"
-  },
   "dismiss": "닫기",
-  "@dismiss": {
-    "description": "모달 대화상자와 팝업의 닫기 버튼 텍스트"
-  },
   "invalidScheme": "유효하지 않은 스킴",
-  "@invalidScheme": {
-    "description": "QR코드 URL 형식이 올바르지 않을 때의 검증 오류 메시지"
-  },
   "invalidType": "유효하지 않은 타입",
-  "@invalidType": {
-    "description": "인증기 타입 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
   "issuerCannotBeEmpty": "발급자는 비어 있을 수 없습니다",
-  "@issuerCannotBeEmpty": {
-    "description": "발급자 필드가 비어 있을 때의 폼 검증 오류 메시지"
-  },
   "accountCannotBeEmpty": "계정은 비어 있을 수 없습니다",
-  "@accountCannotBeEmpty": {
-    "description": "계정 필드가 비어 있을 때의 폼 검증 오류 메시지"
-  },
   "invalidAlgorithm": "유효하지 않은 알고리즘",
-  "@invalidAlgorithm": {
-    "description": "암호화 알고리즘 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
   "invalidDigits": "유효하지 않은 자릿수",
-  "@invalidDigits": {
-    "description": "인증 코드 자릿수 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
   "invalidPeriod": "유효하지 않은 기간",
-  "@invalidPeriod": {
-    "description": "TOTP 시간 간격 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
   "invalidCounter": "유효하지 않은 카운터",
-  "@invalidCounter": {
-    "description": "HOTP 카운터 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
   "invalidPin": "유효하지 않은 PIN 코드",
-  "@invalidPin": {
-    "description": "mOTP의 PIN 코드 파라미터가 유효하지 않을 때의 검증 오류 메시지"
-  },
-  "invalidSecretKey": "유효하지 않은 시크릿 키",
-  "@invalidSecretKey": {
-    "description": "시크릿 키 파라미터가 유효하지 않거나 형식 오류일 때의 검증 오류 메시지"
-  }
+  "invalidSecretKey": "유효하지 않은 시크릿 키"
 }

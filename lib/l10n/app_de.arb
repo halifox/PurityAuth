@@ -1,261 +1,63 @@
 {
   "@@locale": "de",
   "appTitle": "Purity Auth",
-  "@appTitle": {
-    "description": "Haupttitel der App, angezeigt in der App-Leiste und im App-Namen"
-  },
   "add": "Hinzufügen",
-  "@add": {
-    "description": "Text des Floating Action Buttons zum Hinzufügen eines neuen Authentifikators auf dem Hauptbildschirm"
-  },
   "scan": "Scannen",
-  "@scan": {
-    "description": "Text des Action-Buttons zum Scannen von QR-Codes auf der Hinzufügen-Seite"
-  },
   "settings": "Einstellungen",
-  "@settings": {
-    "description": "Label des Einstellungs-Tabs in der unteren Navigationsleiste des Hauptbildschirms"
-  },
   "scanQRCode": "QR-Code scannen",
-  "@scanQRCode": {
-    "description": "Titel der Scan-Seite, weist Benutzer an, QR-Code zu scannen"
-  },
   "secret": "Geheimnis",
-  "@secret": {
-    "description": "Label des Geheimnis-Felds auf der manuellen Eingabe-Seite, zur Eingabe des Authentifikator-Schlüssels"
-  },
   "algorithm": "Algorithmus",
-  "@algorithm": {
-    "description": "Label des Algorithmus-Auswahlfelds auf der Authentifikator-Konfigurationsseite"
-  },
   "digits": "Ziffern",
-  "@digits": {
-    "description": "Label des Code-Ziffern-Auswahlfelds auf der Authentifikator-Konfigurationsseite"
-  },
   "cancel": "Abbrechen",
-  "@cancel": {
-    "description": "Text des Abbrechen-Buttons in Dialogen und Formularen"
-  },
   "delete": "Löschen",
-  "@delete": {
-    "description": "Text des Löschen-Buttons in den Wisch-Aktionen der Authentifikator-Elemente"
-  },
   "edit": "Bearbeiten",
-  "@edit": {
-    "description": "Text des Bearbeiten-Buttons in den Wisch-Aktionen der Authentifikator-Elemente"
-  },
   "ok": "OK",
-  "@ok": {
-    "description": "Text des Bestätigungs-Buttons in Dialogen und Bestätigungs-Popups"
-  },
   "codeCopied": "Code kopiert",
-  "@codeCopied": {
-    "description": "Erfolgsmeldung nach dem Kopieren des Authentifizierungscodes"
-  },
   "tip": "Tipp",
-  "@tip": {
-    "description": "Titel der Erfolgs-Popup-Ergebnisse"
-  },
   "warning": "Warnung",
-  "@warning": {
-    "description": "Titel der Warn-Popup-Ergebnisse"
-  },
   "importFailed": "Import fehlgeschlagen",
-  "@importFailed": {
-    "description": "Titel des Ergebnis-Popups bei fehlgeschlagenem Datenimport"
-  },
   "importSuccess": "Import erfolgreich",
-  "@importSuccess": {
-    "description": "Titel des Ergebnis-Popups bei erfolgreichem Datenimport"
-  },
   "exportSuccess": "Export erfolgreich",
-  "@exportSuccess": {
-    "description": "Titel des Ergebnis-Popups bei erfolgreichem Datenexport"
-  },
   "addSuccess": "Erfolgreich hinzugefügt",
-  "@addSuccess": {
-    "description": "Erfolgsmeldung nach dem erfolgreichen Hinzufügen eines neuen Authentifikators"
-  },
   "updateSuccess": "Erfolgreich aktualisiert",
-  "@updateSuccess": {
-    "description": "Erfolgsmeldung nach dem erfolgreichen Update der Authentifikator-Konfiguration"
-  },
   "saveFailed": "Speichern fehlgeschlagen",
-  "@saveFailed": {
-    "description": "Titel des Fehler-Popups bei fehlgeschlagenem Speichern der Authentifikator-Konfiguration"
-  },
   "platformNotSupported": "Diese Funktion wird derzeit nur auf Android- und iOS-Plattformen unterstützt.",
-  "@platformNotSupported": {
-    "description": "Fehlermeldung, wenn die aktuelle Plattform eine Funktion nicht unterstützt"
-  },
   "cannotGetClipboardData": "Zwischenablage-Daten können nicht abgerufen werden",
-  "@cannotGetClipboardData": {
-    "description": "Fehlermeldung bei fehlgeschlagenem Lesen des Zwischenablage-Inhalts"
-  },
   "importedCount": "{count} Elemente aus der Zwischenablage importiert",
-  "@importedCount": {
-    "description": "Zählmeldung nach erfolgreichem Import von Daten aus der Zwischenablage",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "exportedCount": "{count} Elemente in die Zwischenablage exportiert",
-  "@exportedCount": {
-    "description": "Zählmeldung nach erfolgreichem Export von Daten in die Zwischenablage",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "unsupportedQRCode": "Dieser QR-Code-Typ wird nicht unterstützt",
-  "@unsupportedQRCode": {
-    "description": "Fehlermeldung beim Scannen eines nicht unterstützten QR-Code-Formats"
-  },
   "tokenExists": "Token {issuer}:{account} existiert bereits. Möchten Sie es überschreiben?",
-  "@tokenExists": {
-    "description": "Bestätigungsdialog-Meldung beim Hinzufügen eines existierenden Authentifikators",
-    "placeholders": {
-      "issuer": {
-        "type": "String"
-      },
-      "account": {
-        "type": "String"
-      }
-    }
-  },
   "deleteWarning": "Sie sind dabei, den aktuellen Zwei-Faktor-Authentifikator zu löschen.\nDiese Aktion verhindert, dass Sie diesen Authentifikator für die Authentifizierung verwenden können.\nBitte stellen Sie sicher, dass Sie andere Authentifizierungsmethoden bereit haben, um die Kontosicherheit zu gewährleisten.",
-  "@deleteWarning": {
-    "description": "Sicherheitswarnung vor dem Löschen des Authentifikators, warnt Benutzer vor Risiken"
-  },
   "uploadQRCode": "QR-Code importieren",
-  "@uploadQRCode": {
-    "description": "Text des Options-Buttons zum Importieren von QR-Codes über Bild-Upload auf der Hinzufügen-Seite"
-  },
   "enterKey": "Schlüssel eingeben",
-  "@enterKey": {
-    "description": "Text des Options-Buttons zur manuellen Schlüssel-Eingabe auf der Hinzufügen-Seite"
-  },
   "importFromClipboard": "Aus Zwischenablage importieren",
-  "@importFromClipboard": {
-    "description": "Text der Funktions-Option zum Importieren von Daten aus der Zwischenablage auf der Einstellungen-Seite"
-  },
   "exportToClipboard": "In Zwischenablage exportieren",
-  "@exportToClipboard": {
-    "description": "Text der Funktions-Option zum Exportieren von Daten in die Zwischenablage auf der Einstellungen-Seite"
-  },
   "enterProvidedKey": "Schlüssel eingeben",
-  "@enterProvidedKey": {
-    "description": "Titel der manuellen Authentifikator-Konfigurationsseite"
-  },
   "type": "Typ",
-  "@type": {
-    "description": "Label des Felds zur Auswahl des Authentifikator-Typs auf der Konfigurationsseite"
-  },
   "issuer": "Herausgeber",
-  "@issuer": {
-    "description": "Label des Felds zur Eingabe des Herausgebernamen auf der Authentifikator-Konfigurationsseite"
-  },
   "account": "Konto",
-  "@account": {
-    "description": "Label des Felds zur Eingabe des Kontonamens auf der Authentifikator-Konfigurationsseite"
-  },
   "pin": "PIN-Code",
-  "@pin": {
-    "description": "Label des PIN-Code-Eingabefelds auf der mOTP-Typ Authentifikator-Konfigurationsseite"
-  },
   "period": "Zeitraum (Sekunden)",
-  "@period": {
-    "description": "Label des Zeitintervall-Eingabefelds auf der TOTP-Typ Authentifikator-Konfigurationsseite"
-  },
   "counter": "Zähler",
-  "@counter": {
-    "description": "Label des Zähler-Eingabefelds auf der HOTP-Typ Authentifikator-Konfigurationsseite"
-  },
   "totp": "TOTP (Zeitbasiert)",
-  "@totp": {
-    "description": "Anzeigetext der TOTP-Option im Authentifikator-Typ-Selektor"
-  },
   "hotp": "HOTP (Zählerbasiert)",
-  "@hotp": {
-    "description": "Anzeigetext der HOTP-Option im Authentifikator-Typ-Selektor"
-  },
   "motp": "mOTP (Mobiles OTP)",
-  "@motp": {
-    "description": "Anzeigetext der mOTP-Option im Authentifikator-Typ-Selektor"
-  },
   "showCaptchaOnTap": "Tippen zum Anzeigen",
-  "@showCaptchaOnTap": {
-    "description": "Optionstext zur Steuerung des Anzeigens/Verbergens beim Tippen auf den Authentifizierungscode in den Einstellungen"
-  },
   "copyCaptchaOnTap": "Tippen zum Kopieren",
-  "@copyCaptchaOnTap": {
-    "description": "Optionstext zur Steuerung des automatischen Kopierens beim Tippen auf den Authentifizierungscode in den Einstellungen"
-  },
   "sha1": "SHA1",
-  "@sha1": {
-    "description": "Anzeigetext der SHA1-Verschlüsselungsalgorithmus-Option im Algorithmus-Selektor"
-  },
   "sha256": "SHA256",
-  "@sha256": {
-    "description": "Anzeigetext der SHA256-Verschlüsselungsalgorithmus-Option im Algorithmus-Selektor"
-  },
   "sha512": "SHA512",
-  "@sha512": {
-    "description": "Anzeigetext der SHA512-Verschlüsselungsalgorithmus-Option im Algorithmus-Selektor"
-  },
   "selectIcon": "Symbol auswählen",
-  "@selectIcon": {
-    "description": "Titel der Symbol-Selektor-Seite"
-  },
   "invalidSecret": "Ungültiges Geheimnis",
-  "@invalidSecret": {
-    "description": "Formular-Validierungsfehlermeldung bei falschem Geheimnis-Format"
-  },
   "dismiss": "Schließen",
-  "@dismiss": {
-    "description": "Text des Schließen-Buttons in modalen Dialogen und Popups"
-  },
   "invalidScheme": "Ungültiges Schema",
-  "@invalidScheme": {
-    "description": "Validierungsfehlermeldung bei falschem QR-Code-URL-Format"
-  },
   "invalidType": "Ungültiger Typ",
-  "@invalidType": {
-    "description": "Validierungsfehlermeldung bei ungültigem Authentifikator-Typ-Parameter"
-  },
   "issuerCannotBeEmpty": "Herausgeber darf nicht leer sein",
-  "@issuerCannotBeEmpty": {
-    "description": "Formular-Validierungsfehlermeldung bei leerem Herausgeber-Feld"
-  },
   "accountCannotBeEmpty": "Konto darf nicht leer sein",
-  "@accountCannotBeEmpty": {
-    "description": "Formular-Validierungsfehlermeldung bei leerem Konto-Feld"
-  },
   "invalidAlgorithm": "Ungültiger Algorithmus",
-  "@invalidAlgorithm": {
-    "description": "Validierungsfehlermeldung bei ungültigem Verschlüsselungsalgorithmus-Parameter"
-  },
   "invalidDigits": "Ungültige Ziffernanzahl",
-  "@invalidDigits": {
-    "description": "Validierungsfehlermeldung bei ungültigem Authentifizierungscode-Ziffern-Parameter"
-  },
   "invalidPeriod": "Ungültiger Zeitraum",
-  "@invalidPeriod": {
-    "description": "Validierungsfehlermeldung bei ungültigem TOTP-Zeitintervall-Parameter"
-  },
   "invalidCounter": "Ungültiger Zähler",
-  "@invalidCounter": {
-    "description": "Validierungsfehlermeldung bei ungültigem HOTP-Zähler-Parameter"
-  },
   "invalidPin": "Ungültiger PIN-Code",
-  "@invalidPin": {
-    "description": "Validierungsfehlermeldung bei ungültigem mOTP-PIN-Code-Parameter"
-  },
-  "invalidSecretKey": "Ungültiger geheimer Schlüssel",
-  "@invalidSecretKey": {
-    "description": "Validierungsfehlermeldung bei ungültigem oder fehlerhaft formatiertem geheimen Schlüssel-Parameter"
-  }
+  "invalidSecretKey": "Ungültiger geheimer Schlüssel"
 }
