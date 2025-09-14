@@ -4,10 +4,6 @@
   "@appTitle": {
     "description": "应用程序标题"
   },
-  "home": "首页",
-  "@home": {
-    "description": "首页标签"
-  },
   "add": "添加",
   "@add": {
     "description": "添加按钮"
@@ -24,14 +20,6 @@
   "@scanQRCode": {
     "description": "扫描二维码提示"
   },
-  "addManually": "手动添加",
-  "@addManually": {
-    "description": "手动添加选项"
-  },
-  "accountName": "账户名称",
-  "@accountName": {
-    "description": "账户名称输入框标签"
-  },
   "secretKey": "密钥",
   "@secretKey": {
     "description": "密钥输入框标签"
@@ -44,14 +32,6 @@
   "@digits": {
     "description": "位数选择标签"
   },
-  "period": "周期",
-  "@period": {
-    "description": "周期设置标签"
-  },
-  "save": "保存",
-  "@save": {
-    "description": "保存按钮"
-  },
   "cancel": "取消",
   "@cancel": {
     "description": "取消按钮"
@@ -63,50 +43,6 @@
   "edit": "编辑",
   "@edit": {
     "description": "编辑按钮"
-  },
-  "copy": "复制",
-  "@copy": {
-    "description": "复制按钮"
-  },
-  "copied": "已复制",
-  "@copied": {
-    "description": "复制成功提示"
-  },
-  "error": "错误",
-  "@error": {
-    "description": "错误提示"
-  },
-  "success": "成功",
-  "@success": {
-    "description": "成功提示"
-  },
-  "invalidQRCode": "无效的二维码",
-  "@invalidQRCode": {
-    "description": "无效二维码错误提示"
-  },
-  "invalidSecretKey": "无效的密钥",
-  "@invalidSecretKey": {
-    "description": "无效密钥错误提示"
-  },
-  "accountNameRequired": "请输入账户名称",
-  "@accountNameRequired": {
-    "description": "账户名称必填提示"
-  },
-  "secretKeyRequired": "请输入密钥",
-  "@secretKeyRequired": {
-    "description": "密钥必填提示"
-  },
-  "confirmDelete": "确认删除此账户？",
-  "@confirmDelete": {
-    "description": "删除确认对话框"
-  },
-  "yes": "是",
-  "@yes": {
-    "description": "确认按钮"
-  },
-  "no": "否",
-  "@no": {
-    "description": "取消按钮"
   },
   "ok": "确定",
   "@ok": {
@@ -194,10 +130,6 @@
   "@deleteWarning": {
     "description": "删除警告信息"
   },
-  "scanQRCode": "扫描二维码",
-  "@scanQRCode": {
-    "description": "扫描二维码选项"
-  },
   "uploadQRCode": "上传二维码",
   "@uploadQRCode": {
     "description": "上传二维码选项"
@@ -217,10 +149,6 @@
   "enterProvidedKey": "输入提供的密钥",
   "@enterProvidedKey": {
     "description": "输入提供的密钥标题"
-  },
-  "selectIcon": "选择图标",
-  "@selectIcon": {
-    "description": "选择图标标题"
   },
   "type": "类型",
   "@type": {
@@ -257,10 +185,6 @@
   "motpType": "Mobile-OTP (mOTP)",
   "@motpType": {
     "description": "mOTP类型描述"
-  },
-  "biometricUnlock": "生物识别解锁",
-  "@biometricUnlock": {
-    "description": "生物识别解锁选项"
   },
   "showCaptchaOnTap": "轻触显示验证码",
   "@showCaptchaOnTap": {

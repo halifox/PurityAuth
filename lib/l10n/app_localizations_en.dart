@@ -12,9 +12,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'PurityAuth';
 
   @override
-  String get home => 'Home';
-
-  @override
   String get add => 'Add';
 
   @override
@@ -27,12 +24,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanQRCode => 'Scan QR Code';
 
   @override
-  String get addManually => 'Add Manually';
-
-  @override
-  String get accountName => 'Account Name';
-
-  @override
   String get secretKey => 'Secret Key';
 
   @override
@@ -42,12 +33,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get digits => 'Digits';
 
   @override
-  String get period => 'Period';
-
-  @override
-  String get save => 'Save';
-
-  @override
   String get cancel => 'Cancel';
 
   @override
@@ -55,39 +40,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get edit => 'Edit';
-
-  @override
-  String get copy => 'Copy';
-
-  @override
-  String get copied => 'Copied';
-
-  @override
-  String get error => 'Error';
-
-  @override
-  String get success => 'Success';
-
-  @override
-  String get invalidQRCode => 'Invalid QR Code';
-
-  @override
-  String get invalidSecretKey => 'Invalid Secret Key';
-
-  @override
-  String get accountNameRequired => 'Please enter account name';
-
-  @override
-  String get secretKeyRequired => 'Please enter secret key';
-
-  @override
-  String get confirmDelete => 'Are you sure you want to delete this account?';
-
-  @override
-  String get yes => 'Yes';
-
-  @override
-  String get no => 'No';
 
   @override
   String get ok => 'OK';
@@ -165,9 +117,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterProvidedKey => 'Enter Provided Key';
 
   @override
-  String get selectIcon => 'Select Icon';
-
-  @override
   String get type => 'Type';
 
   @override
@@ -193,9 +142,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get motpType => 'Mobile-OTP (mOTP)';
-
-  @override
-  String get biometricUnlock => 'Biometric Unlock';
 
   @override
   String get showCaptchaOnTap => 'Show Captcha on Tap';

@@ -104,12 +104,6 @@ abstract class AppLocalizations {
   /// **'PurityAuth'**
   String get appTitle;
 
-  /// 首页标签
-  ///
-  /// In zh, this message translates to:
-  /// **'首页'**
-  String get home;
-
   /// 添加按钮
   ///
   /// In zh, this message translates to:
@@ -128,23 +122,11 @@ abstract class AppLocalizations {
   /// **'设置'**
   String get settings;
 
-  /// 扫描二维码选项
+  /// 扫描二维码提示
   ///
   /// In zh, this message translates to:
   /// **'扫描二维码'**
   String get scanQRCode;
-
-  /// 手动添加选项
-  ///
-  /// In zh, this message translates to:
-  /// **'手动添加'**
-  String get addManually;
-
-  /// 账户名称输入框标签
-  ///
-  /// In zh, this message translates to:
-  /// **'账户名称'**
-  String get accountName;
 
   /// 密钥输入框标签
   ///
@@ -164,18 +146,6 @@ abstract class AppLocalizations {
   /// **'位数'**
   String get digits;
 
-  /// 周期设置标签
-  ///
-  /// In zh, this message translates to:
-  /// **'周期'**
-  String get period;
-
-  /// 保存按钮
-  ///
-  /// In zh, this message translates to:
-  /// **'保存'**
-  String get save;
-
   /// 取消按钮
   ///
   /// In zh, this message translates to:
@@ -193,72 +163,6 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'编辑'**
   String get edit;
-
-  /// 复制按钮
-  ///
-  /// In zh, this message translates to:
-  /// **'复制'**
-  String get copy;
-
-  /// 复制成功提示
-  ///
-  /// In zh, this message translates to:
-  /// **'已复制'**
-  String get copied;
-
-  /// 错误提示
-  ///
-  /// In zh, this message translates to:
-  /// **'错误'**
-  String get error;
-
-  /// 成功提示
-  ///
-  /// In zh, this message translates to:
-  /// **'成功'**
-  String get success;
-
-  /// 无效二维码错误提示
-  ///
-  /// In zh, this message translates to:
-  /// **'无效的二维码'**
-  String get invalidQRCode;
-
-  /// 无效密钥错误提示
-  ///
-  /// In zh, this message translates to:
-  /// **'无效的密钥'**
-  String get invalidSecretKey;
-
-  /// 账户名称必填提示
-  ///
-  /// In zh, this message translates to:
-  /// **'请输入账户名称'**
-  String get accountNameRequired;
-
-  /// 密钥必填提示
-  ///
-  /// In zh, this message translates to:
-  /// **'请输入密钥'**
-  String get secretKeyRequired;
-
-  /// 删除确认对话框
-  ///
-  /// In zh, this message translates to:
-  /// **'确认删除此账户？'**
-  String get confirmDelete;
-
-  /// 确认按钮
-  ///
-  /// In zh, this message translates to:
-  /// **'是'**
-  String get yes;
-
-  /// 取消按钮
-  ///
-  /// In zh, this message translates to:
-  /// **'否'**
-  String get no;
 
   /// 确定按钮
   ///
@@ -392,12 +296,6 @@ abstract class AppLocalizations {
   /// **'输入提供的密钥'**
   String get enterProvidedKey;
 
-  /// 选择图标标题
-  ///
-  /// In zh, this message translates to:
-  /// **'选择图标'**
-  String get selectIcon;
-
   /// 类型标签
   ///
   /// In zh, this message translates to:
@@ -451,12 +349,6 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'Mobile-OTP (mOTP)'**
   String get motpType;
-
-  /// 生物识别解锁选项
-  ///
-  /// In zh, this message translates to:
-  /// **'生物识别解锁'**
-  String get biometricUnlock;
 
   /// 轻触显示验证码选项
   ///

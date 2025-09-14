@@ -12,9 +12,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appTitle => 'PurityAuth';
 
   @override
-  String get home => '首页';
-
-  @override
   String get add => '添加';
 
   @override
@@ -27,12 +24,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scanQRCode => '扫描二维码';
 
   @override
-  String get addManually => '手动添加';
-
-  @override
-  String get accountName => '账户名称';
-
-  @override
   String get secretKey => '密钥';
 
   @override
@@ -42,12 +33,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get digits => '位数';
 
   @override
-  String get period => '周期';
-
-  @override
-  String get save => '保存';
-
-  @override
   String get cancel => '取消';
 
   @override
@@ -55,39 +40,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get edit => '编辑';
-
-  @override
-  String get copy => '复制';
-
-  @override
-  String get copied => '已复制';
-
-  @override
-  String get error => '错误';
-
-  @override
-  String get success => '成功';
-
-  @override
-  String get invalidQRCode => '无效的二维码';
-
-  @override
-  String get invalidSecretKey => '无效的密钥';
-
-  @override
-  String get accountNameRequired => '请输入账户名称';
-
-  @override
-  String get secretKeyRequired => '请输入密钥';
-
-  @override
-  String get confirmDelete => '确认删除此账户？';
-
-  @override
-  String get yes => '是';
-
-  @override
-  String get no => '否';
 
   @override
   String get ok => '确定';
@@ -163,9 +115,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enterProvidedKey => '输入提供的密钥';
 
   @override
-  String get selectIcon => '选择图标';
-
-  @override
   String get type => '类型';
 
   @override
@@ -191,9 +140,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get motpType => 'Mobile-OTP (mOTP)';
-
-  @override
-  String get biometricUnlock => '生物识别解锁';
 
   @override
   String get showCaptchaOnTap => '轻触显示验证码';
