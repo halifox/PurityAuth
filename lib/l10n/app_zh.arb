@@ -1,0 +1,111 @@
+{
+  "@@locale": "zh",
+  "appTitle": "PurityAuth",
+  "@appTitle": {
+    "description": "应用程序标题"
+  },
+  "home": "首页",
+  "@home": {
+    "description": "首页标签"
+  },
+  "add": "添加",
+  "@add": {
+    "description": "添加按钮"
+  },
+  "scan": "扫描",
+  "@scan": {
+    "description": "扫描按钮"
+  },
+  "settings": "设置",
+  "@settings": {
+    "description": "设置标签"
+  },
+  "scanQRCode": "扫描二维码",
+  "@scanQRCode": {
+    "description": "扫描二维码提示"
+  },
+  "addManually": "手动添加",
+  "@addManually": {
+    "description": "手动添加选项"
+  },
+  "accountName": "账户名称",
+  "@accountName": {
+    "description": "账户名称输入框标签"
+  },
+  "secretKey": "密钥",
+  "@secretKey": {
+    "description": "密钥输入框标签"
+  },
+  "algorithm": "算法",
+  "@algorithm": {
+    "description": "算法选择标签"
+  },
+  "digits": "位数",
+  "@digits": {
+    "description": "位数选择标签"
+  },
+  "period": "周期",
+  "@period": {
+    "description": "周期设置标签"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "保存按钮"
+  },
+  "cancel": "取消",
+  "@cancel": {
+    "description": "取消按钮"
+  },
+  "delete": "删除",
+  "@delete": {
+    "description": "删除按钮"
+  },
+  "edit": "编辑",
+  "@edit": {
+    "description": "编辑按钮"
+  },
+  "copy": "复制",
+  "@copy": {
+    "description": "复制按钮"
+  },
+  "copied": "已复制",
+  "@copied": {
+    "description": "复制成功提示"
+  },
+  "error": "错误",
+  "@error": {
+    "description": "错误提示"
+  },
+  "success": "成功",
+  "@success": {
+    "description": "成功提示"
+  },
+  "invalidQRCode": "无效的二维码",
+  "@invalidQRCode": {
+    "description": "无效二维码错误提示"
+  },
+  "invalidSecretKey": "无效的密钥",
+  "@invalidSecretKey": {
+    "description": "无效密钥错误提示"
+  },
+  "accountNameRequired": "请输入账户名称",
+  "@accountNameRequired": {
+    "description": "账户名称必填提示"
+  },
+  "secretKeyRequired": "请输入密钥",
+  "@secretKeyRequired": {
+    "description": "密钥必填提示"
+  },
+  "confirmDelete": "确认删除此账户？",
+  "@confirmDelete": {
+    "description": "删除确认对话框"
+  },
+  "yes": "是",
+  "@yes": {
+    "description": "确认按钮"
+  },
+  "no": "否",
+  "@no": {
+    "description": "取消按钮"
+  }
+}

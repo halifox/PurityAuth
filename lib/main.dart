@@ -1,8 +1,10 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_swipe_action_cell/core/swipe_action_navigator_observer.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
+import 'l10n/app_localizations.dart';
 import 'repository/repository.dart';
 import 'ui/add_screen.dart';
 import 'ui/from_screen.dart';
@@ -47,6 +49,13 @@ class AuthApp extends StatelessWidget {
           colorScheme: darkDynamic,
           pageTransitionsTheme: pageTransitionsTheme,
         ),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) => const HomeScreen(),
