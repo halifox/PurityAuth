@@ -1,9 +1,5 @@
 import 'dart:io';
 
-import '../auth.dart';
-import '../repository.dart';
-import '../top_bar.dart';
-import 'result_screen.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -11,6 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:sembast/sembast.dart';
+
+import '../auth.dart';
+import '../repository.dart';
+import '../top_bar.dart';
+import 'result_screen.dart';
 
 class AddScreenOption {
   AddScreenOption(this.icon, this.label, this.onTap);
@@ -20,10 +21,15 @@ class AddScreenOption {
   final void Function(BuildContext context) onTap;
 }
 
-class AddScreen extends StatelessWidget {
-  AddScreen({super.key});
+class AddScreen extends StatefulWidget {
+  const AddScreen({super.key});
 
-  final MobileScannerController controller = MobileScannerController();
+  @override
+  State<AddScreen> createState() => _AddScreenState();
+}
+
+class _AddScreenState extends State<AddScreen> {
+  late final MobileScannerController controller = MobileScannerController();
 
   late final List<AddScreenOption> options = [
     AddScreenOption(Icons.camera_enhance, '扫描二维码', scan),
@@ -183,23 +189,23 @@ class AddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: TopBar(context, '添加'),
-      body: GridView.builder(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 700,
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          mainAxisExtent: 90,
-        ),
-        itemCount: options.length,
-        itemBuilder: (context, index) {
-          final AddScreenOption option = options[index];
-          return HorizontalBarButton(option.icon, option.label, option.onTap);
-        },
+    appBar: TopBar(context, '添加'),
+    body: GridView.builder(
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 700,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        mainAxisExtent: 90,
       ),
-    );
+      itemCount: options.length,
+      itemBuilder: (context, index) {
+        final AddScreenOption option = options[index];
+        return HorizontalBarButton(option.icon, option.label, option.onTap);
+      },
+    ),
+  );
 }
 
 class HorizontalBarButton extends StatelessWidget {
@@ -211,41 +217,41 @@ class HorizontalBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-      onTap: () => onTap.call(context),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: const BorderRadius.all(Radius.circular(24)),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 48,
-              width: 48,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-              ),
-              child: Icon(icon, size: 24, color: Theme.of(context).colorScheme.onPrimary),
-            ),
-            const SizedBox(width: 16),
-            Text(
-              label,
-              maxLines: 1,
-              style: TextStyle(
-                height: 0,
-                fontSize: 18,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(width: 16),
-          ],
-        ),
+    onTap: () => onTap.call(context),
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primaryContainer,
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
       ),
-    );
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: 48,
+            width: 48,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+            ),
+            child: Icon(icon, size: 24, color: Theme.of(context).colorScheme.onPrimary),
+          ),
+          const SizedBox(width: 16),
+          Text(
+            label,
+            maxLines: 1,
+            style: TextStyle(
+              height: 0,
+              fontSize: 18,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
+      ),
+    ),
+  );
 }
