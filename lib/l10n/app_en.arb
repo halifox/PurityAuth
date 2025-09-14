@@ -43,5 +43,21 @@
   "hotp": "HOTP (Counter-based)",
   "motp": "mOTP (Mobile-OTP)",
   "showCaptchaOnTap": "Tap to Reveal Code",
-  "copyCaptchaOnTap": "Tap to Copy Code"
+  "copyCaptchaOnTap": "Tap to Copy Code",
+  "sha1": "SHA1",
+  "sha256": "SHA256", 
+  "sha512": "SHA512",
+  "selectIcon": "Select Icon",
+  "invalidSecret": "Invalid secret",
+  "dismiss": "Dismiss",
+  "invalidScheme": "Invalid scheme",
+  "invalidType": "Invalid type", 
+  "issuerCannotBeEmpty": "Issuer cannot be empty",
+  "accountCannotBeEmpty": "Account cannot be empty",
+  "invalidAlgorithm": "Invalid algorithm",
+  "invalidDigits": "Invalid digits",
+  "invalidPeriod": "Invalid period",
+  "invalidCounter": "Invalid counter",
+  "invalidPin": "Invalid PIN code",
+  "invalidSecretKey": "Invalid secret key"
 }

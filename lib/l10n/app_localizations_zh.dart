@@ -146,4 +146,52 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get copyCaptchaOnTap => '轻触复制代码';
+
+  @override
+  String get sha1 => 'SHA1';
+
+  @override
+  String get sha256 => 'SHA256';
+
+  @override
+  String get sha512 => 'SHA512';
+
+  @override
+  String get selectIcon => '选择图标';
+
+  @override
+  String get invalidSecret => '无效的密钥';
+
+  @override
+  String get dismiss => '关闭';
+
+  @override
+  String get invalidScheme => '非法的scheme';
+
+  @override
+  String get invalidType => '非法的类型';
+
+  @override
+  String get issuerCannotBeEmpty => '发行方不能为空';
+
+  @override
+  String get accountCannotBeEmpty => '用户名不能为空';
+
+  @override
+  String get invalidAlgorithm => '非法的算法';
+
+  @override
+  String get invalidDigits => '非法的位数';
+
+  @override
+  String get invalidPeriod => '非法的时间间隔';
+
+  @override
+  String get invalidCounter => '非法的计数器';
+
+  @override
+  String get invalidPin => '非法的PIN码';
+
+  @override
+  String get invalidSecretKey => '非法的密钥';
 }

@@ -361,6 +361,102 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'轻触复制代码'**
   String get copyCaptchaOnTap;
+
+  /// SHA1算法标签
+  ///
+  /// In zh, this message translates to:
+  /// **'SHA1'**
+  String get sha1;
+
+  /// SHA256算法标签
+  ///
+  /// In zh, this message translates to:
+  /// **'SHA256'**
+  String get sha256;
+
+  /// SHA512算法标签
+  ///
+  /// In zh, this message translates to:
+  /// **'SHA512'**
+  String get sha512;
+
+  /// 选择图标页面标题
+  ///
+  /// In zh, this message translates to:
+  /// **'选择图标'**
+  String get selectIcon;
+
+  /// 无效密钥错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'无效的密钥'**
+  String get invalidSecret;
+
+  /// 模态框关闭按钮
+  ///
+  /// In zh, this message translates to:
+  /// **'关闭'**
+  String get dismiss;
+
+  /// 无效的scheme错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的scheme'**
+  String get invalidScheme;
+
+  /// 无效类型错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的类型'**
+  String get invalidType;
+
+  /// 发行方为空错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'发行方不能为空'**
+  String get issuerCannotBeEmpty;
+
+  /// 用户名为空错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'用户名不能为空'**
+  String get accountCannotBeEmpty;
+
+  /// 无效算法错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的算法'**
+  String get invalidAlgorithm;
+
+  /// 无效位数错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的位数'**
+  String get invalidDigits;
+
+  /// 无效时间间隔错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的时间间隔'**
+  String get invalidPeriod;
+
+  /// 无效计数器错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的计数器'**
+  String get invalidCounter;
+
+  /// 无效PIN码错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的PIN码'**
+  String get invalidPin;
+
+  /// 无效密钥错误信息
+  ///
+  /// In zh, this message translates to:
+  /// **'非法的密钥'**
+  String get invalidSecretKey;
 }
 
 class _AppLocalizationsDelegate

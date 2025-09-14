@@ -193,5 +193,69 @@
   "copyCaptchaOnTap": "轻触复制代码",
   "@copyCaptchaOnTap": {
     "description": "轻触复制验证码选项"
+  },
+  "sha1": "SHA1",
+  "@sha1": {
+    "description": "SHA1算法标签"
+  },
+  "sha256": "SHA256",
+  "@sha256": {
+    "description": "SHA256算法标签"
+  },
+  "sha512": "SHA512",
+  "@sha512": {
+    "description": "SHA512算法标签"
+  },
+  "selectIcon": "选择图标",
+  "@selectIcon": {
+    "description": "选择图标页面标题"
+  },
+  "invalidSecret": "无效的密钥",
+  "@invalidSecret": {
+    "description": "无效密钥错误信息"
+  },
+  "dismiss": "关闭",
+  "@dismiss": {
+    "description": "模态框关闭按钮"
+  },
+  "invalidScheme": "非法的scheme",
+  "@invalidScheme": {
+    "description": "无效的scheme错误信息"
+  },
+  "invalidType": "非法的类型",
+  "@invalidType": {
+    "description": "无效类型错误信息"
+  },
+  "issuerCannotBeEmpty": "发行方不能为空",
+  "@issuerCannotBeEmpty": {
+    "description": "发行方为空错误信息"
+  },
+  "accountCannotBeEmpty": "用户名不能为空",
+  "@accountCannotBeEmpty": {
+    "description": "用户名为空错误信息"
+  },
+  "invalidAlgorithm": "非法的算法",
+  "@invalidAlgorithm": {
+    "description": "无效算法错误信息"
+  },
+  "invalidDigits": "非法的位数",
+  "@invalidDigits": {
+    "description": "无效位数错误信息"
+  },
+  "invalidPeriod": "非法的时间间隔",
+  "@invalidPeriod": {
+    "description": "无效时间间隔错误信息"
+  },
+  "invalidCounter": "非法的计数器",
+  "@invalidCounter": {
+    "description": "无效计数器错误信息"
+  },
+  "invalidPin": "非法的PIN码",
+  "@invalidPin": {
+    "description": "无效PIN码错误信息"
+  },
+  "invalidSecretKey": "非法的密钥",
+  "@invalidSecretKey": {
+    "description": "无效密钥错误信息"
   }
 }

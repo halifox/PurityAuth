@@ -147,4 +147,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get copyCaptchaOnTap => 'Tap to Copy Code';
+
+  @override
+  String get sha1 => 'SHA1';
+
+  @override
+  String get sha256 => 'SHA256';
+
+  @override
+  String get sha512 => 'SHA512';
+
+  @override
+  String get selectIcon => 'Select Icon';
+
+  @override
+  String get invalidSecret => 'Invalid secret';
+
+  @override
+  String get dismiss => 'Dismiss';
+
+  @override
+  String get invalidScheme => 'Invalid scheme';
+
+  @override
+  String get invalidType => 'Invalid type';
+
+  @override
+  String get issuerCannotBeEmpty => 'Issuer cannot be empty';
+
+  @override
+  String get accountCannotBeEmpty => 'Account cannot be empty';
+
+  @override
+  String get invalidAlgorithm => 'Invalid algorithm';
+
+  @override
+  String get invalidDigits => 'Invalid digits';
+
+  @override
+  String get invalidPeriod => 'Invalid period';
+
+  @override
+  String get invalidCounter => 'Invalid counter';
+
+  @override
+  String get invalidPin => 'Invalid PIN code';
+
+  @override
+  String get invalidSecretKey => 'Invalid secret key';
 }

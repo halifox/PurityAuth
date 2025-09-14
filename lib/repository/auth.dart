@@ -1,6 +1,8 @@
 import 'package:base32/base32.dart';
 import 'package:sembast/sembast.dart';
+import 'package:flutter/widgets.dart';
 
+import '../l10n/app_localizations.dart';
 import 'otp.dart';
 
 /// 认证类型枚举，用于定义不同的认证方式。
@@ -85,69 +87,69 @@ class AuthConfig {
     key: key,
   );
 
-  bool verify() {
+  bool verify(BuildContext context) {
     try {
-      verifyThrow();
+      verifyThrow(context);
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  void verifyThrow() {
+  void verifyThrow(BuildContext context) {
     scheme = switch (scheme.toLowerCase()) {
       'otpauth' => scheme,
-      String() => throw ArgumentError('非法的scheme'),
+      String() => throw ArgumentError(AppLocalizations.of(context)!.invalidScheme),
     };
 
     type = switch (type.toLowerCase()) {
       'totp' => type,
       'hotp' => type,
       'motp' => type,
-      String() => throw ArgumentError('非法的类型'),
+      String() => throw ArgumentError(AppLocalizations.of(context)!.invalidType),
     };
 
     if (issuer.isEmpty) {
-      throw ArgumentError('发行方不能为空');
+      throw ArgumentError(AppLocalizations.of(context)!.issuerCannotBeEmpty);
     }
 
     if (account.isEmpty) {
-      throw ArgumentError('用户名不能为空');
+      throw ArgumentError(AppLocalizations.of(context)!.accountCannotBeEmpty);
     }
 
     algorithm = switch (algorithm.toLowerCase()) {
       'sha1' => algorithm,
       'sha256' => algorithm,
       'sha512' => algorithm,
-      String() => throw ArgumentError('非法的算法'),
+      String() => throw ArgumentError(AppLocalizations.of(context)!.invalidAlgorithm),
     };
 
     switch (type.toLowerCase()) {
       case 'totp':
         if (digits < 6 || digits > 8) {
-          throw ArgumentError('非法的位数');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidDigits);
         }
         if (period <= 0) {
-          throw ArgumentError('非法的时间间隔');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidPeriod);
         }
       case 'hotp':
         if (digits < 6 || digits > 8) {
-          throw ArgumentError('非法的位数');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidDigits);
         }
         if (counter < 0) {
-          throw ArgumentError('非法的计数器');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidCounter);
         }
 
       case 'motp':
         if (digits == 6) {
-          throw ArgumentError('非法的位数');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidDigits);
         }
         if (pin.isEmpty) {
-          throw ArgumentError('非法的PIN码');
+          throw ArgumentError(AppLocalizations.of(context)!.invalidPin);
         }
     }
-    if (!verifyBase32(secret)) {
-      throw ArgumentError('非法的秘钥');
+    if (!verifyBase32(secret, context)) {
+      throw ArgumentError(AppLocalizations.of(context)!.invalidSecretKey);
     }
   }
 
@@ -196,10 +198,10 @@ class AuthConfig {
   /// 返回一个布尔值：
   /// - 如果输入是有效的 Base32 编码，则返回 true。
   /// - 否则返回 false。
-  static bool verifyBase32(String? input) {
+  static bool verifyBase32(String? input, BuildContext context) {
     try {
       if (input == null || input.isEmpty) {
-        throw ArgumentError('Invalid secret');
+        throw ArgumentError(AppLocalizations.of(context)!.invalidSecretKey);
       }
       base32.decode(input);
       return true;
@@ -291,9 +293,9 @@ class AuthConfig {
     String() => throw UnimplementedError(),
   };
 
-  static String checkSecret(String? secret) {
-    if (secret == null || !verifyBase32(secret)) {
-      throw ArgumentError('Invalid secret');
+  static String checkSecret(String? secret, BuildContext context) {
+    if (secret == null || !verifyBase32(secret, context)) {
+      throw ArgumentError(AppLocalizations.of(context)!.invalidSecretKey);
     }
     return secret;
   }

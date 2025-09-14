@@ -116,7 +116,7 @@ class _AddScreenState extends State<AddScreen> {
     final List<String> optUrls = text.split('\n');
     for (final String optUrl in optUrls) {
       final AuthConfig config = AuthConfig.parse(optUrl);
-      final bool verify = config.verify();
+      final bool verify = config.verify(context);
       if (!verify) {
         continue;
       }
@@ -171,7 +171,7 @@ class _AddScreenState extends State<AddScreen> {
     }
     Navigator.popUntil(context, ModalRoute.withName('/'));
     final AuthConfig config = AuthConfig.parse(uriString);
-    final bool verify = config.verify();
+    final bool verify = config.verify(context);
     if (!verify) {
       showCupertinoModalPopup(
         context: context,

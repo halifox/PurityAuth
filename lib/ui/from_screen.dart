@@ -30,16 +30,23 @@ class _FromScreenState extends State<FromScreen> {
     };
   }
 
-  final algorithmLabels = {'sha1': 'SHA1', 'sha256': 'SHA256', 'sha512': 'SHA512'};
+  Map<String, String> get algorithmLabels {
+    return {
+      'sha1': AppLocalizations.of(context)!.sha1,
+      'sha256': AppLocalizations.of(context)!.sha256,
+      'sha512': AppLocalizations.of(context)!.sha512,
+    };
+  }
+
 
   Future<void> onSave(BuildContext context) async {
     try {
-      config.verifyThrow();
+      config.verifyThrow(context);
     } on ArgumentError catch (e) {
       showCupertinoModalPopup(
         context: context,
         builder: (ctx) =>
-            ResultScreen(state: 0, title: AppLocalizations.of(context)!.saveFailed, message: '${e.message}'),
+            ResultScreen(state: 0, title: AppLocalizations.of(context)!.saveFailed, message: e.message),
       );
       return;
     }
@@ -332,7 +339,7 @@ class _IconsChooseScreenState extends State<IconsChooseScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: TopBar(context, '选择图标'),
+    appBar: TopBar(context, AppLocalizations.of(context)!.selectIcon),
     body: Column(
       children: [
         Padding(
