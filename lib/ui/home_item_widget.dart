@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:auth/auth.dart';
 import 'package:auth/otp.dart';
 import 'package:auth/repository.dart';
+import 'package:auth/ui/result_screen.dart';
+import 'package:auth/ui/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -71,9 +73,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   }
 
   startOtpTimer() {
-    var remainingMilliseconds = OTP.remainingMilliseconds(
-      intervalMilliseconds: config.period * 1000,
-    );
+    var remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: config.period * 1000);
     optTimer = Timer(Duration(milliseconds: remainingMilliseconds), startOtpTimer);
     setState(() => code = config.generateCodeString());
   }
@@ -82,32 +82,23 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
     Navigator.pushNamed(context, '/from', arguments: config.clone());
   }
 
-  onDelete() {
-    showGeneralDialog(
+  onDelete() async {
+    final bool? result = await showCupertinoModalPopup(
       context: context,
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return AlertDialog(
-          title: Text("警告"),
-          content: Text("您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。"),
-          actions: [
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('取消'),
-            ),
-            FilledButton(
-              onPressed: () {
-                authStore.record(config.key).delete(db);
-                Navigator.pop(context);
-              },
-              // style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
-              child: Text('删除'),
-            ),
-          ],
-        );
-      },
+      builder: (ctx) => ResultScreen(
+        state: 0,
+        title: "警告",
+        message: "您即将删除当前的两步验证器。\n此操作将使您无法使用该验证器进行身份验证。\n请确保您已准备好其他身份验证方式以保障账户安全。",
+        falseButtonVisible: true,
+      ),
     );
+    if (result == null) {
+      return;
+    }
+    if (result) {
+      authStore.record(config.key).delete(db);
+      return;
+    }
   }
 
   onTap() {
@@ -135,10 +126,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
   Widget build(BuildContext context) {
     return SwipeActionCell(
       key: ObjectKey(config), // 唯一标识
-      trailingActions: <SwipeAction>[
-        buildSwipeAction('删除', onDelete),
-        buildSwipeAction('编辑', onEdit),
-      ],
+      trailingActions: <SwipeAction>[buildSwipeAction('删除', onDelete), buildSwipeAction('编辑', onEdit)],
       child: buildAuthCard(), // 构建认证卡片
     );
   }
@@ -207,10 +195,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
       height: 48,
       width: 48,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
-        borderRadius: BorderRadius.circular(12),
-      ),
+      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(12)),
       child: SvgPicture.asset(
         config.icon,
         width: 28,
@@ -292,10 +277,7 @@ class _HomeItemWidgetState extends State<HomeItemWidget> {
       height: 42,
       width: 40,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiary,
-        borderRadius: BorderRadius.circular(14),
-      ),
+      decoration: BoxDecoration(color: Theme.of(context).colorScheme.tertiary, borderRadius: BorderRadius.circular(14)),
       child: Text(
         isShow ? char : '-',
         style: TextStyle(
@@ -321,9 +303,7 @@ class CoreCircularProgressIndicator extends StatefulWidget {
 
 class _CoreCircularProgressIndicatorState extends State<CoreCircularProgressIndicator>
     with SingleTickerProviderStateMixin {
-  late var remainingMilliseconds = OTP.remainingMilliseconds(
-    intervalMilliseconds: widget.intervalMilliseconds,
-  );
+  late var remainingMilliseconds = OTP.remainingMilliseconds(intervalMilliseconds: widget.intervalMilliseconds);
   late var controller =
       AnimationController(
           duration: Duration(milliseconds: widget.intervalMilliseconds),
@@ -349,11 +329,7 @@ class _CoreCircularProgressIndicatorState extends State<CoreCircularProgressIndi
     return AnimatedBuilder(
       animation: animation,
       builder: (BuildContext context, Widget? child) {
-        return CircularProgressIndicator(
-          value: animation.value,
-          strokeCap: StrokeCap.round,
-          strokeWidth: 5.5,
-        );
+        return CircularProgressIndicator(value: animation.value, strokeCap: StrokeCap.round, strokeWidth: 5.5);
       },
     );
   }
