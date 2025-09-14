@@ -9,7 +9,7 @@ import 'package:sembast/sembast.dart';
 import '../l10n/app_localizations.dart';
 import '../repository/auth.dart';
 import '../repository/repository.dart';
-import 'home_item_widget.dart';
+import 'auth_item_widget.dart';
 import 'route.dart' as route;
 import 'settings_screen.dart';
 import 'top_bar.dart';
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (context, index) {
           final config = AuthConfig.fromJson(data[index]);
-          return HomeItemWidget(key: ValueKey(config.key), config: config);
+          return AuthItemWidget(key: ValueKey(config.key), config: config);
         },
       ),
     );

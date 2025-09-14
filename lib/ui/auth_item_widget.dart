@@ -14,17 +14,17 @@ import 'result_screen.dart';
 import 'route.dart';
 
 /// 认证项小部件
-class HomeItemWidget extends StatefulWidget {
-  const HomeItemWidget({super.key, required this.config});
+class AuthItemWidget extends StatefulWidget {
+  const AuthItemWidget({super.key, required this.config});
 
   final AuthConfig config;
 
   @override
-  State<HomeItemWidget> createState() => _HomeItemWidgetState();
+  State<AuthItemWidget> createState() => _AuthItemWidgetState();
 }
 
 /// 认证项的状态类
-class _HomeItemWidgetState extends State<HomeItemWidget> {
+class _AuthItemWidgetState extends State<AuthItemWidget> {
   late AuthConfig config = widget.config;
   String code = '--------';
   bool biometricUnlock = false;
