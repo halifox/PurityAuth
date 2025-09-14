@@ -1,0 +1,261 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Purity Auth",
+  "@appTitle": {
+    "description": "アプリのメインタイトル、アプリバーとアプリ名に表示"
+  },
+  "add": "追加",
+  "@add": {
+    "description": "メイン画面で新しい認証器を追加するフローティングアクションボタンのテキスト"
+  },
+  "scan": "スキャン",
+  "@scan": {
+    "description": "追加ページのQRコードスキャンアクションボタンのテキスト"
+  },
+  "settings": "設定",
+  "@settings": {
+    "description": "メイン画面の下部ナビゲーションバーの設定タブラベル"
+  },
+  "scanQRCode": "QRコードをスキャン",
+  "@scanQRCode": {
+    "description": "スキャンページのページタイトル、QRコードをスキャンするよう案内"
+  },
+  "secret": "シークレット",
+  "@secret": {
+    "description": "手動入力ページのシークレットフィールドのラベル、認証器のキーを入力"
+  },
+  "algorithm": "アルゴリズム",
+  "@algorithm": {
+    "description": "認証器設定ページのアルゴリズム選択フィールドのラベル"
+  },
+  "digits": "桁数",
+  "@digits": {
+    "description": "認証器設定ページのコード桁数選択フィールドのラベル"
+  },
+  "cancel": "キャンセル",
+  "@cancel": {
+    "description": "ダイアログやフォームのキャンセル操作ボタンのテキスト"
+  },
+  "delete": "削除",
+  "@delete": {
+    "description": "認証器項目のスワイプ操作の削除ボタンのテキスト"
+  },
+  "edit": "編集",
+  "@edit": {
+    "description": "認証器項目のスワイプ操作の編集ボタンのテキスト"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "ダイアログや確認ポップアップの確認操作ボタンのテキスト"
+  },
+  "codeCopied": "コードがコピーされました",
+  "@codeCopied": {
+    "description": "認証コードのコピー後に表示される成功メッセージ"
+  },
+  "tip": "ヒント",
+  "@tip": {
+    "description": "成功操作結果ポップアップのタイトル"
+  },
+  "warning": "警告",
+  "@warning": {
+    "description": "警告タイプの結果ポップアップのタイトル"
+  },
+  "importFailed": "インポート失敗",
+  "@importFailed": {
+    "description": "データインポート操作失敗時の結果ポップアップのタイトル"
+  },
+  "importSuccess": "インポート成功",
+  "@importSuccess": {
+    "description": "データインポート操作成功時の結果ポップアップのタイトル"
+  },
+  "exportSuccess": "エクスポート成功",
+  "@exportSuccess": {
+    "description": "データエクスポート操作成功時の結果ポップアップのタイトル"
+  },
+  "addSuccess": "追加成功",
+  "@addSuccess": {
+    "description": "新しい認証器の追加成功後の成功メッセージ"
+  },
+  "updateSuccess": "更新成功",
+  "@updateSuccess": {
+    "description": "認証器設定の更新成功後の成功メッセージ"
+  },
+  "saveFailed": "保存失敗",
+  "@saveFailed": {
+    "description": "認証器設定の保存失敗時のエラーポップアップのタイトル"
+  },
+  "platformNotSupported": "この機能は現在AndroidとiOSプラットフォームでのみサポートされています。",
+  "@platformNotSupported": {
+    "description": "現在のプラットフォームが機能をサポートしていない時のエラーメッセージ"
+  },
+  "cannotGetClipboardData": "クリップボードデータを取得できません",
+  "@cannotGetClipboardData": {
+    "description": "クリップボード内容の読み取り失敗時のエラーメッセージ"
+  },
+  "importedCount": "{count}件のデータがクリップボードからインポートされました",
+  "@importedCount": {
+    "description": "クリップボードからのデータインポート成功後に表示される件数メッセージ",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportedCount": "{count}件のデータがクリップボードにエクスポートされました",
+  "@exportedCount": {
+    "description": "クリップボードへのデータエクスポート成功後に表示される件数メッセージ",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unsupportedQRCode": "この種類のQRコードはサポートされていません",
+  "@unsupportedQRCode": {
+    "description": "サポートされていないQRコード形式をスキャンした時のエラーメッセージ"
+  },
+  "tokenExists": "トークン{issuer}:{account}は既に存在します。上書きしますか？",
+  "@tokenExists": {
+    "description": "既存の認証器を追加する際に上書きするかを確認するダイアログメッセージ",
+    "placeholders": {
+      "issuer": {
+        "type": "String"
+      },
+      "account": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteWarning": "現在の二段階認証器を削除しようとしています。\nこの操作により、この認証器を使用した認証ができなくなります。\nアカウントのセキュリティを確保するため、他の認証方法が準備されていることを確認してください。",
+  "@deleteWarning": {
+    "description": "認証器削除前に表示される安全警告メッセージ、リスクを注意喚起"
+  },
+  "uploadQRCode": "QRコードをインポート",
+  "@uploadQRCode": {
+    "description": "追加ページで画像アップロードによりQRコードをインポートするオプションボタンのテキスト"
+  },
+  "enterKey": "キーを入力",
+  "@enterKey": {
+    "description": "追加ページで手動でキーを入力するオプションボタンのテキスト"
+  },
+  "importFromClipboard": "クリップボードからインポート",
+  "@importFromClipboard": {
+    "description": "設定ページでクリップボードからデータをインポートする機能オプションのテキスト"
+  },
+  "exportToClipboard": "クリップボードにエクスポート",
+  "@exportToClipboard": {
+    "description": "設定ページでクリップボードにデータをエクスポートする機能オプションのテキスト"
+  },
+  "enterProvidedKey": "キーを入力",
+  "@enterProvidedKey": {
+    "description": "認証器手動設定ページのページタイトル"
+  },
+  "type": "タイプ",
+  "@type": {
+    "description": "認証器設定ページで認証器タイプを選択するフィールドラベル"
+  },
+  "issuer": "発行者",
+  "@issuer": {
+    "description": "認証器設定ページで発行者名を入力するフィールドラベル"
+  },
+  "account": "アカウント",
+  "@account": {
+    "description": "認証器設定ページでアカウント名を入力するフィールドラベル"
+  },
+  "pin": "PINコード",
+  "@pin": {
+    "description": "mOTPタイプ認証器設定ページのPINコード入力フィールドラベル"
+  },
+  "period": "期間（秒）",
+  "@period": {
+    "description": "TOTPタイプ認証器設定ページの時間間隔入力フィールドラベル"
+  },
+  "counter": "カウンター",
+  "@counter": {
+    "description": "HOTPタイプ認証器設定ページのカウンター入力フィールドラベル"
+  },
+  "totp": "TOTP（時間ベース）",
+  "@totp": {
+    "description": "認証器タイプセレクターのTOTPオプション表示テキスト"
+  },
+  "hotp": "HOTP（カウンターベース）",
+  "@hotp": {
+    "description": "認証器タイプセレクターのHOTPオプション表示テキスト"
+  },
+  "motp": "mOTP（モバイルOTP）",
+  "@motp": {
+    "description": "認証器タイプセレクターのmOTPオプション表示テキスト"
+  },
+  "showCaptchaOnTap": "タップして表示",
+  "@showCaptchaOnTap": {
+    "description": "設定ページで認証コードをタップした時の表示/非表示を制御するオプションテキスト"
+  },
+  "copyCaptchaOnTap": "タップしてコピー",
+  "@copyCaptchaOnTap": {
+    "description": "設定ページで認証コードをタップした時の自動コピーを制御するオプションテキスト"
+  },
+  "sha1": "SHA1",
+  "@sha1": {
+    "description": "アルゴリズムセレクターのSHA1暗号化アルゴリズムオプション表示テキスト"
+  },
+  "sha256": "SHA256",
+  "@sha256": {
+    "description": "アルゴリズムセレクターのSHA256暗号化アルゴリズムオプション表示テキスト"
+  },
+  "sha512": "SHA512",
+  "@sha512": {
+    "description": "アルゴリズムセレクターのSHA512暗号化アルゴリズムオプション表示テキスト"
+  },
+  "selectIcon": "アイコンを選択",
+  "@selectIcon": {
+    "description": "アイコンセレクターページのページタイトル"
+  },
+  "invalidSecret": "無効なシークレット",
+  "@invalidSecret": {
+    "description": "シークレット形式が正しくない時のフォーム検証エラーメッセージ"
+  },
+  "dismiss": "閉じる",
+  "@dismiss": {
+    "description": "モーダルダイアログやポップアップの閉じるボタンのテキスト"
+  },
+  "invalidScheme": "無効なスキーム",
+  "@invalidScheme": {
+    "description": "QRコードURL形式が正しくない時の検証エラーメッセージ"
+  },
+  "invalidType": "無効なタイプ",
+  "@invalidType": {
+    "description": "認証器タイプパラメーターが無効な時の検証エラーメッセージ"
+  },
+  "issuerCannotBeEmpty": "発行者は空にできません",
+  "@issuerCannotBeEmpty": {
+    "description": "発行者フィールドが空の時のフォーム検証エラーメッセージ"
+  },
+  "accountCannotBeEmpty": "アカウントは空にできません",
+  "@accountCannotBeEmpty": {
+    "description": "アカウントフィールドが空の時のフォーム検証エラーメッセージ"
+  },
+  "invalidAlgorithm": "無効なアルゴリズム",
+  "@invalidAlgorithm": {
+    "description": "暗号化アルゴリズムパラメーターが無効な時の検証エラーメッセージ"
+  },
+  "invalidDigits": "無効な桁数",
+  "@invalidDigits": {
+    "description": "認証コード桁数パラメーターが無効な時の検証エラーメッセージ"
+  },
+  "invalidPeriod": "無効な期間",
+  "@invalidPeriod": {
+    "description": "TOTP時間間隔パラメーターが無効な時の検証エラーメッセージ"
+  },
+  "invalidCounter": "無効なカウンター",
+  "@invalidCounter": {
+    "description": "HOTPカウンターパラメーターが無効な時の検証エラーメッセージ"
+  },
+  "invalidPin": "無効なPINコード",
+  "@invalidPin": {
+    "description": "mOTPのPINコードパラメーターが無効な時の検証エラーメッセージ"
+  },
+  "invalidSecretKey": "無効なシークレットキー",
+  "@invalidSecretKey": {
+    "description": "シークレットキーパラメーターが無効または形式エラーの時の検証エラーメッセージ"
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Purity Auth",
+  "@appTitle": {
+    "description": "Título principal da aplicação, mostrado na barra da aplicação e no nome da app"
+  },
+  "add": "Adicionar",
+  "@add": {
+    "description": "Texto do botão de ação flutuante para adicionar um novo autenticador na tela principal"
+  },
+  "scan": "Escanear",
+  "@scan": {
+    "description": "Texto do botão de ação para escanear código QR na página de adição"
+  },
+  "settings": "Configurações",
+  "@settings": {
+    "description": "Rótulo da aba configurações na barra de navegação inferior da tela principal"
+  },
+  "scanQRCode": "Escanear código QR",
+  "@scanQRCode": {
+    "description": "Título da página de escaneamento, guia o usuário para escanear um código QR"
+  },
+  "secret": "Segredo",
+  "@secret": {
+    "description": "Rótulo do campo segredo na página de entrada manual, para inserir a chave do autenticador"
+  },
+  "algorithm": "Algoritmo",
+  "@algorithm": {
+    "description": "Rótulo do campo de seleção de algoritmo na página de configuração do autenticador"
+  },
+  "digits": "Dígitos",
+  "@digits": {
+    "description": "Rótulo do campo de seleção do número de dígitos do código na página de configuração do autenticador"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Texto do botão cancelar em diálogos e formulários"
+  },
+  "delete": "Apagar",
+  "@delete": {
+    "description": "Texto do botão apagar nas ações de deslizamento dos elementos do autenticador"
+  },
+  "edit": "Editar",
+  "@edit": {
+    "description": "Texto do botão editar nas ações de deslizamento dos elementos do autenticador"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "Texto do botão de confirmação em diálogos e popups de confirmação"
+  },
+  "codeCopied": "Código copiado",
+  "@codeCopied": {
+    "description": "Mensagem de sucesso mostrada após copiar o código de autenticação"
+  },
+  "tip": "Dica",
+  "@tip": {
+    "description": "Título dos popups de resultado de operação bem-sucedida"
+  },
+  "warning": "Aviso",
+  "@warning": {
+    "description": "Título dos popups de resultado do tipo aviso"
+  },
+  "importFailed": "Importação falhada",
+  "@importFailed": {
+    "description": "Título do popup de resultado quando a importação de dados falha"
+  },
+  "importSuccess": "Importação bem-sucedida",
+  "@importSuccess": {
+    "description": "Título do popup de resultado quando a importação de dados é bem-sucedida"
+  },
+  "exportSuccess": "Exportação bem-sucedida",
+  "@exportSuccess": {
+    "description": "Título do popup de resultado quando a exportação de dados é bem-sucedida"
+  },
+  "addSuccess": "Adicionado com sucesso",
+  "@addSuccess": {
+    "description": "Mensagem de sucesso após adicionar com sucesso um novo autenticador"
+  },
+  "updateSuccess": "Atualização bem-sucedida",
+  "@updateSuccess": {
+    "description": "Mensagem de sucesso após atualizar com sucesso a configuração do autenticador"
+  },
+  "saveFailed": "Falha ao guardar",
+  "@saveFailed": {
+    "description": "Título do popup de erro quando o salvamento da configuração do autenticador falha"
+  },
+  "platformNotSupported": "Esta funcionalidade é atualmente suportada apenas nas plataformas Android e iOS.",
+  "@platformNotSupported": {
+    "description": "Mensagem de erro quando a plataforma atual não suporta uma funcionalidade"
+  },
+  "cannotGetClipboardData": "Não é possível obter dados da área de transferência",
+  "@cannotGetClipboardData": {
+    "description": "Mensagem de erro ao falhar a leitura do conteúdo da área de transferência"
+  },
+  "importedCount": "{count} itens importados da área de transferência",
+  "@importedCount": {
+    "description": "Mensagem de contagem mostrada após a importação bem-sucedida de dados da área de transferência",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "exportedCount": "{count} itens exportados para a área de transferência",
+  "@exportedCount": {
+    "description": "Mensagem de contagem mostrada após a exportação bem-sucedida de dados para a área de transferência",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unsupportedQRCode": "Este tipo de código QR não é suportado",
+  "@unsupportedQRCode": {
+    "description": "Mensagem de erro ao escanear um formato de código QR não suportado"
+  },
+  "tokenExists": "O token {issuer}:{account} já existe. Deseja sobrescrever?",
+  "@tokenExists": {
+    "description": "Mensagem de diálogo de confirmação perguntando se deve sobrescrever ao adicionar um autenticador existente",
+    "placeholders": {
+      "issuer": {
+        "type": "String"
+      },
+      "account": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteWarning": "Está prestes a apagar o autenticador de dois fatores atual.\nEsta ação impedirá que use este autenticador para autenticação.\nPor favor, certifique-se de que tem outros métodos de autenticação prontos para garantir a segurança da conta.",
+  "@deleteWarning": {
+    "description": "Mensagem de aviso de segurança mostrada antes de apagar o autenticador, alertando o usuário sobre os riscos"
+  },
+  "uploadQRCode": "Importar código QR",
+  "@uploadQRCode": {
+    "description": "Texto do botão de opção para importar código QR através de upload de imagem na página de adição"
+  },
+  "enterKey": "Inserir chave",
+  "@enterKey": {
+    "description": "Texto do botão de opção para inserir manualmente uma chave na página de adição"
+  },
+  "importFromClipboard": "Importar da área de transferência",
+  "@importFromClipboard": {
+    "description": "Texto da opção de funcionalidade para importar dados da área de transferência na página de configurações"
+  },
+  "exportToClipboard": "Exportar para área de transferência",
+  "@exportToClipboard": {
+    "description": "Texto da opção de funcionalidade para exportar dados para a área de transferência na página de configurações"
+  },
+  "enterProvidedKey": "Inserir chave",
+  "@enterProvidedKey": {
+    "description": "Título da página de configuração manual do autenticador"
+  },
+  "type": "Tipo",
+  "@type": {
+    "description": "Rótulo do campo para selecionar o tipo de autenticador na página de configuração"
+  },
+  "issuer": "Emissor",
+  "@issuer": {
+    "description": "Rótulo do campo para inserir o nome do emissor na página de configuração do autenticador"
+  },
+  "account": "Conta",
+  "@account": {
+    "description": "Rótulo do campo para inserir o nome da conta na página de configuração do autenticador"
+  },
+  "pin": "Código PIN",
+  "@pin": {
+    "description": "Rótulo do campo de entrada do código PIN na página de configuração do autenticador tipo mOTP"
+  },
+  "period": "Período (segundos)",
+  "@period": {
+    "description": "Rótulo do campo de entrada do intervalo de tempo na página de configuração do autenticador tipo TOTP"
+  },
+  "counter": "Contador",
+  "@counter": {
+    "description": "Rótulo do campo de entrada do contador na página de configuração do autenticador tipo HOTP"
+  },
+  "totp": "TOTP (Baseado em tempo)",
+  "@totp": {
+    "description": "Texto de exibição da opção TOTP no seletor de tipo de autenticador"
+  },
+  "hotp": "HOTP (Baseado em contador)",
+  "@hotp": {
+    "description": "Texto de exibição da opção HOTP no seletor de tipo de autenticador"
+  },
+  "motp": "mOTP (OTP Móvel)",
+  "@motp": {
+    "description": "Texto de exibição da opção mOTP no seletor de tipo de autenticador"
+  },
+  "showCaptchaOnTap": "Tocar para mostrar",
+  "@showCaptchaOnTap": {
+    "description": "Texto da opção para controlar mostrar/ocultar ao tocar no código de autenticação nas configurações"
+  },
+  "copyCaptchaOnTap": "Tocar para copiar",
+  "@copyCaptchaOnTap": {
+    "description": "Texto da opção para controlar a cópia automática ao tocar no código de autenticação nas configurações"
+  },
+  "sha1": "SHA1",
+  "@sha1": {
+    "description": "Texto de exibição da opção do algoritmo de criptografia SHA1 no seletor de algoritmo"
+  },
+  "sha256": "SHA256",
+  "@sha256": {
+    "description": "Texto de exibição da opção do algoritmo de criptografia SHA256 no seletor de algoritmo"
+  },
+  "sha512": "SHA512",
+  "@sha512": {
+    "description": "Texto de exibição da opção do algoritmo de criptografia SHA512 no seletor de algoritmo"
+  },
+  "selectIcon": "Selecionar ícone",
+  "@selectIcon": {
+    "description": "Título da página do seletor de ícones"
+  },
+  "invalidSecret": "Segredo inválido",
+  "@invalidSecret": {
+    "description": "Mensagem de erro de validação de formulário quando o formato do segredo está incorreto"
+  },
+  "dismiss": "Fechar",
+  "@dismiss": {
+    "description": "Texto do botão fechar em diálogos modais e popups"
+  },
+  "invalidScheme": "Esquema inválido",
+  "@invalidScheme": {
+    "description": "Mensagem de erro de validação quando o formato da URL do código QR está incorreto"
+  },
+  "invalidType": "Tipo inválido",
+  "@invalidType": {
+    "description": "Mensagem de erro de validação quando o parâmetro do tipo de autenticador é inválido"
+  },
+  "issuerCannotBeEmpty": "O emissor não pode estar vazio",
+  "@issuerCannotBeEmpty": {
+    "description": "Mensagem de erro de validação de formulário quando o campo emissor está vazio"
+  },
+  "accountCannotBeEmpty": "A conta não pode estar vazia",
+  "@accountCannotBeEmpty": {
+    "description": "Mensagem de erro de validação de formulário quando o campo conta está vazio"
+  },
+  "invalidAlgorithm": "Algoritmo inválido",
+  "@invalidAlgorithm": {
+    "description": "Mensagem de erro de validação quando o parâmetro do algoritmo de criptografia é inválido"
+  },
+  "invalidDigits": "Número de dígitos inválido",
+  "@invalidDigits": {
+    "description": "Mensagem de erro de validação quando o parâmetro do número de dígitos do código de autenticação é inválido"
+  },
+  "invalidPeriod": "Período inválido",
+  "@invalidPeriod": {
+    "description": "Mensagem de erro de validação quando o parâmetro do intervalo de tempo TOTP é inválido"
+  },
+  "invalidCounter": "Contador inválido",
+  "@invalidCounter": {
+    "description": "Mensagem de erro de validação quando o parâmetro do contador HOTP é inválido"
+  },
+  "invalidPin": "Código PIN inválido",
+  "@invalidPin": {
+    "description": "Mensagem de erro de validação quando o parâmetro do código PIN mOTP é inválido"
+  },
+  "invalidSecretKey": "Chave secreta inválida",
+  "@invalidSecretKey": {
+    "description": "Mensagem de erro de validação quando o parâmetro da chave secreta é inválido ou tem erro de formato"
+  }
+}
