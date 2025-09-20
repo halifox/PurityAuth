@@ -103,6 +103,19 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 
 ## 📥 Installation
 
+### Android
+
+### IOS
+
+### MacOS
+
+### Windows
+
+### Linux
+
+### Web
+
+
 1. Download the installation package for your platform from the [releases page](https://github.com/halifox/PurityAuth/releases).
 2. Follow the system prompts to install. No internet connection is required for usage.
 
