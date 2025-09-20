@@ -51,8 +51,8 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 <p float="center">
    <img src="./screenshot/Screenshot_20250920_164717.webp" width="24%"/>
    <img src="./screenshot/Screenshot_20250920_164727.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20250920_164739.webp" width="24%"/>
    <img src="./screenshot/Screenshot_20250920_164804.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_172013.webp" width="24%"/>
 </p>
 <p float="center">
    <img src="./screenshot/Screenshot_20250920_165047.webp" width="49%"/>
