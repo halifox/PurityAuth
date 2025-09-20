@@ -51,20 +51,20 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 ## 📸 Screenshots
 
 <p float="center">
-   <img src="./screenshot/Screenshot_20241223_234144.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_235556.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_235027.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_234156.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164636.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_165514.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164849.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_165825.webp" width="24%"/>
 </p>
 <p float="center">
-   <img src="./screenshot/Screenshot_20241223_234309.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_234202.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_234214.webp" width="24%"/>
-   <img src="./screenshot/Screenshot_20241223_234238.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164717.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164727.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164739.webp" width="24%"/>
+   <img src="./screenshot/Screenshot_20250920_164804.webp" width="24%"/>
 </p>
 <p float="center">
-   <img src="./screenshot/Screenshot_20241223_234629.webp" width="49%"/>
-   <img src="./screenshot/Screenshot_20241223_234637.webp" width="49%"/>
+   <img src="./screenshot/Screenshot_20250920_165047.webp" width="49%"/>
+   <img src="./screenshot/Screenshot_20250920_165058.webp" width="49%"/>
 </p>
 
 ---
