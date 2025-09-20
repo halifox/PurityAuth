@@ -42,6 +42,7 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 
 ## 📸 Screenshots
 
+### Android
 <p float="center">
    <img src="./screenshot/Screenshot_20250920_164636.webp" width="24%"/>
    <img src="./screenshot/Screenshot_20250920_165514.webp" width="24%"/>
@@ -57,6 +58,13 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 <p float="center">
    <img src="./screenshot/Screenshot_20250920_165047.webp" width="49%"/>
    <img src="./screenshot/Screenshot_20250920_165058.webp" width="49%"/>
+</p>
+
+### MacOS
+
+<p float="center">
+   <img src="./screenshot/Screenshot_macos_1.webp" width="49%"/>
+   <img src="./screenshot/Screenshot_macos_2.webp" width="49%"/>
 </p>
 
 ---
