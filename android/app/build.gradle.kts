@@ -18,14 +18,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
-    signingConfigs {
-        create("release") {
-            keyAlias = "halifox"
-            keyPassword = System.getenv("KEY_PASSWORD")
-            storeFile = file("halifox.jks")
-            storePassword = System.getenv("KEYSTORE_PASSWORD")
-        }
-    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.purity.auth"
@@ -41,7 +33,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }
