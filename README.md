@@ -61,6 +61,9 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
    <img src="./screenshot/Screenshot_20250920_164804.webp" width="24%"/>
    <img src="./screenshot/Screenshot_20250920_172013.webp" width="24%"/>
 </p>
+
+### Foldable Phone
+
 <p float="center">
    <img src="./screenshot/Screenshot_20250920_165047.webp" width="49%"/>
    <img src="./screenshot/Screenshot_20250920_165058.webp" width="49%"/>
@@ -86,6 +89,15 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
    <img src="./screenshot/Screenshot_macos_1.webp" width="49%"/>
    <img src="./screenshot/Screenshot_macos_2.webp" width="49%"/>
 </p>
+
+### Web
+
+<p float="center">
+   <img src="./screenshot/Screenshot_web.webp" width="99%"/>
+</p>
+
+
+
 
 ---
 
