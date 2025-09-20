@@ -101,23 +101,49 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 
 ---
 
-## 📥 Installation
+## 📥 Download and Installation Instructions
+
+> ⚠️ Security Notice: The applications are not yet published on official app stores. Please download installation packages only from the official GitHub Releases page to ensure the authenticity of the software.  
+> ⚠️ System Compatibility: Before installing, ensure that your device meets the minimum system requirements for the corresponding platform to avoid installation failures or runtime issues.
 
 ### Android
+- The application is not available on Google Play.
+- APK files can be downloaded from the [Releases page](https://github.com/halifox/PurityAuth/releases).
+- Before installation, make sure your device allows installation from unknown sources and that the Android version meets the minimum requirement.
 
-### IOS
+### iOS
+- The application is not available on the App Store.
+- Installation files are available on the [Releases page](https://github.com/halifox/PurityAuth/releases).
+- Before installation, follow iOS prompts to trust the developer certificate and ensure the device version supports the application.
 
-### MacOS
+### macOS
+- The application is not available on the Mac App Store.
+- DMG or ZIP files can be downloaded from the [Releases page](https://github.com/halifox/PurityAuth/releases).
+- During installation, you may need to allow “apps from any source” in system security settings.
 
 ### Windows
+- The application is not available on Microsoft Store.
+- Installation packages can be downloaded from the [Releases page](https://github.com/halifox/PurityAuth/releases).
+- Ensure the system meets the minimum Windows version requirement and that you have administrator privileges to complete the installation.
 
 ### Linux
+- The application is not available in any official software repositories.
+- Executable files or compressed packages are available on the [Releases page](https://github.com/halifox/PurityAuth/releases).
+- Some distributions may require additional dependencies; please refer to your distribution’s installation guide.
 
 ### Web
+- Access the official hosted page directly: [https://purityauth.pages.dev](https://purityauth.pages.dev)
+- No installation is required, suitable for quick testing and usage.
+- Using a modern browser is recommended to ensure compatibility and security.
 
+## Updates and Version Information
+- All updates are published via the [GitHub Releases page](https://github.com/halifox/PurityAuth/releases).
+- Users can check the changelog for each release to learn about new features and fixes.
 
-1. Download the installation package for your platform from the [releases page](https://github.com/halifox/PurityAuth/releases).
-2. Follow the system prompts to install. No internet connection is required for usage.
+## Security and Usage Boundaries
+- It is strongly recommended to obtain installation packages only from official sources to prevent malicious tampering.
+- This application provides identity verification functionality only and does not guarantee security of the device or system in other aspects.
+- For enterprise or managed environments, ensure compliance with relevant IT security policies before use.
 
 ---
 
