@@ -4,14 +4,6 @@ A clean, elegant cross-platform 2FA (Two-Factor Authentication) tool designed to
 
 ---
 
-# ⚠️ Important Notice ⚠️
-
-# 🧪 This application is currently in beta testing (non-production version). Updates may result in 📂 **complete data loss** ❗️  
-# 🛡️ Please ensure you have 📝 backed up your data in advance to protect your information ✅  
-# 🚨 We are not responsible for any data loss that occurs during the testing phase 🚨
-
----
-
 ## ✨ Features
 
 - 🔒 Simple 2FA generation and management functionality.
